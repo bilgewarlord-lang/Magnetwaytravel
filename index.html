@@ -218,7 +218,7 @@
                         <label class="text-white/60 text-xs font-bold uppercase tracking-widest block mb-2"><i class="far fa-calendar-check text-brandYellow mr-1"></i> Буцах огноо</label>
                         <input type="date" id="flight-return" class="w-full bg-transparent text-white font-bold text-base focus:outline-none [color-scheme:dark]" disabled>
                     </div>
-                    <div class="bg-white/10 backdrop-blur rounded-2xl p-4 border border-white/20 hover:border-brandYellow/50 transition relative" id="pax-box-trigger" onclick="togglePaxBox()">
+                    <div class="bg-white/10 backdrop-blur rounded-2xl p-4 border border-white/20 hover:border-brandYellow/50 transition relative" id="pax-box-trigger" onclick="togglePaxBox('pax-dropdown')">
                         <label class="text-white/60 text-xs font-bold uppercase tracking-widest block mb-2"><i class="fas fa-users text-brandYellow mr-1"></i> Зорчигч (Макс 9)</label>
                         <div class="text-white font-bold text-base cursor-pointer flex justify-between items-center">
                             <span id="pax-summary">1 том хүн</span>
@@ -250,14 +250,14 @@
                                 </div>
                             </div>
                             <p class="text-[10px] text-red-500 mb-3 font-bold uppercase text-center">* Нийт 9 хүнээс хэтрэхгүй</p>
-                            <button onclick="event.stopPropagation(); togglePaxBox()" class="w-full bg-brandBlue text-white font-bold py-2.5 rounded-xl text-sm uppercase tracking-wider hover:opacity-90 transition">Хадгалах</button>
+                            <button onclick="event.stopPropagation(); togglePaxBox('pax-dropdown')" class="w-full bg-brandBlue text-white font-bold py-2.5 rounded-xl text-sm uppercase tracking-wider hover:opacity-90 transition">Хадгалах</button>
                         </div>
                     </div>
                 </div>
 
                 <div class="mt-5 flex flex-col md:flex-row gap-4 items-center justify-between">
                     <p class="text-white/70 text-xs font-medium"><i class="fas fa-info-circle text-brandYellow mr-1"></i> Захиалгын хүсэлт илгээх ба боломжит нислэгүүдийг шалгах.</p>
-                    <button onclick="simulateBooking(event)" class="w-full md:w-auto px-10 bg-brandYellow text-brandBlue font-black py-4 rounded-2xl text-base uppercase tracking-widest shadow-lg hover:opacity-90 transition flex items-center justify-center gap-3">
+                    <button onclick="simulateBooking('home')" class="w-full md:w-auto px-10 bg-brandYellow text-brandBlue font-black py-4 rounded-2xl text-base uppercase tracking-widest shadow-lg hover:opacity-90 transition flex items-center justify-center gap-3">
                         <i class="fas fa-search"></i> Нислэгүүдийг харах
                     </button>
                 </div>
@@ -455,7 +455,7 @@
                 <div class="border-t border-gray-300 my-4 pt-4"><h3 class="font-black text-xl text-brandBlue mb-4 uppercase">Хоёр. Аялалд гарахаас өмнөх бэлтгэл</h3><p class="mb-3"><strong>2.1 Паспорт:</strong> Хугацаа нь аяллын дуусах өдрөөс хойш наад зах нь 6 сараас доошгүй байна.</p><p class="mb-3"><strong>2.2 Бичиг баримт:</strong> Зөрчилгүй байх, Иргэний бүртгэлд хандаж шалгуулсан байх.</p><p class="mb-3"><strong>2.3 Эрүүл мэнд:</strong> Маршрутын онцлогт тохирсон биеийн бэлтгэлтэй байх. Ойр зуурын эмээ өөрөө бэлдэж авч явах.</p><p class="mb-3"><strong>2.4 Хилээр авч гарах эмийн зөвшөөрөл:</strong> Хувийн хэрэглээний эмийг хилээр гаргахдаа тухайн улсын гаалийн журмаар зөвшөөрөгдсөн эсэхийг урьдчилан судална.</p></div>
                 <div class="border-t border-gray-300 my-4 pt-4"><h3 class="font-black text-xl text-brandBlue mb-4 uppercase">Гурав. Бичиг баримт</h3><p class="mb-3">3.1 Гадаад паспорт, бичиг баримтны бүрэн бүтэн, үнэн зөв байдлыг аялагч өөрөө хариуцах үүрэгтэй.</p><p class="mb-3">3.2 18 нас хүрээгүй аялагч нь заавал эцэг эх, асран хамгаалагчтайгаа цуг явах бөгөөд төрсний гэрчилгээг авч явна.</p></div>
                 <div class="border-t border-gray-300 my-4 pt-4"><h3 class="font-black text-xl text-brandBlue mb-4 uppercase">Дөрөв. Хил гааль</h3><p class="mb-3">4.1 Хориотой эд зүйлсийг хилээр авч гарах, оруулахыг хориглоно.</p><p class="mb-3">4.2 Гаалийн хяналт өндөр тул үндэслэлгүй маргаан, дүрэм зөрчих үйлдэл гаргахгүй байх.</p></div>
-                <div class="border-t border-gray-300 my-4 pt-4"><h3 class="font-black text-xl text-brandBlue mb-4 uppercase">Тав. Нислэгтэй аяллын журам</h3><p class="mb-3">5.1 Нислэгээс 2-3 цагийн өмнө нисэх онгоцны буудалд ирсэн байх.</p><p class="mb-3">5.2 Ачаа тээшний хязгаарлалт (20-30кг + гар тээш 7-10кг) мөрдөнө.</p><p class="mb-3">5.3 Power bank нь 100Wh-аас ихгүй байх.</p><p class="mb-3">5.4 Цаг агаар, техникийн саатал зэрэг шалтгаанаар нислэг саатах тохиолдолд нислэгийн компанийн нөхцөлийг дагана.</p></div>
+                <div class="border-t border-gray-300 my-4 pt-4"><h3 class="font-black text-xl text-brandBlue mb-4 uppercase">Тав. Нислэгтэй аяллын журам</h3><p class="mb-3">5.1 Нислэгээс 2-3 цагийн өмнө нисэх онгоцны буудалд ирсэн байх.</p><p class="mb-3">5.2 Ачаа тээшний хязгаарлалт (20-30кг + гар тээш 7-10кг) мөрдөнө.</p><p class="mb-3">5.3 Power bank нь 100Wh-аас ихгүй байх.</p><p class="mb-3">5.4 Цаг агаар, technical саатал зэрэг шалтгаанаар нислэг саатах тохиолдолд нислэгийн компанийн нөхцөлийг дагана.</p></div>
             </div>
         </div>
     </div>
@@ -593,96 +593,111 @@
         <div class="bg-brandBlue pt-20 pb-40">
             <div class="container mx-auto px-4 text-center">
                 <span class="text-brandYellow font-bold uppercase tracking-[0.2em] text-sm">НИСЛЭГИЙН ТИЙЗ ЗАХИАЛГА</span>
-                <h2 class="text-white font-black text-4xl md:text-5xl mt-3 uppercase font-serif">Манайхаар шууд захиалах</h2>
+                <h2 class="text-white font-black text-4xl md:text-5xl mt-3 uppercase font-serif">Дэлхийн өнцөг булан бүр рүү</h2>
                 <p class="text-white/70 mt-4 text-lg font-medium max-w-2xl mx-auto">Та нислэгээ хайж, захиалгын хүсэлтээ илгээн, компанийн дансанд төлбөрөө хийснээр таны электрон тийз баталгаажих болно.</p>
             </div>
         </div>
 
         <div class="container mx-auto px-4 -mt-28 relative z-20">
             <div class="bg-white rounded-3xl shadow-2xl border border-gray-100 p-6 md:p-10 mb-10">
-                <div class="text-center mb-8">
-                    <h3 class="text-2xl font-black text-brandBlue font-serif uppercase tracking-wide">Нислэгийн хүсэлт илгээх</h3>
-                    <div class="w-16 h-1 bg-brandYellow mx-auto mt-4 rounded-full"></div>
-                </div>
                 
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                    <div class="bg-gray-50 rounded-2xl p-6 text-center border border-gray-100">
-                        <div class="w-12 h-12 bg-brandYellow text-brandBlue rounded-full flex items-center justify-center text-xl mx-auto mb-3"><i class="fas fa-search"></i></div>
-                        <h4 class="font-bold text-brandBlue mb-2">1. Хайлт хийх</h4>
-                        <p class="text-sm text-brandGray">Нүүр хуудсан дээрх хайлтын хэсгээр явах чиглэл, огноо, зорчигчдын тоог оруулан хайх товчийг дарна.</p>
+                <div class="flex flex-col md:flex-row justify-between mb-6 gap-4 border-b border-gray-100 pb-6">
+                    <div class="flex gap-2">
+                        <button onclick="setTripType2('oneway')" id="tab2-oneway" class="px-6 py-2.5 rounded-full text-sm font-bold uppercase tracking-wider bg-brandYellow text-brandBlue transition shadow-md">Нэг талдаа</button>
+                        <button onclick="setTripType2('roundtrip')" id="tab2-roundtrip" class="px-6 py-2.5 rounded-full text-sm font-bold uppercase tracking-wider bg-gray-100 text-brandGray hover:bg-gray-200 transition">2 талдаа</button>
                     </div>
-                    <div class="bg-gray-50 rounded-2xl p-6 text-center border border-gray-100">
-                        <div class="w-12 h-12 bg-brandYellow text-brandBlue rounded-full flex items-center justify-center text-xl mx-auto mb-3"><i class="fas fa-money-check-alt"></i></div>
-                        <h4 class="font-bold text-brandBlue mb-2">2. Төлбөр хийх</h4>
-                        <p class="text-sm text-brandGray">Танд үүссэн <b>Захиалгын код</b>-ыг гүйлгээний утга дээр бичиж компанийн данс руу шилжүүлнэ.</p>
-                    </div>
-                    <div class="bg-gray-50 rounded-2xl p-6 text-center border border-gray-100">
-                        <div class="w-12 h-12 bg-brandYellow text-brandBlue rounded-full flex items-center justify-center text-xl mx-auto mb-3"><i class="fas fa-envelope-open-text"></i></div>
-                        <h4 class="font-bold text-brandBlue mb-2">3. Тийз хүлээн авах</h4>
-                        <p class="text-sm text-brandGray">Бид төлбөр баталгаажсан даруйд таны E-Ticket-ийг албан ёсоор бичиж мэйлээр илгээх болно.</p>
+                    <div>
+                        <select id="flight2-class" class="bg-gray-50 border border-gray-200 text-brandBlue text-sm rounded-full focus:ring-brandYellow focus:border-brandYellow block w-full p-2.5 font-bold outline-none cursor-pointer px-4">
+                            <option value="Economy">Энгийн (Economy)</option>
+                            <option value="Business">Бизнес (Business)</option>
+                            <option value="First">Нэгдүгээр (First Class)</option>
+                        </select>
                     </div>
                 </div>
 
-                <div class="mt-10 text-center">
-                    <button onclick="changePage('home')" class="bg-brandBlue text-white font-bold py-4 px-10 rounded-full text-sm uppercase tracking-widest hover:opacity-90 transition shadow-lg">
-                        <i class="fas fa-arrow-left mr-2"></i> Хайлт руу буцах
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                    <div class="autocomplete-container bg-gray-50 rounded-2xl p-4 border border-gray-200 hover:border-brandYellow/50 transition">
+                        <label class="text-brandGray text-xs font-bold uppercase tracking-widest block mb-2"><i class="fas fa-plane-departure text-brandYellow mr-1"></i> Хаанаас</label>
+                        <input type="text" id="flight-from2" value="Улаанбаатар (UBN)" class="w-full bg-transparent text-brandBlue font-bold text-lg focus:outline-none placeholder-gray-400" placeholder="Хот эсвэл код..." onfocus="showAutocomplete('from2')" onkeyup="filterAutocomplete('from2')">
+                        <div id="ac-list-from2" class="autocomplete-list text-brandText"></div>
+                    </div>
+                    <div class="autocomplete-container relative bg-gray-50 rounded-2xl p-4 border border-gray-200 hover:border-brandYellow/50 transition">
+                        <label class="text-brandGray text-xs font-bold uppercase tracking-widest block mb-2"><i class="fas fa-plane-arrival text-brandYellow mr-1"></i> Хаашаа</label>
+                        <input type="text" id="flight-to2" class="w-full bg-transparent text-brandBlue font-bold text-lg focus:outline-none placeholder-gray-400" placeholder="Хот сонгох..." onfocus="showAutocomplete('to2')" onkeyup="filterAutocomplete('to2')">
+                        <button onclick="swapCities2()" class="absolute -left-5 top-1/2 -translate-y-1/2 w-10 h-10 bg-brandYellow rounded-full flex items-center justify-center text-brandBlue font-black shadow-lg z-10 hover:scale-110 transition hidden lg:flex"><i class="fas fa-exchange-alt"></i></button>
+                        <div id="ac-list-to2" class="autocomplete-list text-brandText"></div>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
+                    <div class="bg-gray-50 rounded-2xl p-4 border border-gray-200 hover:border-brandYellow/50 transition">
+                        <label class="text-brandGray text-xs font-bold uppercase tracking-widest block mb-2"><i class="far fa-calendar-alt text-brandYellow mr-1"></i> Явах огноо</label>
+                        <input type="date" id="flight-depart2" class="w-full bg-transparent text-brandBlue font-bold text-base focus:outline-none">
+                    </div>
+                    <div id="return-date-box2" class="bg-gray-50 rounded-2xl p-4 border border-gray-200 hover:border-brandYellow/50 transition opacity-40">
+                        <label class="text-brandGray text-xs font-bold uppercase tracking-widest block mb-2"><i class="far fa-calendar-check text-brandYellow mr-1"></i> Буцах огноо</label>
+                        <input type="date" id="flight-return2" class="w-full bg-transparent text-brandBlue font-bold text-base focus:outline-none" disabled>
+                    </div>
+                    <div class="bg-gray-50 rounded-2xl p-4 border border-gray-200 hover:border-brandYellow/50 transition relative" id="pax-box-trigger2" onclick="togglePaxBox('pax-dropdown2')">
+                        <label class="text-brandGray text-xs font-bold uppercase tracking-widest block mb-2"><i class="fas fa-users text-brandYellow mr-1"></i> Зорчигч (Макс 9)</label>
+                        <div class="text-brandBlue font-bold text-base cursor-pointer flex justify-between items-center">
+                            <span id="pax-summary2">1 том хүн</span>
+                            <i class="fas fa-chevron-down text-xs text-brandGray"></i>
+                        </div>
+                        <div id="pax-dropdown2" class="hidden absolute top-full left-0 right-0 mt-2 bg-white rounded-2xl shadow-2xl border border-gray-100 p-5 z-50 min-w-[220px]">
+                            <div class="flex items-center justify-between mb-4">
+                                <div><p class="font-bold text-brandBlue text-sm">Том хүн</p><p class="text-xs text-brandGray">12+</p></div>
+                                <div class="flex items-center gap-2">
+                                    <button onclick="event.stopPropagation(); changePax2('adult',-1)" class="w-8 h-8 rounded-full bg-gray-100 text-brandBlue font-bold hover:bg-brandYellow transition text-lg">−</button>
+                                    <span id="pax-adult-count2" class="font-black text-brandBlue w-5 text-center">1</span>
+                                    <button onclick="event.stopPropagation(); changePax2('adult',1)" class="w-8 h-8 rounded-full bg-gray-100 text-brandBlue font-bold hover:bg-brandYellow transition text-lg">+</button>
+                                </div>
+                            </div>
+                            <div class="flex items-center justify-between mb-4">
+                                <div><p class="font-bold text-brandBlue text-sm">Хүүхэд</p><p class="text-xs text-brandGray">2–11 нас</p></div>
+                                <div class="flex items-center gap-2">
+                                    <button onclick="event.stopPropagation(); changePax2('child',-1)" class="w-8 h-8 rounded-full bg-gray-100 text-brandBlue font-bold hover:bg-brandYellow transition text-lg">−</button>
+                                    <span id="pax-child-count2" class="font-black text-brandBlue w-5 text-center">0</span>
+                                    <button onclick="event.stopPropagation(); changePax2('child',1)" class="w-8 h-8 rounded-full bg-gray-100 text-brandBlue font-bold hover:bg-brandYellow transition text-lg">+</button>
+                                </div>
+                            </div>
+                            <div class="flex items-center justify-between mb-5">
+                                <div><p class="font-bold text-brandBlue text-sm">Нярай</p><p class="text-xs text-brandGray">0–2 нас</p></div>
+                                <div class="flex items-center gap-2">
+                                    <button onclick="event.stopPropagation(); changePax2('infant',-1)" class="w-8 h-8 rounded-full bg-gray-100 text-brandBlue font-bold hover:bg-brandYellow transition text-lg">−</button>
+                                    <span id="pax-infant-count2" class="font-black text-brandBlue w-5 text-center">0</span>
+                                    <button onclick="event.stopPropagation(); changePax2('infant',1)" class="w-8 h-8 rounded-full bg-gray-100 text-brandBlue font-bold hover:bg-brandYellow transition text-lg">+</button>
+                                </div>
+                            </div>
+                            <p class="text-[10px] text-red-500 mb-3 font-bold uppercase text-center">* Нийт 9 хүнээс хэтрэхгүй</p>
+                            <button onclick="event.stopPropagation(); togglePaxBox('pax-dropdown2')" class="w-full bg-brandBlue text-white font-bold py-2.5 rounded-xl text-sm uppercase tracking-wider hover:opacity-90 transition">Хадгалах</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="text-center">
+                    <button onclick="simulateBooking('flights')" class="w-full md:w-1/2 mx-auto bg-brandBlue text-white font-black py-4 rounded-2xl text-lg uppercase tracking-widest shadow-xl hover:bg-blue-900 transition flex items-center justify-center gap-3">
+                        <i class="fas fa-search text-brandYellow"></i> Нислэгүүдийг хайх
                     </button>
                 </div>
             </div>
-        </div>
-    </div>
 
-    <footer class="relative text-white pt-20 pb-10 border-t-[8px] border-brandYellow mt-16 bg-cover bg-center" style="background-image: url('https://images.pexels.com/photos/1450353/pexels-photo-1450353.jpeg?auto=compress&cs=tinysrgb&w=1920');">
-        <div class="absolute inset-0 bg-brandBlue/90 backdrop-blur-sm"></div>
-        <div class="container mx-auto px-4 relative z-10">
-            <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-12 mb-16 border-b border-white/20 pb-16">
-                <div class="lg:col-span-2">
-                    <div class="inline-block bg-white px-4 py-3 rounded-2xl mb-8 shadow-lg"><img src="black minimalist initial luxury monogram logo design.png" alt="Magnet Way" onerror="this.outerHTML='<div class=\'w-20 h-20 bg-brandBlue text-brandYellow font-black text-2xl flex items-center justify-center rounded-xl border-2 border-brandYellow\'>MW</div>'" class="h-20 object-contain logo-enhanced"></div>
-                    <p class="text-white text-base leading-relaxed max-w-md drop-shadow-md font-medium">2015 оноос хойш үйл ажиллагаа явуулж буй, Монголдоо тэргүүлэгч аяллын компани — <strong class="text-brandYellow">Magnet Way Travel</strong>. Ази, Европ руу хөтөлбөртэй болон захиалгат аяллуудыг тогтмол зохион байгуулж байна.</p>
-                    <div class="flex gap-6 mt-8">
-                        <a href="https://www.facebook.com/profile.php?id=61578622845513" target="_blank" class="w-12 h-12 rounded-full bg-white/20 flex items-center justify-center hover:bg-brandYellow hover:text-brandBlue transition backdrop-blur-sm shadow-md text-xl"><i class="fab fa-facebook-f"></i></a>
-                        <a href="https://www.instagram.com/magnet_way1/" target="_blank" class="w-12 h-12 rounded-full bg-white/20 flex items-center justify-center hover:bg-brandYellow hover:text-brandBlue transition backdrop-blur-sm shadow-md text-xl"><i class="fab fa-instagram"></i></a>
-                    </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="bg-gray-50 rounded-2xl p-6 text-center border border-gray-100">
+                    <div class="w-12 h-12 bg-brandYellow text-brandBlue rounded-full flex items-center justify-center text-xl mx-auto mb-3"><i class="fas fa-search"></i></div>
+                    <h4 class="font-bold text-brandBlue mb-2">1. Хайлт хийх</h4>
+                    <p class="text-sm text-brandGray">Дээрх хайлтын хэсгээр явах чиглэл, огноо, зорчигчдын тоог оруулан хайх товчийг дарна.</p>
                 </div>
-                <div><h3 class="text-lg font-black mb-8 uppercase text-brandYellow tracking-widest font-serif">Холбоосууд</h3><div class="flex flex-col gap-4 text-sm text-white font-bold uppercase tracking-wider"><span class="cursor-pointer hover:text-brandYellow transition" onclick="changePage('about')">Бидний тухай</span><span class="cursor-pointer hover:text-brandYellow transition" onclick="changePage('tours-intl')">Аяллууд</span><span class="cursor-pointer hover:text-brandYellow transition" onclick="changePage('news')">Мэдээлэл</span></div></div>
-                <div><h3 class="text-lg font-black mb-8 uppercase text-brandYellow tracking-widest font-serif uppercase">ХОЛБОО БАРИХ</h3><ul class="space-y-5 text-sm text-white font-medium"><li class="flex items-center"><i class="fas fa-envelope mr-4 text-brandYellow text-lg"></i> magnetwaytravel@gmail.com</li><li class="flex items-center font-bold text-base"><i class="fas fa-phone mr-4 text-brandYellow text-lg"></i> 7610-6941, 8011-3677, 8861-3677</li><li class="flex items-start"><i class="fas fa-map-marker-alt mt-1 mr-4 text-brandYellow text-lg"></i> СБД 1-р хороо, Бизнес тауэр, 12 давхар 1204 тоот</li></ul></div>
-            </div>
-            <div class="flex flex-col md:flex-row justify-between items-center text-xs text-white/80 font-medium tracking-wider font-bold">
-                <p>© 2026 Magnet Way Travel LLC — Бүх эрх хуулиар хамгаалагдсан.</p>
-                <div class="flex gap-6 mt-6 md:mt-0 uppercase"><span class="cursor-pointer hover:text-white transition" onclick="changePage('terms')">Аяллын журам</span><span class="cursor-pointer hover:text-white transition" onclick="changePage('privacy')">Нууцлалын бодлого</span></div>
-            </div>
-        </div>
-    </footer>
-
-    <button onclick="toggleAiChat()" class="fixed bottom-6 right-6 w-16 h-16 bg-gradient-to-r from-purple-500 to-pink-500 text-white rounded-full shadow-2xl flex items-center justify-center text-3xl hover:scale-110 transition z-50">
-        ✨
-    </button>
-
-    <div id="ai-chat-window" class="hidden fixed bottom-28 right-6 w-80 md:w-96 bg-white rounded-2xl shadow-2xl border border-gray-100 flex-col z-50 overflow-hidden font-sans">
-        <div class="bg-gradient-to-r from-purple-600 to-brandBlue text-white p-4 flex justify-between items-center">
-            <h3 class="font-bold text-sm uppercase tracking-widest"><i class="fas fa-robot mr-2"></i> AI Аяллын Зөвлөх</h3>
-            <button onclick="toggleAiChat()" class="hover:text-brandYellow transition"><i class="fas fa-times text-lg"></i></button>
-        </div>
-        <div id="ai-chat-messages" class="p-4 h-80 overflow-y-auto bg-gray-50 flex flex-col gap-3 text-sm">
-            <div class="bg-white p-3 rounded-xl rounded-tl-none border border-gray-100 self-start max-w-[85%] text-gray-700 shadow-sm leading-relaxed">
-                Сайн байна уу? Би Magnet Way-ийн AI аяллын зөвлөх байна. Та ямар төрлийн аялал хайж байна вэ? (Жишээ нь: Хүүхэдтэйгээ явах далайн эргийн дулаан орон)
-            </div>
-        </div>
-        <div class="p-3 bg-white border-t border-gray-100 flex items-center gap-2">
-            <input type="text" id="ai-chat-input" placeholder="Асуултаа бичнэ үү..." class="flex-1 bg-gray-100 border-none px-4 py-2.5 rounded-full focus:outline-none focus:ring-2 focus:ring-purple-400 text-sm" onkeypress="if(event.key==='Enter') sendAiMessage()">
-            <button onclick="sendAiMessage()" class="w-10 h-10 bg-purple-600 text-white rounded-full flex items-center justify-center hover:bg-purple-700 transition shadow-sm"><i class="fas fa-paper-plane"></i></button>
-        </div>
-    </div>
-
-    <div id="ai-tips-modal" class="modal-overlay font-sans z-[100]">
-        <div class="bg-white rounded-3xl w-full max-w-2xl max-h-[85vh] overflow-hidden flex flex-col shadow-2xl">
-            <div class="bg-gradient-to-r from-purple-600 to-pink-500 text-white p-6 flex justify-between items-center">
-                <h3 class="font-bold text-lg uppercase tracking-widest"><i class="fas fa-magic mr-2"></i> AI Аяллын Зөвлөгөө</h3>
-                <button onclick="closeTourTipsModal()" class="hover:text-brandYellow transition text-2xl"><i class="fas fa-times"></i></button>
-            </div>
-            <div id="ai-tips-content" class="p-6 overflow-y-auto text-gray-700 leading-relaxed text-sm md:text-base space-y-4"></div>
-            <div class="p-4 bg-gray-50 border-t border-gray-100 text-center text-xs text-gray-400 uppercase tracking-widest font-bold">
-                Powered by Gemini API
+                <div class="bg-gray-50 rounded-2xl p-6 text-center border border-gray-100">
+                    <div class="w-12 h-12 bg-brandYellow text-brandBlue rounded-full flex items-center justify-center text-xl mx-auto mb-3"><i class="fas fa-money-check-alt"></i></div>
+                    <h4 class="font-bold text-brandBlue mb-2">2. Төлбөр хийх</h4>
+                    <p class="text-sm text-brandGray">Танд үүссэн <b>Захиалгын код</b>-ыг гүйлгээний утга дээр бичиж компанийн данс руу шилжүүлнэ.</p>
+                </div>
+                <div class="bg-gray-50 rounded-2xl p-6 text-center border border-gray-100">
+                    <div class="w-12 h-12 bg-brandYellow text-brandBlue rounded-full flex items-center justify-center text-xl mx-auto mb-3"><i class="fas fa-envelope-open-text"></i></div>
+                    <h4 class="font-bold text-brandBlue mb-2">3. Тийз хүлээн авах</h4>
+                    <p class="text-sm text-brandGray">Бид төлбөр баталгаажсан даруйд таны E-Ticket-ийг албан ёсоор бичиж мэйлээр илгээх болно.</p>
+                </div>
             </div>
         </div>
     </div>
@@ -748,6 +763,61 @@
             <button onclick="closeSuccessModal()" class="w-full bg-gray-100 text-brandGray font-bold py-3 rounded-xl text-sm uppercase tracking-widest hover:bg-gray-200 transition">
                 Хаах
             </button>
+        </div>
+    </div>
+
+    <footer class="relative text-white pt-20 pb-10 border-t-[8px] border-brandYellow mt-16 bg-cover bg-center" style="background-image: url('https://images.pexels.com/photos/1450353/pexels-photo-1450353.jpeg?auto=compress&cs=tinysrgb&w=1920');">
+        <div class="absolute inset-0 bg-brandBlue/90 backdrop-blur-sm"></div>
+        <div class="container mx-auto px-4 relative z-10">
+            <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-12 mb-16 border-b border-white/20 pb-16">
+                <div class="lg:col-span-2">
+                    <div class="inline-block bg-white px-4 py-3 rounded-2xl mb-8 shadow-lg"><img src="932F2A9E-33F7-497F-A60B-8BDB579F465B.png" alt="Magnet Way" onerror="this.outerHTML='<div class=\'w-20 h-20 bg-brandBlue text-brandYellow font-black text-2xl flex items-center justify-center rounded-xl border-2 border-brandYellow\'>MW</div>'" class="h-20 object-contain logo-enhanced"></div>
+                    <p class="text-white text-base leading-relaxed max-w-md drop-shadow-md font-medium">2015 оноос хойш үйл ажиллагаа явуулж буй, Монголдоо тэргүүлэгч аяллын компани — <strong class="text-brandYellow">Magnet Way Travel</strong>. Ази, Европ руу хөтөлбөртэй болон захиалгат аяллуудыг тогтмол зохион байгуулж байна.</p>
+                    <div class="flex gap-6 mt-8">
+                        <a href="https://www.facebook.com/profile.php?id=61578622845513" target="_blank" class="w-12 h-12 rounded-full bg-white/20 flex items-center justify-center hover:bg-brandYellow hover:text-brandBlue transition backdrop-blur-sm shadow-md text-xl"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.instagram.com/magnet_way1/" target="_blank" class="w-12 h-12 rounded-full bg-white/20 flex items-center justify-center hover:bg-brandYellow hover:text-brandBlue transition backdrop-blur-sm shadow-md text-xl"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div><h3 class="text-lg font-black mb-8 uppercase text-brandYellow tracking-widest font-serif">Холбоосууд</h3><div class="flex flex-col gap-4 text-sm text-white font-bold uppercase tracking-wider"><span class="cursor-pointer hover:text-brandYellow transition" onclick="changePage('about')">Бидний тухай</span><span class="cursor-pointer hover:text-brandYellow transition" onclick="changePage('tours-intl')">Аяллууд</span><span class="cursor-pointer hover:text-brandYellow transition" onclick="changePage('news')">Мэдээлэл</span></div></div>
+                <div><h3 class="text-lg font-black mb-8 uppercase text-brandYellow tracking-widest font-serif uppercase">ХОЛБОО БАРИХ</h3><ul class="space-y-5 text-sm text-white font-medium"><li class="flex items-center"><i class="fas fa-envelope mr-4 text-brandYellow text-lg"></i> magnetwaytravel@gmail.com</li><li class="flex items-center font-bold text-base"><i class="fas fa-phone mr-4 text-brandYellow text-lg"></i> 7610-6941, 8011-3677, 8861-3677</li><li class="flex items-start"><i class="fas fa-map-marker-alt mt-1 mr-4 text-brandYellow text-lg"></i> СБД 1-р хороо, Бизнес тауэр, 12 давхар 1204 тоот</li></ul></div>
+            </div>
+            <div class="flex flex-col md:flex-row justify-between items-center text-xs text-white/80 font-medium tracking-wider font-bold">
+                <p>© 2026 Magnet Way Travel LLC — Бүх эрх хуулиар хамгаалагдсан.</p>
+                <div class="flex gap-6 mt-6 md:mt-0 uppercase"><span class="cursor-pointer hover:text-white transition" onclick="changePage('terms')">Аяллын журам</span><span class="cursor-pointer hover:text-white transition" onclick="changePage('privacy')">Нууцлалын бодлого</span></div>
+            </div>
+        </div>
+    </footer>
+
+    <button onclick="toggleAiChat()" class="fixed bottom-6 right-6 w-16 h-16 bg-gradient-to-r from-purple-500 to-pink-500 text-white rounded-full shadow-2xl flex items-center justify-center text-3xl hover:scale-110 transition z-50">
+        ✨
+    </button>
+
+    <div id="ai-chat-window" class="hidden fixed bottom-28 right-6 w-80 md:w-96 bg-white rounded-2xl shadow-2xl border border-gray-100 flex-col z-50 overflow-hidden font-sans">
+        <div class="bg-gradient-to-r from-purple-600 to-brandBlue text-white p-4 flex justify-between items-center">
+            <h3 class="font-bold text-sm uppercase tracking-widest"><i class="fas fa-robot mr-2"></i> AI Аяллын Зөвлөх</h3>
+            <button onclick="toggleAiChat()" class="hover:text-brandYellow transition"><i class="fas fa-times text-lg"></i></button>
+        </div>
+        <div id="ai-chat-messages" class="p-4 h-80 overflow-y-auto bg-gray-50 flex flex-col gap-3 text-sm">
+            <div class="bg-white p-3 rounded-xl rounded-tl-none border border-gray-100 self-start max-w-[85%] text-gray-700 shadow-sm leading-relaxed">
+                Сайн байна уу? Би Magnet Way-ийн AI аяллын зөвлөх байна. Та ямар төрлийн аялал хайж байна вэ? (Жишээ нь: Хүүхэдтэйгээ явах далайн эргийн дулаан орон)
+            </div>
+        </div>
+        <div class="p-3 bg-white border-t border-gray-100 flex items-center gap-2">
+            <input type="text" id="ai-chat-input" placeholder="Асуултаа бичнэ үү..." class="flex-1 bg-gray-100 border-none px-4 py-2.5 rounded-full focus:outline-none focus:ring-2 focus:ring-purple-400 text-sm" onkeypress="if(event.key==='Enter') sendAiMessage()">
+            <button onclick="sendAiMessage()" class="w-10 h-10 bg-purple-600 text-white rounded-full flex items-center justify-center hover:bg-purple-700 transition shadow-sm"><i class="fas fa-paper-plane"></i></button>
+        </div>
+    </div>
+
+    <div id="ai-tips-modal" class="modal-overlay font-sans z-[100]">
+        <div class="bg-white rounded-3xl w-full max-w-2xl max-h-[85vh] overflow-hidden flex flex-col shadow-2xl">
+            <div class="bg-gradient-to-r from-purple-600 to-pink-500 text-white p-6 flex justify-between items-center">
+                <h3 class="font-bold text-lg uppercase tracking-widest"><i class="fas fa-magic mr-2"></i> AI Аяллын Зөвлөгөө</h3>
+                <button onclick="closeTourTipsModal()" class="hover:text-brandYellow transition text-2xl"><i class="fas fa-times"></i></button>
+            </div>
+            <div id="ai-tips-content" class="p-6 overflow-y-auto text-gray-700 leading-relaxed text-sm md:text-base space-y-4"></div>
+            <div class="p-4 bg-gray-50 border-t border-gray-100 text-center text-xs text-gray-400 uppercase tracking-widest font-bold">
+                Powered by Gemini API
+            </div>
         </div>
     </div>
 
@@ -841,668 +911,4 @@
             { name: "Н.Молом", loc: "Жанжиаже аялал", text: "Кинонд гардаг шиг сүртэй гоё газар байсан. Хөтөч болон нөхөрсөг хамт олны ачаар огт ганцаардсангүй." },
             { name: "Оюунаа С.", loc: "Бээжин Шанхай", text: "Хүүхдүүд маань маш их баярласан. Диснейлэнд үнэхээр гайхалтай, зохион байгуулалт 100%!" },
             { name: "Төгөлдөр У.", loc: "Бээжин Газрын", text: "Усан парк, халуун рашаан бүгд их таалагдсан. Magnet Way компанидаа ажлын амжилт хүсье." },
-            { name: "Цэцгээ Л.", loc: "Вьетнам Фукуок", text: "Далайн эрэг, усан парк нь гайхамшигтай. Шууд нислэгтэй болохоор хүүхэдтэй явахад маш амар байлаа." },
-            { name: "Мандах Г.", loc: "Манжуур аялал", text: "Богино хугацаанд маш их зүйл үзэж амжсан. Буудлын байршил сайтай, хөтөч нар туршлагатай байсан." },
-            { name: "Уянга Б.", loc: "Шишуанбанна", text: "Сэтгэл ариуссан сайхан аялал боллоо. Замдаа ядрахгүй, хоол унд сайтай байсан шүү." },
-            { name: "Хулан Б.", loc: "Чүнчин аялал", text: "Үнэхээр өвөрмөц хот. Лизиба галт тэрэг болон шөнийн усан онгоцны аялал үнэхээр таалагдлаа." },
-            { name: "Ганзориг Э.", loc: "Улаанхад VIP", text: "Эрүүл мэнддээ анхаарсан маш зөв сонголт байлаа. Эмнэлгийн үйлчилгээ маш шуурхай байсан." },
-            { name: "Сүхбат Ж.", loc: "Япон 4 хот", text: "Шинкансэн хурдны галт тэрэг үнэхээр тухтай. 4 хотыг богино хугацаанд үзсэн маш сайн хөтөлбөр." },
-            { name: "Жаргал С.", loc: "Хайнань Саньяа", text: "Атлантис усан паркад бүтэн өдөр тоглох үнэхээр гоё байлаа. Далайн эрэг нь цэвэрхэн тухтай." }
-        ];
-
-        let lastPage = 'home';
-        let currentHeroId = 'h1';
-        let curTourObj = null;
-        let paxAdult = 1;
-        let paxChild = 0;
-        let paxInfant = 0;
-
-        // Gemini API Configuration
-        const apiKey = ""; // ЭНД ТА ӨӨРИЙН API ТҮЛХҮҮРЭЭ ОРУУЛЖ БОЛНО
-        
-        async function fetchGeminiAPI(userQuery, systemInstruction) {
-            if (!apiKey) return "Уучлаарай, одоогоор хиймэл оюун ухааны систем холбогдоогүй байна.";
-            
-            const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${apiKey}`;
-            const payload = {
-                contents: [{ parts: [{ text: userQuery }] }],
-                systemInstruction: { parts: [{ text: systemInstruction }] }
-            };
-
-            const maxRetries = 5;
-            const delays = [1000, 2000, 4000, 8000, 16000];
-
-            for (let i = 0; i <= maxRetries; i++) {
-                try {
-                    const response = await fetch(url, {
-                        method: 'POST',
-                        headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify(payload)
-                    });
-                    if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
-                    const result = await response.json();
-                    return result.candidates?.[0]?.content?.parts?.[0]?.text || "Уучлаарай, хариу өгөхөд алдаа гарлаа.";
-                } catch (error) {
-                    if (i === maxRetries) {
-                        console.error("Gemini API Error:", error);
-                        return "Уучлаарай, сүлжээний алдаа гарлаа. Та дараа дахин оролдоно уу.";
-                    }
-                    await new Promise(r => setTimeout(r, delays[i]));
-                }
-            }
-        }
-
-        function formatAIResponse(text) {
-            return text
-                .replace(/\*\*(.*?)\*\*/g, '<strong class="text-brandBlue">$1</strong>')
-                .replace(/\* (.*?)\n/g, '<li class="ml-4 list-disc mb-1">$1</li>')
-                .replace(/\n/g, '<br>');
-        }
-        
-        function init() {
-            // Tour render logic
-            const heroTours = toursData.filter(t => t.id.startsWith('h'));
-            let curSlide = 0;
-            window.setSlide = function(index) { curSlide = index; updateHero(); };
-            function updateHero() {
-                const tour = heroTours[curSlide];
-                currentHeroId = tour.id;
-                document.getElementById('hero-slider').style.backgroundImage = `url('${tour.img}')`;
-                document.getElementById('hero-title').innerText = tour.title;
-                document.getElementById('hero-loc').innerHTML = `<i class="fas fa-map-marker-alt mr-2 text-brandYellow"></i> ${tour.loc}`;
-                document.getElementById('hero-duration').innerHTML = `<i class="far fa-clock mr-2 text-brandYellow"></i> ${tour.dur}`;
-                document.getElementById('hero-desc').innerText = tour.desc;
-                document.getElementById('hero-price').innerText = tour.priceStr;
-                const indicators = document.getElementById('hero-text-indicators').children;
-                for(let i=0; i<indicators.length; i++) {
-                    if(i === curSlide) { indicators[i].classList.add('text-white', 'border-b-2', 'border-brandYellow', 'pb-1'); indicators[i].classList.remove('text-white/50'); }
-                    else { indicators[i].classList.remove('text-white', 'border-b-2', 'border-brandYellow', 'pb-1'); indicators[i].classList.add('text-white/50'); }
-                }
-            }
-            setInterval(() => { curSlide = (curSlide + 1) % heroTours.length; updateHero(); }, 6000);
-            updateHero();
-
-            const renderHCard = (t) => `
-                <div class="h-scroll-item bg-white rounded-3xl overflow-hidden card-shadow flex flex-col h-full border border-gray-100 cursor-pointer group" onclick="showDetail('${t.id}')">
-                    <div class="relative h-64 overflow-hidden">
-                        <img src="${t.img}" class="w-full h-full object-cover group-hover:scale-105 transition duration-700">
-                        <div class="absolute top-4 right-4 bg-brandBlue text-white text-sm font-bold px-4 py-2 rounded-full shadow-md">${t.priceStr}</div>
-                        <div class="absolute top-4 left-4 bg-brandYellow text-brandBlue text-xs uppercase font-bold px-3 py-1.5 rounded-full shadow-sm tracking-wider">${t.type}</div>
-                    </div>
-                    <div class="p-7 flex flex-col flex-grow">
-                        <h3 class="card-title text-xl text-brandBlue mb-4 leading-snug flex-grow group-hover:text-brandYellow transition font-serif">${t.title}</h3>
-                        <div class="flex justify-between items-center text-sm text-brandGray mb-6 border-b border-gray-100 pb-5 font-medium">
-                            <span><i class="far fa-clock text-brandYellow mr-2"></i> ${t.dur}</span>
-                            <span><i class="fas fa-map-marker-alt text-brandYellow mr-2"></i> ${t.loc.split('/')[0]}</span>
-                        </div>
-                        <button class="w-full btn-animated font-bold py-4 rounded-xl mt-auto text-xs uppercase tracking-widest shadow-md btn-text">Хөтөлбөр үзэх <i class="fas fa-arrow-right ml-2"></i></button>
-                    </div>
-                </div>
-            `;
-            
-            const renderCard = (t) => `
-                <div class="bg-white rounded-3xl overflow-hidden card-shadow flex flex-col h-full border border-gray-100 cursor-pointer group" onclick="showDetail('${t.id}')">
-                    <div class="relative h-56 overflow-hidden">
-                        <img src="${t.img}" class="w-full h-full object-cover group-hover:scale-105 transition duration-700">
-                        <div class="absolute top-4 right-4 bg-brandBlue text-white text-sm font-bold px-4 py-2 rounded-full shadow-md">${t.priceStr}</div>
-                         <div class="absolute top-4 left-4 bg-white/80 backdrop-blur text-brandBlue text-xs uppercase font-bold px-3 py-1.5 rounded-full shadow-sm tracking-wider">${t.loc.split('/')[0]}</div>
-                    </div>
-                    <div class="p-6 flex flex-col flex-grow">
-                        <div class="flex justify-between text-xs text-brandGray mb-3 font-bold uppercase tracking-wider">
-                            <span><i class="far fa-clock text-brandYellow mr-1"></i> ${t.dur}</span>
-                             <span><i class="fas fa-plane text-brandYellow mr-1"></i> ${t.type.split(' ')[0]}</span>
-                        </div>
-                        <h3 class="card-title text-lg text-brandBlue mb-5 flex-grow group-hover:text-brandYellow transition font-serif leading-snug">${t.title}</h3>
-                        <button class="w-full bg-brandLight border-2 border-brandLight text-brandBlue font-bold py-3 rounded-xl group-hover:bg-brandYellow group-hover:border-brandYellow group-hover:text-brandBlue transition text-xs uppercase tracking-widest shadow-sm btn-text">
-                            Хөтөлбөр үзэх
-                        </button>
-                    </div>
-                </div>
-            `;
-
-            const allTours = toursData.filter(t => t.cat === 'intl');
-            document.getElementById('h-scroll-tours').innerHTML = allTours.map(renderHCard).join('');
-            document.getElementById('highlight-grid').innerHTML = heroTours.map(renderCard).join('');
-            document.getElementById('grid-intl').innerHTML = allTours.map(renderCard).join('');
-            document.getElementById('grid-dom').innerHTML = toursData.filter(t => t.cat === 'dom').map(renderCard).join('');
-
-            const createReview = (r) => `
-                <div class="bg-white p-8 rounded-3xl shadow-sm border border-gray-100 w-96 flex-shrink-0 text-left flex flex-col h-auto whitespace-normal break-words">
-                    <div class="flex text-brandYellow text-sm mb-4"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                    <p class="text-brandText text-base mb-6 leading-relaxed italic">"${r.text}"</p>
-                    <div class="flex items-center gap-4 mt-auto pt-4 border-t border-gray-50">
-                        <div class="w-12 h-12 rounded-full bg-blue-50 text-brandBlue font-black flex items-center justify-center text-lg shadow-sm">${r.name.charAt(0)}</div>
-                        <div>
-                            <h4 class="font-bold text-brandBlue text-base font-serif">${r.name}</h4>
-                            <p class="text-xs text-brandGray font-medium uppercase tracking-wider">${r.loc}</p>
-                        </div>
-                    </div>
-                </div>
-            `;
-            
-            const m1 = reviews.slice(0, 7).map(createReview).join('');
-            const m2 = reviews.slice(7, 14).map(createReview).join('');
-            document.getElementById('marquee-1').innerHTML = m1 + m1;
-            document.getElementById('marquee-2').innerHTML = m2 + m2;
-
-            document.getElementById('grid-news').innerHTML = newsData.map(n => `
-                <div class="bg-white rounded-3xl overflow-hidden card-shadow cursor-pointer group border border-gray-100" onclick="showNews('${n.id}')">
-                    <div class="relative h-56 overflow-hidden"><img src="${n.img}" class="w-full h-full object-cover group-hover:scale-105 transition duration-500"></div>
-                    <div class="p-7 flex flex-col h-[240px]">
-                        <p class="text-xs text-brandGray font-bold mb-3 uppercase tracking-wider"><i class="far fa-calendar-alt text-brandYellow mr-1"></i> ${n.date}</p>
-                        <h3 class="card-title text-xl text-brandBlue mb-3 group-hover:text-brandYellow transition font-serif">${n.title}</h3>
-                        <p class="body-text text-sm text-gray-500 mb-4 flex-grow line-clamp-2">${n.desc}</p>
-                        <button class="text-brandBlue text-xs font-bold uppercase mt-auto text-left group-hover:text-brandYellow transition">Дэлгэрэнгүй <i class="fas fa-arrow-right ml-1"></i></button>
-                    </div>
-                </div>
-            `).join('');
-            fetchWeather();
-        }
-
-        async function fetchWeather() {
-            const resultDiv = document.getElementById('weather-result');
-            resultDiv.innerHTML = `<div class="text-sm text-brandGray w-full text-center py-6 font-medium"><i class="fas fa-spinner fa-spin mr-2"></i> Цаг агаар уншиж байна...</div>`;
-            const val = document.getElementById('weather-city').value;
-            const [lat, lon] = val.split(',');
-            try {
-                const response = await fetch(`https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&daily=weathercode,temperature_2m_max,temperature_2m_min&timezone=auto`);
-                const data = await response.json();
-                let html = '';
-                const today = new Date();
-                const daysOfWeek = ['Ня', 'Да', 'Мя', 'Лх', 'Пү', 'Ба', 'Бя'];
-                for(let i=0; i<7; i++) {
-                    let d = new Date(today); d.setDate(d.getDate() + i);
-                    let dayName = i === 0 ? 'Өнөөдөр' : daysOfWeek[d.getDay()];
-                    let maxT = Math.round(data.daily.temperature_2m_max[i]);
-                    let minT = Math.round(data.daily.temperature_2m_min[i]);
-                    let code = data.daily.weathercode[i];
-                    let icon = 'fa-sun text-yellow-500';
-                    if(code > 0 && code <= 3) icon = 'fa-cloud-sun text-gray-400';
-                    if(code > 3 && code <= 49) icon = 'fa-cloud text-gray-500';
-                    if(code >= 51 && code <= 67) icon = 'fa-cloud-rain text-blue-400';
-                    if(code >= 71 && code <= 77) icon = 'fa-snowflake text-blue-200';
-                    if(code >= 95) icon = 'fa-bolt text-yellow-600';
-                    html += `<div class="flex-shrink-0 bg-brandLight border border-gray-200 rounded-2xl p-5 min-w-[100px] text-center flex flex-col justify-center items-center shadow-sm"><p class="text-xs font-bold text-brandGray mb-2 uppercase tracking-wider">${dayName}</p><i class="fas ${icon} text-3xl mb-3"></i><p class="text-brandBlue font-black text-lg font-serif">${maxT}° <span class="text-brandGray text-sm font-medium">${minT}°</span></p></div>`;
-                }
-                resultDiv.innerHTML = html;
-            } catch (e) { resultDiv.innerHTML = `<span class="text-sm text-red-500 font-bold p-6">Мэдээлэл олдсонгүй. Дахин оролдоно уу.</span>`; }
-        }
-
-        function scrollTours(dir) { const container = document.getElementById('h-scroll-tours'); const scrollAmount = container.offsetWidth * 0.8 * dir; container.scrollBy({ left: scrollAmount, behavior: 'smooth' }); }
-        
-        function changePage(pageId) {
-            document.querySelectorAll('.nav-item').forEach(el => el.classList.remove('nav-active', 'bg-brandYellow'));
-            let navItem = document.getElementById('nav-'+pageId);
-            if(navItem) {
-                if(pageId === 'flights') { navItem.classList.add('bg-yellow-400'); }
-                else { navItem.classList.add('nav-active'); }
-            }
-            document.querySelectorAll('.spa-page').forEach(el => el.classList.remove('page-visible'));
-            document.getElementById('page-'+pageId).classList.add('page-visible');
-            document.getElementById('mobile-menu').classList.add('hidden');
-            window.scrollTo(0,0);
-            if(pageId !== 'detail' && pageId !== 'news-detail' && pageId !== 'terms' && pageId !== 'privacy') lastPage = pageId;
-        }
-
-        function showDetail(id) {
-            const t = toursData.find(x => x.id === id); if(!t) return;
-            curTourObj = t; paxAdult = 1; paxChild = 0; paxInfant = 0; updatePaxUI();
-            document.getElementById('dt-img').src = t.img;
-            document.getElementById('dt-title').innerText = t.title;
-            document.getElementById('dt-loc').innerHTML = `<i class="fas fa-map-marker-alt mr-2 text-brandYellow"></i> ${t.loc}`;
-            document.getElementById('dt-type').innerHTML = `<i class="fas fa-plane mr-2 text-brandYellow"></i> ${t.type}`;
-            document.getElementById('dt-price-display').innerText = t.priceStr;
-            document.getElementById('dt-features').innerHTML = (t.features || []).map(f => `<li class="flex items-center text-sm text-brandText font-medium"><i class="fas fa-star text-brandYellow mr-3 text-xs"></i>${f}</li>`).join('');
-            document.getElementById('dt-included').innerHTML = (t.included || []).map(i => `<li>- ${i}</li>`).join('');
-            document.getElementById('dt-excluded').innerHTML = (t.excluded || []).map(e => `<li>- ${e}</li>`).join('');
-            document.getElementById('price-lbl-adult').innerText = t.aPrice ? t.aPrice.toLocaleString() + '₮' : 'Асуух';
-            document.getElementById('price-lbl-child').innerText = t.cPrice ? t.cPrice.toLocaleString() + '₮' : 'Асуух';
-            document.getElementById('dt-dates').innerHTML = t.dates.map(date => `<option value="${date}">${date}</option>`).join('');
-            updateSeats();
-            document.getElementById('dt-program').innerHTML = (t.prog || []).map((p, i) => `<div class="relative pl-12 pb-6"><div class="absolute left-[-20px] top-0 w-10 h-10 rounded-full bg-brandBlue text-brandYellow font-black flex items-center justify-center border-4 border-white shadow-md z-10 text-lg font-serif">${i+1}</div><div class="bg-white p-8 rounded-3xl border border-gray-100 shadow-sm hover:shadow-md transition"><h4 class="font-bold text-brandBlue mb-4 text-lg font-serif">${p.d}</h4><p class="body-text text-sm leading-relaxed">${p.t}</p></div></div>`).join('');
-            
-            let related = toursData.filter(x => x.id !== id);
-            related.sort((a, b) => {
-                let scoreA = (a.cat === t.cat ? 2 : 0) + ((a.features || []).some(f=>(t.features || []).includes(f)) ? 2 : 0) + (a.type.split(' ')[0] === t.type.split(' ')[0] ? 1 : 0);
-                let scoreB = (b.cat === t.cat ? 2 : 0) + ((b.features || []).some(f=>(t.features || []).includes(f)) ? 2 : 0) + (b.type.split(' ')[0] === t.type.split(' ')[0] ? 1 : 0);
-                return scoreB - scoreA + (Math.random() - 0.5); 
-            });
-            related = related.slice(0, 4);
-            document.getElementById('dt-related').innerHTML = related.map(r => `
-                <div class="bg-white rounded-3xl overflow-hidden card-shadow cursor-pointer border border-gray-100" onclick="showDetail('${r.id}')"><div class="relative h-48 overflow-hidden"><img src="${r.img}" class="w-full h-full object-cover group-hover:scale-105 transition duration-500"></div><div class="p-6"><h4 class="font-bold text-brandBlue text-base font-serif mb-2 leading-snug">${r.title}</h4><p class="text-brandYellow font-bold text-sm">${r.priceStr}</p></div></div>
-            `).join('');
-            changePage('detail'); updatePricing();
-        }
-
-        function updateSeats() { document.getElementById('dt-seats').innerText = Math.floor(Math.random() * 11) + 10; }
-        function updatePax(type, delta) { if(type === 'adult') paxAdult = Math.max(1, paxAdult + delta); if(type === 'child') paxChild = Math.max(0, paxChild + delta); if(type === 'infant') paxInfant = Math.max(0, paxInfant + delta); updatePaxUI(); updatePricing(); }
-        function updatePaxUI() { document.getElementById('pax-adult').innerText = paxAdult; document.getElementById('pax-child').innerText = paxChild; document.getElementById('pax-infant').innerText = paxInfant; }
-        function updatePricing() {
-            if(!curTourObj || curTourObj.aPrice === 0) { document.getElementById('calc-total').innerText = "Асуух"; document.getElementById('calc-deposit').innerText = "Асуух"; return; }
-            const total = (paxAdult * curTourObj.aPrice) + (paxChild * (curTourObj.cPrice || 0)) + (paxInfant * (curTourObj.iPrice || 0));
-            document.getElementById('calc-total').innerText = total.toLocaleString() + ' ₮';
-            document.getElementById('calc-deposit').innerText = (total / 2).toLocaleString() + ' ₮';
-        }
-
-        function goBack() { changePage(lastPage); }
-        function toggleShareMenu(event) { if(event) event.stopPropagation(); document.getElementById('share-menu').classList.toggle('hidden'); }
-        window.addEventListener('click', function(e) { const menu = document.getElementById('share-menu'); if (menu && !menu.classList.contains('hidden') && !e.target.closest('.share-container')) menu.classList.add('hidden'); });
-        function shareLink(platform) {
-            const url = window.location.href;
-            if(platform === 'fb') window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`, '_blank');
-            else if(platform === 'twitter') window.open(`https://twitter.com/intent/tweet?url=${encodeURIComponent(url)}`, '_blank');
-            else if(platform === 'copy') { navigator.clipboard.writeText(url).then(() => alert('Линк хуулагдлаа!')); }
-            else if(platform === 'messenger') window.open(`fb-messenger://share/?link=${encodeURIComponent(url)}`, '_blank');
-            document.getElementById('share-menu').classList.add('hidden');
-        }
-        function submitForm(e) { e.preventDefault(); const btn = e.target.querySelector('button[type="submit"]'); btn.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i> Илгээж байна...'; setTimeout(() => { btn.innerHTML = '<i class="fas fa-check mr-2"></i> Захиалга үүслээ!'; btn.style.background = '#22c55e'; btn.style.color = '#fff'; e.target.reset(); setTimeout(() => { btn.innerText = 'Захиалга үүсгэх'; btn.style.background = ''; btn.style.color = ''; }, 3000); }, 1500); }
-        function showNews(id) {
-            const n = newsData.find(x => x.id === id); if(!n) return;
-            document.getElementById('nd-img').src = n.img; document.getElementById('nd-tag').innerText = n.tag; document.getElementById('nd-title').innerText = n.title; document.getElementById('nd-source').innerText = n.src; document.getElementById('nd-content').innerHTML = n.content; changePage('news-detail');
-        }
-
-        // --- AI FEATURES ---
-        function toggleAiChat() {
-            const chatWin = document.getElementById('ai-chat-window');
-            chatWin.classList.toggle('hidden');
-            chatWin.classList.toggle('flex');
-            if(!chatWin.classList.contains('hidden')) {
-                document.getElementById('ai-chat-input').focus();
-            }
-        }
-
-        async function sendAiMessage() {
-            const inputEl = document.getElementById('ai-chat-input');
-            const msg = inputEl.value.trim();
-            if(!msg) return;
-
-            const chatContainer = document.getElementById('ai-chat-messages');
-            
-            chatContainer.innerHTML += `
-                <div class="bg-brandBlue p-3 rounded-xl rounded-tr-none border border-brandBlue/30 self-end max-w-[85%] text-white shadow-sm leading-relaxed ml-auto">
-                    ${msg}
-                </div>
-            `;
-            inputEl.value = '';
-            chatContainer.scrollTop = chatContainer.scrollHeight;
-
-            const loadingId = 'loading-' + Date.now();
-            chatContainer.innerHTML += `
-                <div id="${loadingId}" class="bg-white p-4 rounded-xl rounded-tl-none border border-gray-100 self-start max-w-[85%] shadow-sm">
-                    <div class="typing-indicator flex items-center gap-1"><span></span><span></span><span></span></div>
-                </div>
-            `;
-            chatContainer.scrollTop = chatContainer.scrollHeight;
-
-            const toursContext = toursData.map(t => `- ${t.title} (${t.dur}): ${t.priceStr}. Онцлог: ${(t.features||[]).join(', ')}`).join('\n');
-            const systemPrompt = `You are an AI Travel Advisor for 'Magnet Way Travel', a Mongolian travel agency. Always respond in the Mongolian language. Be friendly, helpful, concise and use emojis ✨🌴✈️. Base your recommendations on the following available tours:\n\n${toursContext}\n\nIf the user asks something unrelated to travel, politely steer the conversation back to the travel agency's services. Keep responses under 4 sentences if possible.`;
-
-            const reply = await fetchGeminiAPI(msg, systemPrompt);
-
-            document.getElementById(loadingId).remove();
-            chatContainer.innerHTML += `
-                <div class="bg-white p-3 rounded-xl rounded-tl-none border border-gray-100 self-start max-w-[85%] text-gray-700 shadow-sm leading-relaxed">
-                    ${formatAIResponse(reply)}
-                </div>
-            `;
-            chatContainer.scrollTop = chatContainer.scrollHeight;
-        }
-
-        async function generateTourTips() {
-            if(!curTourObj) return;
-
-            const modal = document.getElementById('ai-tips-modal');
-            const content = document.getElementById('ai-tips-content');
-            
-            modal.classList.add('active');
-            content.innerHTML = `
-                <div class="flex flex-col items-center justify-center py-10 text-forest">
-                    <i class="fas fa-spinner fa-spin text-4xl mb-4"></i> 
-                    <span class="font-bold tracking-widest uppercase text-xs">AI зөвлөгөөг бэлтгэж байна...</span>
-                </div>
-            `;
-
-            const userPrompt = `Generate travel tips for this tour: ${curTourObj.title} (${curTourObj.loc})`;
-            const sysPrompt = `You are an expert travel advisor for 'Magnet Way Travel'. Always respond in Mongolian. Generate a helpful, concise packing list and travel tips for the following tour:\n\nTitle: ${curTourObj.title}\nLocation: ${curTourObj.loc}\nDuration: ${curTourObj.dur}\n\nUse bullet points and emojis to make it easy to read. Structure it with '🎒 Юу бэлдэх вэ?' (What to pack) and '💡 Аяллын зөвлөгөө' (Travel tips). DO NOT invent prices or flights. Keep it highly relevant to the location's typical weather and activities.`;
-
-            const reply = await fetchGeminiAPI(userPrompt, sysPrompt);
-            content.innerHTML = formatAIResponse(reply);
-        }
-
-        function closeTourTipsModal() {
-            document.getElementById('ai-tips-modal').classList.remove('active');
-        }
-
-        // ============ FLIGHT SEARCH LOGIC ============
-        const popularCities = [
-            { name: "Бээжин", code: "PEK", country: "Хятад" },
-            { name: "Шанхай", code: "PVG", country: "Хятад" },
-            { name: "Токио", code: "NRT", country: "Япон" },
-            { name: "Сөүл", code: "ICN", country: "БНСУ" },
-            { name: "Улаанбаатар", code: "UBN", country: "Монгол" },
-            { name: "Бангкок", code: "BKK", country: "Тайланд" },
-            { name: "Истанбул", code: "IST", country: "Турк" },
-            { name: "Хонг Конг", code: "HKG", country: "Хонг Конг" },
-            { name: "Франкфурт", code: "FRA", country: "Герман" },
-            { name: "Дубай", code: "DXB", country: "Арабын Нэгдсэн Эмират" }
-        ];
-
-        let fPaxAdult = 1, fPaxChild = 0, fPaxInfant = 0;
-        let fTripType = 'oneway';
-
-        window.addEventListener('DOMContentLoaded', function() {
-            const today = new Date();
-            const tomorrow = new Date(today);
-            tomorrow.setDate(tomorrow.getDate() + 1);
-            
-            if(document.getElementById('flight-depart')) document.getElementById('flight-depart').value = tomorrow.toISOString().split('T')[0];
-            
-            const nextWeek = new Date(today);
-            nextWeek.setDate(nextWeek.getDate() + 7);
-            if(document.getElementById('flight-return')) document.getElementById('flight-return').value = nextWeek.toISOString().split('T')[0];
-            
-            init();
-        });
-
-        // Trip Type Toggle (One way / Round trip)
-        function setTripType(type) {
-            fTripType = type;
-            const returnBox = document.getElementById('return-date-box');
-            const returnInput = document.getElementById('flight-return');
-            if(type === 'roundtrip') {
-                returnBox.classList.remove('opacity-40');
-                returnInput.disabled = false;
-                document.getElementById('tab-oneway').className = 'px-5 py-2 rounded-full text-xs font-bold uppercase tracking-wider bg-white/10 text-white hover:bg-white/20 transition';
-                document.getElementById('tab-roundtrip').className = 'px-5 py-2 rounded-full text-xs font-bold uppercase tracking-wider bg-brandYellow text-brandBlue transition shadow-md';
-            } else {
-                returnBox.classList.add('opacity-40');
-                returnInput.disabled = true;
-                document.getElementById('tab-oneway').className = 'px-5 py-2 rounded-full text-xs font-bold uppercase tracking-wider bg-brandYellow text-brandBlue transition shadow-md';
-                document.getElementById('tab-roundtrip').className = 'px-5 py-2 rounded-full text-xs font-bold uppercase tracking-wider bg-white/10 text-white hover:bg-white/20 transition';
-            }
-        }
-
-        // Autocomplete
-        function showAutocomplete(type) {
-            renderAutocomplete(type, popularCities);
-            document.getElementById(`ac-list-${type}`).classList.add('active');
-        }
-
-        function filterAutocomplete(type) {
-            const val = document.getElementById(`flight-${type}`).value.toLowerCase();
-            const filtered = popularCities.filter(c => c.name.toLowerCase().includes(val) || c.code.toLowerCase().includes(val) || c.country.toLowerCase().includes(val));
-            renderAutocomplete(type, filtered);
-            document.getElementById(`ac-list-${type}`).classList.add('active');
-        }
-
-        function renderAutocomplete(type, list) {
-            const container = document.getElementById(`ac-list-${type}`);
-            if(list.length === 0) {
-                container.innerHTML = `<div class="p-4 text-sm text-brandGray font-medium text-center">Илэрц олдсонгүй</div>`;
-                return;
-            }
-            container.innerHTML = list.map(c => `
-                <div class="autocomplete-item" onclick="selectCity('${type}', '${c.name}', '${c.code}')">
-                    <div>
-                        <p class="font-bold text-brandBlue text-sm">${c.name}</p>
-                        <p class="text-xs text-brandGray">${c.country}</p>
-                    </div>
-                    <span class="ac-code">${c.code}</span>
-                </div>
-            `).join('');
-        }
-
-        function selectCity(type, name, code) {
-            document.getElementById(`flight-${type}`).value = `${name} (${code})`;
-            document.getElementById(`ac-list-${type}`).classList.remove('active');
-        }
-
-        document.addEventListener('click', function(e) {
-            if(!e.target.closest('.autocomplete-container')) {
-                document.querySelectorAll('.autocomplete-list').forEach(el => el.classList.remove('active'));
-            }
-            if(!e.target.closest('#pax-box-trigger')) {
-                const d = document.getElementById('pax-dropdown');
-                if(d) d.classList.add('hidden');
-            }
-        });
-
-        function swapCities() {
-            const from = document.getElementById('flight-from');
-            const to = document.getElementById('flight-to');
-            [from.value, to.value] = [to.value, from.value];
-        }
-
-        function togglePaxBox() { document.getElementById('pax-dropdown').classList.toggle('hidden'); }
-
-        function changePax(type, delta) {
-            let nextAdult = fPaxAdult;
-            let nextChild = fPaxChild;
-            let nextInfant = fPaxInfant;
-
-            if(type === 'adult') nextAdult = Math.max(1, nextAdult + delta);
-            if(type === 'child') nextChild = Math.max(0, nextChild + delta);
-            if(type === 'infant') nextInfant = Math.max(0, nextInfant + delta);
-
-            let total = nextAdult + nextChild + nextInfant;
-
-            // Rule 1: Max 9 passengers total
-            if (total > 9) {
-                alert('Агаарын тээврийн дүрмийн дагуу нэг захиалгад хамгийн ихдээ 9 хүн багтах боломжтой.');
-                return;
-            }
-            // Rule 2: Infants cannot exceed adults
-            if (nextInfant > nextAdult) {
-                alert('Нярай хүүхдийн тоо насанд хүрсэн хүний тооноос илүү байж болохгүй.');
-                return;
-            }
-
-            fPaxAdult = nextAdult;
-            fPaxChild = nextChild;
-            fPaxInfant = nextInfant;
-
-            document.getElementById('pax-adult-count').innerText = fPaxAdult;
-            document.getElementById('pax-child-count').innerText = fPaxChild;
-            document.getElementById('pax-infant-count').innerText = fPaxInfant;
-            
-            let parts = [fPaxAdult + ' том хүн'];
-            if(fPaxChild > 0) parts.push(fPaxChild + ' хүүхэд');
-            if(fPaxInfant > 0) parts.push(fPaxInfant + ' нярай');
-            document.getElementById('pax-summary').innerText = parts.join(', ');
-        }
-
-        // Simulate booking process and download ticket
-        let currentTicketData = null;
-        let generatedBookingCode = "";
-        let mockFlightsData = [];
-
-        function simulateBooking(event) {
-            const from = document.getElementById('flight-from').value;
-            const to = document.getElementById('flight-to').value;
-            const departDate = document.getElementById('flight-depart').value;
-
-            if(!from || !to || !departDate) {
-                alert('Мэдээллээ бүрэн оруулна уу.');
-                return;
-            }
-
-            // Show Loading State on button
-            const btn = event ? event.currentTarget : null;
-            let originalHTML = '';
-            if(btn) {
-                originalHTML = btn.innerHTML;
-                btn.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i> Нислэг хайж байна...';
-                btn.disabled = true;
-            }
-
-            setTimeout(() => {
-                if(btn) {
-                    btn.innerHTML = originalHTML;
-                    btn.disabled = false;
-                }
-                generateMockFlights(from, to, departDate);
-                document.getElementById('flight-results-modal').classList.add('active');
-            }, 1000);
-        }
-
-        function generateMockFlights(from, to, date) {
-            const paxInfo = `${fPaxAdult} Том хүн${fPaxChild > 0 ? ', ' + fPaxChild + ' Хүүхэд' : ''}${fPaxInfant > 0 ? ', ' + fPaxInfant + ' Нярай' : ''}`;
-            document.getElementById('fr-route-info').innerText = `${from.split('(')[0].trim()} ➔ ${to.split('(')[0].trim()} | ${date} | ${paxInfo}`;
-            
-            const airlines = [
-                { name: "MIAT Mongolian Airlines", logo: "M" },
-                { name: "Korean Air", logo: "KE" },
-                { name: "Air China", logo: "CA" },
-                { name: "Asiana Airlines", logo: "OZ" },
-                { name: "Turkish Airlines", logo: "TK" }
-            ];
-            
-            mockFlightsData = [];
-            let html = '';
-            
-            for(let i=0; i<3; i++) {
-                const al = airlines[Math.floor(Math.random() * airlines.length)];
-                const depHr = Math.floor(Math.random() * 14) + 6; 
-                const depMin = Math.random() > 0.5 ? '00' : '30';
-                const arrHr = (depHr + Math.floor(Math.random() * 5) + 3) % 24;
-                const arrMin = Math.random() > 0.5 ? '15' : '45';
-                
-                let ecoBasePrice = Math.floor(Math.random() * 90 + 60) * 10000; 
-                if (fTripType === 'roundtrip') ecoBasePrice *= 1.8; 
-                
-                let busBasePrice = ecoBasePrice * 2.5; 
-                
-                const calcTotal = (pricePerAdult) => {
-                    const childPrice = pricePerAdult * 0.75;
-                    const infantPrice = pricePerAdult * 0.10;
-                    return (fPaxAdult * pricePerAdult) + (fPaxChild * childPrice) + (fPaxInfant * infantPrice);
-                };
-                
-                const totalEco = calcTotal(ecoBasePrice);
-                const totalBus = calcTotal(busBasePrice);
-
-                mockFlightsData.push({
-                    airline: al.name,
-                    depTime: `${depHr.toString().padStart(2, '0')}:${depMin}`,
-                    arrTime: `${arrHr.toString().padStart(2, '0')}:${arrMin}`
-                });
-                
-                html += `
-                <div class="bg-white rounded-2xl p-5 border border-gray-200 shadow-sm flex flex-col lg:flex-row gap-5 items-center">
-                    <div class="flex-1 w-full flex items-center justify-between border-b lg:border-b-0 lg:border-r border-gray-100 pb-4 lg:pb-0 lg:pr-5">
-                        <div class="flex items-center gap-3">
-                            <div class="w-10 h-10 bg-blue-50 text-brandBlue font-black flex items-center justify-center rounded-lg text-sm border border-blue-100">${al.logo}</div>
-                            <div>
-                                <span class="font-bold text-brandBlue block text-sm">${al.name}</span>
-                                <span class="text-xs text-brandGray">${fTripType === 'roundtrip' ? 'Хоёр талдаа' : 'Нэг талдаа'}</span>
-                            </div>
-                        </div>
-                        <div class="text-center ml-4">
-                            <p class="font-black text-lg text-brandText">${depHr.toString().padStart(2, '0')}:${depMin}</p>
-                            <p class="text-xs text-brandGray font-bold mt-0.5">Явах</p>
-                        </div>
-                        <div class="px-3 text-brandYellow text-sm"><i class="fas fa-arrow-right"></i></div>
-                        <div class="text-center">
-                            <p class="font-black text-lg text-brandText">${arrHr.toString().padStart(2, '0')}:${arrMin}</p>
-                            <p class="text-xs text-brandGray font-bold mt-0.5">Очих</p>
-                        </div>
-                    </div>
-                    
-                    <div class="flex flex-row gap-3 w-full lg:w-auto">
-                        <button onclick="confirmFlightSelect(${i}, 'Economy', ${totalEco})" class="flex-1 lg:w-36 bg-gray-50 border border-gray-200 hover:border-brandBlue hover:bg-blue-50 transition p-3 rounded-xl text-left group">
-                            <p class="text-[10px] font-bold text-brandGray uppercase tracking-widest mb-1 group-hover:text-brandBlue">Энгийн / Eco</p>
-                            <p class="font-black text-brandBlue text-base">${totalEco.toLocaleString()} ₮</p>
-                            <p class="text-[10px] text-brandGray mt-1">Сонгох <i class="fas fa-chevron-right ml-1"></i></p>
-                        </button>
-                        <button onclick="confirmFlightSelect(${i}, 'Business', ${totalBus})" class="flex-1 lg:w-36 bg-yellow-50 border border-yellow-200 hover:border-brandYellow hover:bg-yellow-100 transition p-3 rounded-xl text-left group">
-                            <p class="text-[10px] font-bold text-yellow-700 uppercase tracking-widest mb-1 group-hover:text-yellow-900">Бизнес / Bus</p>
-                            <p class="font-black text-brandBlue text-base">${totalBus.toLocaleString()} ₮</p>
-                            <p class="text-[10px] text-yellow-700 mt-1">Сонгох <i class="fas fa-chevron-right ml-1"></i></p>
-                        </button>
-                    </div>
-                </div>
-                `;
-            }
-            document.getElementById('fr-list').innerHTML = html;
-        }
-
-        function closeFlightResults() {
-            document.getElementById('flight-results-modal').classList.remove('active');
-        }
-
-        function confirmFlightSelect(fIndex, className, totalPrice) {
-            const flight = mockFlightsData[fIndex];
-            const from = document.getElementById('flight-from').value;
-            const to = document.getElementById('flight-to').value;
-            const departDate = document.getElementById('flight-depart').value;
-            const returnDate = document.getElementById('flight-return').value;
-            const pax = document.getElementById('pax-summary').innerText;
-            
-            generatedBookingCode = "MW-" + Math.floor(100000 + Math.random() * 900000);
-            document.getElementById('succ-code').innerText = generatedBookingCode;
-            
-            document.getElementById('succ-class').innerText = className === 'Economy' ? 'Энгийн (Economy)' : 'Бизнес (Business)';
-            document.getElementById('succ-price').innerText = totalPrice.toLocaleString() + ' ₮';
-            
-            currentTicketData = { 
-                from, to, departDate, 
-                returnDate: fTripType === 'roundtrip' ? returnDate : 'Нэг талдаа', 
-                pax, code: generatedBookingCode,
-                airline: flight.airline,
-                depTime: flight.depTime,
-                arrTime: flight.arrTime,
-                className: className,
-                totalPrice: totalPrice.toLocaleString() + ' ₮'
-            };
-
-            closeFlightResults();
-            document.getElementById('booking-success-modal').classList.add('active');
-        }
-
-        function closeSuccessModal() {
-            document.getElementById('booking-success-modal').classList.remove('active');
-        }
-
-        function downloadTicketFile() {
-            if(!currentTicketData) return;
-            const t = currentTicketData;
-            
-            const content = `=========================================
-MAGNET WAY TRAVEL - НИСЛЭГИЙН ХҮСЭЛТ
-=========================================
-ЗАХИАЛГЫН КОД: ${t.code}
-Үүсгэсэн огноо: ${new Date().toLocaleDateString('mn-MN')}
-
-[НИСЛЭГИЙН МЭДЭЭЛЭЛ]
-Авиа компани: ${t.airline}
-Хаанаас: ${t.from} (Явах цаг: ${t.depTime})
-Хаашаа: ${t.to} (Очих цаг: ${t.arrTime})
-Явах огноо: ${t.departDate}
-Буцах огноо: ${t.returnDate}
-Зорчигчид: ${t.pax}
-Сонгосон ангилал: ${t.className === 'Economy' ? 'Энгийн (Economy)' : 'Бизнес (Business)'}
-
-НИЙТ ТӨЛӨХ ДҮН: ${t.totalPrice}
-=========================================
-[ТӨЛБӨРИЙН ЗААВАР]
-Данс: Голомт банк - 910015003005193474
-Хүлээн авагч: МАГНЕТ ВЭЙ ТРЭЙВЭЛ ХХК
-Гүйлгээний утга: ${t.code} (Заавал бичнэ үү)
-
-Төлбөр баталгаажсаны дараа бид таны электрон 
-тийзийг (E-Ticket) мэйлээр илгээх болно.
-=========================================
-Холбоо барих: 7610-6941, 8011-3677
-Имэйл: magnetwaytravel@gmail.com`;
-
-            const blob = new Blob([content], { type: 'text/plain;charset=utf-8' });
-            const a = document.createElement('a');
-            a.href = URL.createObjectURL(blob);
-            a.download = `Захиалга_${t.code}.txt`;
-            document.body.appendChild(a);
-            a.click();
-            document.body.removeChild(a);
-        }
-    </script>
-</body>
-</html>
+            { name: "Цэцгээ Л.", loc: "Вьетнам
