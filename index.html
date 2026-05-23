@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html lang="mn">
 <head>
-    <meta charse
-        t="UTF-8">
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Magnet Way Travel | Таны аяллын найдвартай түнш</title>
     <script src="https://cdn.tailwindcss.com"></script>
@@ -78,12 +77,27 @@
         
         .modal-overlay { display: none; position: fixed; inset: 0; z-index: 100; background: rgba(0,0,0,0.6); align-items: center; justify-content: center; backdrop-filter: blur(4px); }
         .modal-overlay.active { display: flex; }
+
+        /* Autocomplete Styles (Flight Search) */
+        .autocomplete-container { position: relative; }
+        .autocomplete-list { position: absolute; z-index: 60; top: 100%; left: 0; right: 0; background: white; border-radius: 1rem; margin-top: 0.5rem; box-shadow: 0 10px 25px rgba(0,0,0,0.2); max-height: 250px; overflow-y: auto; display: none; }
+        .autocomplete-list.active { display: block; }
+        .autocomplete-item { padding: 12px 16px; cursor: pointer; border-bottom: 1px solid #f1f1f1; display: flex; justify-content: space-between; align-items: center; }
+        .autocomplete-item:last-child { border-bottom: none; }
+        .autocomplete-item:hover { background-color: #f8f9fa; color: #0A3161; }
+        .ac-code { font-weight: 900; color: #0A3161; background: #FFD700; padding: 2px 8px; border-radius: 4px; font-size: 0.75rem; }
+        
+        /* Success Checkmark Animation */
+        .success-checkmark { width: 80px; height: 80px; border-radius: 50%; display: block; stroke-width: 2; stroke: #4bb71b; stroke-miterlimit: 10; margin: 10% auto; box-shadow: inset 0px 0px 0px #4bb71b; animation: fill .4s ease-in-out .4s forwards, scale .3s ease-in-out .9s both; }
+        .success-circle { stroke-dasharray: 166; stroke-dashoffset: 166; stroke-width: 2; stroke-miterlimit: 10; stroke: #4bb71b; fill: none; animation: stroke .6s cubic-bezier(0.65, 0, 0.45, 1) forwards; }
+        .success-check { transform-origin: 50% 50%; stroke-dasharray: 48; stroke-dashoffset: 48; animation: stroke .3s cubic-bezier(0.65, 0, 0.45, 1) .8s forwards; }
+        @keyframes stroke { 100% { stroke-dashoffset: 0; } }
+        @keyframes scale { 0%, 100% { transform: none; } 50% { transform: scale3d(1.1, 1.1, 1); } }
+        @keyframes fill { 100% { box-shadow: inset 0px 0px 0px 30px #4bb71b; } }
     </style>
 </head>
-<body 
-    class="text-brandText font-sans">
+<body class="text-brandText font-sans">
 
-    <!-- Top Contact Bar -->
     <div class="bg-brandBlue text-white py-2.5 hidden md:block text-[12px] font-medium border-b border-brandYellow/30 tracking-wider">
         <div class="container mx-auto px-4 flex justify-between items-center">
             <div class="flex gap-8">
@@ -98,11 +112,10 @@
         </div>
     </div>
 
-    <!-- Navigation -->
     <nav class="glass-nav sticky top-0 z-50">
         <div class="container mx-auto px-4 py-3 flex justify-between items-center">
             <div class="flex items-center cursor-pointer" onclick="changePage('home')">
-                <img src="688961732_122168343776954094_4680635204632775806_n.jpg" alt="Magnet Way Travel" class="h-14 md:h-16 w-auto object-contain logo-enhanced">
+                <img src="logo.png" alt="Magnet Way Travel" onerror="this.outerHTML='<div class=\'w-14 h-14 bg-brandBlue text-brandYellow font-black text-2xl flex items-center justify-center rounded-full border-2 border-brandYellow\'>MW</div>'" class="h-14 md:h-16 w-auto object-contain logo-enhanced">
                 <div class="ml-3 hidden lg:block">
                     <h1 class="text-2xl font-black text-brandBlue leading-none tracking-tight font-serif">MAGNET WAY</h1>
                     <span class="text-[10px] text-brandGray uppercase font-bold tracking-[0.2em]">Travel Agency</span>
@@ -113,6 +126,7 @@
                 <span onclick="changePage('home')" id="nav-home" class="nav-item nav-active">Нүүр хуудас</span>
                 <span onclick="changePage('tours-intl')" id="nav-tours-intl" class="nav-item">Гадаад аялал</span>
                 <span onclick="changePage('tours-dom')" id="nav-tours-dom" class="nav-item">Дотоод аялал</span>
+                <span onclick="changePage('flights')" id="nav-flights" class="nav-item text-brandBlue font-black bg-brandYellow px-4 py-2 rounded-full hover:bg-yellow-400 transition" style="padding-bottom: 8px;"><i class="fas fa-plane mr-1"></i> Нислэг хайх</span>
                 <span onclick="changePage('news')" id="nav-news" class="nav-item">Мэдээлэл</span>
                 <span onclick="changePage('about')" id="nav-about" class="nav-item">Бидний тухай</span>
             </div>
@@ -122,20 +136,18 @@
             </button>
         </div>
         
-        <!-- Mobile Menu -->
         <div id="mobile-menu" class="hidden lg:hidden bg-white border-t px-4 py-4 flex flex-col gap-4 absolute w-full z-40 shadow-lg">
             <span onclick="changePage('home')" class="font-bold text-brandBlue border-b pb-3 cursor-pointer uppercase text-sm tracking-wider">Нүүр хуудас</span>
             <span onclick="changePage('tours-intl')" class="font-bold text-brandBlue border-b pb-3 cursor-pointer uppercase text-sm tracking-wider">Гадаад аялал</span>
             <span onclick="changePage('tours-dom')" class="font-bold text-brandBlue border-b pb-3 cursor-pointer uppercase text-sm tracking-wider">Дотоод аялал</span>
+            <span onclick="changePage('flights')" class="font-bold text-brandBlue border-b pb-3 cursor-pointer uppercase text-sm tracking-wider text-brandYellow"><i class="fas fa-plane mr-1"></i> Нислэг хайх</span>
             <span onclick="changePage('news')" class="font-bold text-brandBlue border-b pb-3 cursor-pointer uppercase text-sm tracking-wider">Мэдээлэл</span>
             <span onclick="changePage('about')" class="font-bold text-brandBlue pb-3 cursor-pointer uppercase text-sm tracking-wider">Бидний тухай</span>
         </div>
     </nav>
 
-    <!-- ===================== PAGE: HOME ===================== -->
     <div id="page-home" class="spa-page page-visible">
         
-        <!-- Hero Slider -->
         <div id="hero-slider" class="relative h-[75vh] md:h-[85vh] bg-cover bg-center transition-all duration-700">
             <div class="absolute inset-0 bg-gradient-to-r from-brandBlue/90 via-brandBlue/40 to-transparent"></div>
             
@@ -159,7 +171,6 @@
                     </button>
                 </div>
 
-                <!-- Text Indicators -->
                 <div id="hero-text-indicators" class="absolute bottom-10 left-8 md:left-16 flex gap-8 overflow-x-auto max-w-full text-white/50 text-sm font-bold uppercase tracking-widest pb-2">
                     <span class="cursor-pointer transition whitespace-nowrap" onclick="setSlide(0)">Япон 4 хот</span>
                     <span class="cursor-pointer transition whitespace-nowrap" onclick="setSlide(1)">Бээжин-Шанхай</span>
@@ -170,7 +181,89 @@
             </div>
         </div>
 
-        <!-- Weather Widget (7 Days) -->
+        <div class="bg-brandBlue py-10 border-t border-brandYellow/20">
+            <div class="container mx-auto px-4">
+                <div class="flex items-center justify-between mb-4">
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 bg-brandYellow rounded-full flex items-center justify-center text-brandBlue font-black text-lg"><i class="fas fa-plane"></i></div>
+                        <div>
+                            <h3 class="text-white font-black text-xl uppercase tracking-wide">Шуурхай захиалга</h3>
+                            <p class="text-white/60 text-xs font-medium">Компанийн данс руу шилжүүлж тийзээ авах</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flex gap-2 mb-5">
+                    <button onclick="setTripType('oneway')" id="tab-oneway" class="px-5 py-2 rounded-full text-xs font-bold uppercase tracking-wider bg-brandYellow text-brandBlue transition shadow-md">Нэг талдаа</button>
+                    <button onclick="setTripType('roundtrip')" id="tab-roundtrip" class="px-5 py-2 rounded-full text-xs font-bold uppercase tracking-wider bg-white/10 text-white hover:bg-white/20 transition">2 талдаа</button>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-3">
+                    <div class="autocomplete-container bg-white/10 backdrop-blur rounded-2xl p-4 border border-white/20 hover:border-brandYellow/50 transition">
+                        <label class="text-white/60 text-xs font-bold uppercase tracking-widest block mb-2"><i class="fas fa-plane-departure text-brandYellow mr-1"></i> Хаанаас</label>
+                        <input type="text" id="flight-from" value="Улаанбаатар (UBN)" class="w-full bg-transparent text-white font-bold text-base focus:outline-none placeholder-white/40" placeholder="Хот эсвэл код..." onfocus="showAutocomplete('from')" onkeyup="filterAutocomplete('from')">
+                        <div id="ac-list-from" class="autocomplete-list text-brandText"></div>
+                    </div>
+                    <div class="autocomplete-container relative bg-white/10 backdrop-blur rounded-2xl p-4 border border-white/20 hover:border-brandYellow/50 transition">
+                        <label class="text-white/60 text-xs font-bold uppercase tracking-widest block mb-2"><i class="fas fa-plane-arrival text-brandYellow mr-1"></i> Хаашаа</label>
+                        <input type="text" id="flight-to" class="w-full bg-transparent text-white font-bold text-base focus:outline-none placeholder-white/40" placeholder="Хот сонгох..." onfocus="showAutocomplete('to')" onkeyup="filterAutocomplete('to')">
+                        <button onclick="swapCities()" class="absolute -left-4 top-1/2 -translate-y-1/2 w-8 h-8 bg-brandYellow rounded-full flex items-center justify-center text-brandBlue font-black shadow-lg z-10 hover:scale-110 transition hidden lg:flex"><i class="fas fa-exchange-alt"></i></button>
+                        <div id="ac-list-to" class="autocomplete-list text-brandText"></div>
+                    </div>
+                    <div class="bg-white/10 backdrop-blur rounded-2xl p-4 border border-white/20 hover:border-brandYellow/50 transition">
+                        <label class="text-white/60 text-xs font-bold uppercase tracking-widest block mb-2"><i class="far fa-calendar-alt text-brandYellow mr-1"></i> Явах огноо</label>
+                        <input type="date" id="flight-depart" class="w-full bg-transparent text-white font-bold text-base focus:outline-none [color-scheme:dark]">
+                    </div>
+                    <div id="return-date-box" class="bg-white/10 backdrop-blur rounded-2xl p-4 border border-white/20 hover:border-brandYellow/50 transition opacity-40">
+                        <label class="text-white/60 text-xs font-bold uppercase tracking-widest block mb-2"><i class="far fa-calendar-check text-brandYellow mr-1"></i> Буцах огноо</label>
+                        <input type="date" id="flight-return" class="w-full bg-transparent text-white font-bold text-base focus:outline-none [color-scheme:dark]" disabled>
+                    </div>
+                    <div class="bg-white/10 backdrop-blur rounded-2xl p-4 border border-white/20 hover:border-brandYellow/50 transition relative" id="pax-box-trigger" onclick="togglePaxBox()">
+                        <label class="text-white/60 text-xs font-bold uppercase tracking-widest block mb-2"><i class="fas fa-users text-brandYellow mr-1"></i> Зорчигч (Макс 9)</label>
+                        <div class="text-white font-bold text-base cursor-pointer flex justify-between items-center">
+                            <span id="pax-summary">1 том хүн</span>
+                            <i class="fas fa-chevron-down text-xs text-white/50"></i>
+                        </div>
+                        <div id="pax-dropdown" class="hidden absolute top-full left-0 right-0 mt-2 bg-white rounded-2xl shadow-2xl border border-gray-100 p-5 z-50 min-w-[220px]">
+                            <div class="flex items-center justify-between mb-4">
+                                <div><p class="font-bold text-brandBlue text-sm">Том хүн</p><p class="text-xs text-brandGray">12+</p></div>
+                                <div class="flex items-center gap-2">
+                                    <button onclick="event.stopPropagation(); changePax('adult',-1)" class="w-8 h-8 rounded-full bg-gray-100 text-brandBlue font-bold hover:bg-brandYellow transition text-lg">−</button>
+                                    <span id="pax-adult-count" class="font-black text-brandBlue w-5 text-center">1</span>
+                                    <button onclick="event.stopPropagation(); changePax('adult',1)" class="w-8 h-8 rounded-full bg-gray-100 text-brandBlue font-bold hover:bg-brandYellow transition text-lg">+</button>
+                                </div>
+                            </div>
+                            <div class="flex items-center justify-between mb-4">
+                                <div><p class="font-bold text-brandBlue text-sm">Хүүхэд</p><p class="text-xs text-brandGray">2–11 нас</p></div>
+                                <div class="flex items-center gap-2">
+                                    <button onclick="event.stopPropagation(); changePax('child',-1)" class="w-8 h-8 rounded-full bg-gray-100 text-brandBlue font-bold hover:bg-brandYellow transition text-lg">−</button>
+                                    <span id="pax-child-count" class="font-black text-brandBlue w-5 text-center">0</span>
+                                    <button onclick="event.stopPropagation(); changePax('child',1)" class="w-8 h-8 rounded-full bg-gray-100 text-brandBlue font-bold hover:bg-brandYellow transition text-lg">+</button>
+                                </div>
+                            </div>
+                            <div class="flex items-center justify-between mb-5">
+                                <div><p class="font-bold text-brandBlue text-sm">Нярай</p><p class="text-xs text-brandGray">0–2 нас</p></div>
+                                <div class="flex items-center gap-2">
+                                    <button onclick="event.stopPropagation(); changePax('infant',-1)" class="w-8 h-8 rounded-full bg-gray-100 text-brandBlue font-bold hover:bg-brandYellow transition text-lg">−</button>
+                                    <span id="pax-infant-count" class="font-black text-brandBlue w-5 text-center">0</span>
+                                    <button onclick="event.stopPropagation(); changePax('infant',1)" class="w-8 h-8 rounded-full bg-gray-100 text-brandBlue font-bold hover:bg-brandYellow transition text-lg">+</button>
+                                </div>
+                            </div>
+                            <p class="text-[10px] text-red-500 mb-3 font-bold uppercase text-center">* Нийт 9 хүнээс хэтрэхгүй</p>
+                            <button onclick="event.stopPropagation(); togglePaxBox()" class="w-full bg-brandBlue text-white font-bold py-2.5 rounded-xl text-sm uppercase tracking-wider hover:opacity-90 transition">Хадгалах</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-5 flex flex-col md:flex-row gap-4 items-center justify-between">
+                    <p class="text-white/70 text-xs font-medium"><i class="fas fa-info-circle text-brandYellow mr-1"></i> Захиалгын хүсэлт илгээх ба боломжит нислэгүүдийг шалгах.</p>
+                    <button onclick="simulateBooking(event)" class="w-full md:w-auto px-10 bg-brandYellow text-brandBlue font-black py-4 rounded-2xl text-base uppercase tracking-widest shadow-lg hover:opacity-90 transition flex items-center justify-center gap-3">
+                        <i class="fas fa-search"></i> Нислэгүүдийг харах
+                    </button>
+                </div>
+            </div>
+        </div>
+
         <div class="bg-white border-b border-gray-200 py-10">
             <div class="container mx-auto px-4">
                 <div class="flex flex-col md:flex-row items-center justify-between gap-8 mb-8">
@@ -194,14 +287,12 @@
                         </select>
                     </div>
                 </div>
-                <!-- 7 Day Forecast Grid -->
                 <div id="weather-result" class="flex overflow-x-auto weather-scroll gap-4 pb-4">
                     <div class="text-sm text-brandGray w-full text-center py-6 font-bold"><i class="fas fa-spinner fa-spin mr-2"></i> Уншиж байна...</div>
                 </div>
             </div>
         </div>
 
-        <!-- Stats Section -->
         <div class="bg-brandLight py-16 border-b border-gray-200 text-center">
             <div class="container mx-auto px-4 grid grid-cols-2 md:grid-cols-4 gap-10">
                 <div>
@@ -223,7 +314,6 @@
             </div>
         </div>
 
-        <!-- Scrollable Tours Section (ГАДААД АЯЛЛУУД) -->
         <div class="py-24 container mx-auto px-4">
             <div class="text-center mb-16">
                 <span class="text-brandYellow font-bold uppercase tracking-[0.2em] text-sm">ГАДААД АЯЛЛУУД</span>
@@ -233,8 +323,7 @@
 
             <div class="relative group">
                 <div id="h-scroll-tours" class="h-scroll-container">
-                    <!-- Injected by JS -->
-                </div>
+                    </div>
                 <button onclick="scrollTours(-1)" class="absolute left-0 top-1/2 -translate-y-1/2 -ml-5 w-14 h-14 bg-white border border-gray-100 rounded-full shadow-xl text-brandBlue hover:bg-brandYellow hover:text-white transition z-10 flex items-center justify-center hidden md:flex text-xl"><i class="fas fa-chevron-left"></i></button>
                 <button onclick="scrollTours(1)" class="absolute right-0 top-1/2 -translate-y-1/2 -mr-5 w-14 h-14 bg-white border border-gray-100 rounded-full shadow-xl text-brandBlue hover:bg-brandYellow hover:text-white transition z-10 flex items-center justify-center hidden md:flex text-xl"><i class="fas fa-chevron-right"></i></button>
             </div>
@@ -246,7 +335,6 @@
             </div>
         </div>
 
-        <!-- ZURVAS - Why Choose Us -->
         <div class="py-24 relative overflow-hidden bg-cover bg-center" style="background-image: url('https://images.pexels.com/photos/10332840/pexels-photo-10332840.jpeg?auto=compress&cs=tinysrgb&w=1920');">
             <div class="absolute inset-0 bg-brandBlue/85 backdrop-blur-[2px]"></div>
             <div class="container mx-auto px-4 flex flex-col lg:flex-row gap-16 relative z-10">
@@ -294,7 +382,6 @@
             </div>
         </div>
 
-        <!-- Highlights Section -->
         <div class="bg-white py-24">
             <div class="container mx-auto px-4">
                 <div class="text-center mb-16">
@@ -306,7 +393,6 @@
             </div>
         </div>
 
-        <!-- Testimonials Marquee -->
         <div class="py-24 bg-brandLight overflow-hidden border-t border-gray-200">
             <div class="container mx-auto px-4 text-center mb-12">
                 <span class="text-brandYellow font-bold uppercase tracking-[0.2em] text-xs">СЭТГЭГДЭЛ</span>
@@ -324,7 +410,6 @@
 
     </div>
 
-    <!-- SPA PAGES -->
     <div id="page-tours-intl" class="spa-page py-20 bg-white min-h-screen">
         <div class="container mx-auto px-4">
             <h2 class="section-title text-brandBlue mb-6 text-center">ГАДААД АЯЛЛУУД</h2>
@@ -351,7 +436,7 @@
 
     <div id="page-about" class="spa-page py-20 bg-brandLight min-h-screen">
         <div class="container mx-auto px-4 max-w-4xl text-center">
-            <img src="688961732_122168343776954094_4680635204632775806_n.jpg" class="h-28 mx-auto mb-8 logo-enhanced object-contain">
+            <img src="logo.png" onerror="this.outerHTML='<div class=\'w-28 h-28 mx-auto mb-8 bg-brandBlue text-brandYellow font-black text-4xl flex items-center justify-center rounded-full border-4 border-brandYellow\'>MW</div>'" class="h-28 mx-auto mb-8 logo-enhanced object-contain">
             <h2 class="section-title text-brandBlue mb-8">БИДНИЙ ТУХАЙ</h2>
             <div class="bg-white p-10 md:p-14 rounded-3xl shadow-xl text-brandText leading-relaxed text-lg space-y-8 text-justify border border-gray-100 font-medium">
                 <p><strong>"Магнет Вэй Трэйвэл" ХХК</strong> нь 2015 оноос хойш аялал жуулчлалын салбарт гадаад болон дотоодын аяллын чиглэлээр тасралтгүй, амжилттай үйл ажиллагаа явуулж буй Монголдоо тэргүүлэгч компаниудын нэг юм.</p>
@@ -361,7 +446,6 @@
         </div>
     </div>
 
-    <!-- POLICY PAGE -->
     <div id="page-terms" class="spa-page py-20 bg-white min-h-screen">
         <div class="container mx-auto px-4 max-w-4xl">
             <button onclick="goBack()" class="mb-8 font-bold text-brandBlue hover:text-brandYellow transition uppercase text-sm flex items-center"><i class="fas fa-arrow-left mr-3"></i> Буцах</button>
@@ -376,7 +460,6 @@
         </div>
     </div>
 
-    <!-- DETAIL PAGE -->
     <div id="page-detail" class="spa-page bg-brandLight pb-24 min-h-screen">
         <div class="relative h-[50vh] md:h-[60vh] bg-brandBlue">
             <img id="dt-img" src="" class="w-full h-full object-cover opacity-60" alt="Cover">
@@ -475,7 +558,6 @@
                         
                         <button type="submit" class="w-full btn-animated font-bold py-5 rounded-xl shadow-lg mt-6 uppercase tracking-widest text-sm text-brandBlue">Захиалга үүсгэх</button>
                         
-                        <!-- AI Button -->
                         <button type="button" onclick="generateTourTips()" class="w-full mt-4 text-white font-bold py-4 rounded-xl shadow-lg uppercase tracking-widest text-sm transition hover:opacity-90" style="background: linear-gradient(90deg, #8B5CF6 0%, #D946EF 50%, #8B5CF6 100%); background-size: 200% auto;">
                             <i class="fas fa-magic mr-2"></i> Энэ аялалд юу бэлдэх вэ? (AI)
                         </button>
@@ -496,7 +578,6 @@
         </div>
     </div>
 
-    <!-- NEWS DETAIL -->
     <div id="page-news-detail" class="spa-page bg-white min-h-screen pb-20 pt-8">
         <div class="container mx-auto px-4 max-w-4xl">
             <button onclick="goBack()" class="text-brandBlue font-bold text-sm uppercase mb-6 hover:text-brandYellow transition"><i class="fas fa-arrow-left mr-2"></i> Буцах</button>
@@ -508,12 +589,55 @@
         </div>
     </div>
 
+    <div id="page-flights" class="spa-page bg-brandLight min-h-screen pb-20">
+        <div class="bg-brandBlue pt-20 pb-40">
+            <div class="container mx-auto px-4 text-center">
+                <span class="text-brandYellow font-bold uppercase tracking-[0.2em] text-sm">НИСЛЭГИЙН ТИЙЗ ЗАХИАЛГА</span>
+                <h2 class="text-white font-black text-4xl md:text-5xl mt-3 uppercase font-serif">Манайхаар шууд захиалах</h2>
+                <p class="text-white/70 mt-4 text-lg font-medium max-w-2xl mx-auto">Та нислэгээ хайж, захиалгын хүсэлтээ илгээн, компанийн дансанд төлбөрөө хийснээр таны электрон тийз баталгаажих болно.</p>
+            </div>
+        </div>
+
+        <div class="container mx-auto px-4 -mt-28 relative z-20">
+            <div class="bg-white rounded-3xl shadow-2xl border border-gray-100 p-6 md:p-10 mb-10">
+                <div class="text-center mb-8">
+                    <h3 class="text-2xl font-black text-brandBlue font-serif uppercase tracking-wide">Нислэгийн хүсэлт илгээх</h3>
+                    <div class="w-16 h-1 bg-brandYellow mx-auto mt-4 rounded-full"></div>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div class="bg-gray-50 rounded-2xl p-6 text-center border border-gray-100">
+                        <div class="w-12 h-12 bg-brandYellow text-brandBlue rounded-full flex items-center justify-center text-xl mx-auto mb-3"><i class="fas fa-search"></i></div>
+                        <h4 class="font-bold text-brandBlue mb-2">1. Хайлт хийх</h4>
+                        <p class="text-sm text-brandGray">Нүүр хуудсан дээрх хайлтын хэсгээр явах чиглэл, огноо, зорчигчдын тоог оруулан хайх товчийг дарна.</p>
+                    </div>
+                    <div class="bg-gray-50 rounded-2xl p-6 text-center border border-gray-100">
+                        <div class="w-12 h-12 bg-brandYellow text-brandBlue rounded-full flex items-center justify-center text-xl mx-auto mb-3"><i class="fas fa-money-check-alt"></i></div>
+                        <h4 class="font-bold text-brandBlue mb-2">2. Төлбөр хийх</h4>
+                        <p class="text-sm text-brandGray">Танд үүссэн <b>Захиалгын код</b>-ыг гүйлгээний утга дээр бичиж компанийн данс руу шилжүүлнэ.</p>
+                    </div>
+                    <div class="bg-gray-50 rounded-2xl p-6 text-center border border-gray-100">
+                        <div class="w-12 h-12 bg-brandYellow text-brandBlue rounded-full flex items-center justify-center text-xl mx-auto mb-3"><i class="fas fa-envelope-open-text"></i></div>
+                        <h4 class="font-bold text-brandBlue mb-2">3. Тийз хүлээн авах</h4>
+                        <p class="text-sm text-brandGray">Бид төлбөр баталгаажсан даруйд таны E-Ticket-ийг албан ёсоор бичиж мэйлээр илгээх болно.</p>
+                    </div>
+                </div>
+
+                <div class="mt-10 text-center">
+                    <button onclick="changePage('home')" class="bg-brandBlue text-white font-bold py-4 px-10 rounded-full text-sm uppercase tracking-widest hover:opacity-90 transition shadow-lg">
+                        <i class="fas fa-arrow-left mr-2"></i> Хайлт руу буцах
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <footer class="relative text-white pt-20 pb-10 border-t-[8px] border-brandYellow mt-16 bg-cover bg-center" style="background-image: url('https://images.pexels.com/photos/1450353/pexels-photo-1450353.jpeg?auto=compress&cs=tinysrgb&w=1920');">
         <div class="absolute inset-0 bg-brandBlue/90 backdrop-blur-sm"></div>
         <div class="container mx-auto px-4 relative z-10">
             <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-12 mb-16 border-b border-white/20 pb-16">
                 <div class="lg:col-span-2">
-                    <div class="inline-block bg-white px-4 py-3 rounded-2xl mb-8 shadow-lg"><img src="688961732_122168343776954094_4680635204632775806_n.jpg" alt="Magnet Way" class="h-20 object-contain logo-enhanced"></div>
+                    <div class="inline-block bg-white px-4 py-3 rounded-2xl mb-8 shadow-lg"><img src="black minimalist initial luxury monogram logo design.png" alt="Magnet Way" onerror="this.outerHTML='<div class=\'w-20 h-20 bg-brandBlue text-brandYellow font-black text-2xl flex items-center justify-center rounded-xl border-2 border-brandYellow\'>MW</div>'" class="h-20 object-contain logo-enhanced"></div>
                     <p class="text-white text-base leading-relaxed max-w-md drop-shadow-md font-medium">2015 оноос хойш үйл ажиллагаа явуулж буй, Монголдоо тэргүүлэгч аяллын компани — <strong class="text-brandYellow">Magnet Way Travel</strong>. Ази, Европ руу хөтөлбөртэй болон захиалгат аяллуудыг тогтмол зохион байгуулж байна.</p>
                     <div class="flex gap-6 mt-8">
                         <a href="https://www.facebook.com/profile.php?id=61578622845513" target="_blank" class="w-12 h-12 rounded-full bg-white/20 flex items-center justify-center hover:bg-brandYellow hover:text-brandBlue transition backdrop-blur-sm shadow-md text-xl"><i class="fab fa-facebook-f"></i></a>
@@ -530,12 +654,10 @@
         </div>
     </footer>
 
-    <!-- AI Chatbot FAB -->
     <button onclick="toggleAiChat()" class="fixed bottom-6 right-6 w-16 h-16 bg-gradient-to-r from-purple-500 to-pink-500 text-white rounded-full shadow-2xl flex items-center justify-center text-3xl hover:scale-110 transition z-50">
         ✨
     </button>
 
-    <!-- AI Chat Window -->
     <div id="ai-chat-window" class="hidden fixed bottom-28 right-6 w-80 md:w-96 bg-white rounded-2xl shadow-2xl border border-gray-100 flex-col z-50 overflow-hidden font-sans">
         <div class="bg-gradient-to-r from-purple-600 to-brandBlue text-white p-4 flex justify-between items-center">
             <h3 class="font-bold text-sm uppercase tracking-widest"><i class="fas fa-robot mr-2"></i> AI Аяллын Зөвлөх</h3>
@@ -552,8 +674,7 @@
         </div>
     </div>
 
-    <!-- AI Tour Tips Modal -->
-    <div id="ai-tips-modal" class="modal-overlay font-sans">
+    <div id="ai-tips-modal" class="modal-overlay font-sans z-[100]">
         <div class="bg-white rounded-3xl w-full max-w-2xl max-h-[85vh] overflow-hidden flex flex-col shadow-2xl">
             <div class="bg-gradient-to-r from-purple-600 to-pink-500 text-white p-6 flex justify-between items-center">
                 <h3 class="font-bold text-lg uppercase tracking-widest"><i class="fas fa-magic mr-2"></i> AI Аяллын Зөвлөгөө</h3>
@@ -563,6 +684,70 @@
             <div class="p-4 bg-gray-50 border-t border-gray-100 text-center text-xs text-gray-400 uppercase tracking-widest font-bold">
                 Powered by Gemini API
             </div>
+        </div>
+    </div>
+
+    <div id="flight-results-modal" class="modal-overlay font-sans z-[90]">
+        <div class="bg-white rounded-3xl w-full max-w-3xl max-h-[90vh] overflow-hidden flex flex-col shadow-2xl">
+            <div class="bg-brandBlue text-white p-6 flex justify-between items-center">
+                <div>
+                    <h3 class="font-bold text-lg uppercase tracking-widest"><i class="fas fa-plane mr-2 text-brandYellow"></i> Нислэгийн сонголтууд</h3>
+                    <p class="text-xs text-white/70 mt-1 font-medium tracking-wider" id="fr-route-info"></p>
+                </div>
+                <button onclick="closeFlightResults()" class="text-white hover:text-brandYellow transition text-2xl"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="p-6 overflow-y-auto bg-gray-50 flex-1 space-y-4" id="fr-list">
+                </div>
+            <div class="p-4 bg-white border-t border-gray-100 text-center text-xs text-brandGray font-bold uppercase tracking-widest">
+                Эдгээр нь боломжит нислэгийн хувилбарууд бөгөөд үнэ өөрчлөгдөх магадлалтай
+            </div>
+        </div>
+    </div>
+
+    <div id="booking-success-modal" class="modal-overlay font-sans z-[100]">
+        <div class="bg-white rounded-3xl w-full max-w-md p-8 text-center shadow-2xl transform scale-95 transition-transform duration-300">
+            <svg class="success-checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52">
+              <circle class="success-circle" cx="26" cy="26" r="25" fill="none"/>
+              <path class="success-check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8"/>
+            </svg>
+            <h3 class="text-xl font-black text-brandBlue mb-2 mt-4 uppercase">Захиалгын хүсэлт үүслээ</h3>
+            <p class="text-brandGray text-sm font-medium mb-6">Доорх зааврын дагуу төлбөрөө хийж тийзээ баталгаажуулна уу.</p>
+            
+            <div class="bg-blue-50/50 rounded-2xl p-5 mb-6 text-left border border-blue-100">
+                <p class="text-xs text-brandGray font-bold uppercase tracking-widest mb-1">Таны захиалгын код:</p>
+                <p class="text-brandBlue font-black text-2xl mb-4 text-center tracking-widest" id="succ-code"></p>
+                
+                <div class="flex justify-between border-t border-blue-100 pt-4 mb-4">
+                    <div>
+                        <p class="text-xs text-brandGray font-bold uppercase mb-1">Зэрэглэл</p>
+                        <p class="text-brandBlue font-bold text-sm" id="succ-class"></p>
+                    </div>
+                    <div class="text-right">
+                        <p class="text-xs text-brandGray font-bold uppercase mb-1">Нийт үнэ</p>
+                        <p class="text-brandBlue font-black text-lg text-green-600" id="succ-price"></p>
+                    </div>
+                </div>
+
+                <div class="border-t border-blue-100 pt-4">
+                    <p class="text-xs text-brandGray font-bold uppercase tracking-widest mb-2">Төлбөр шилжүүлэх данс:</p>
+                    <p class="font-bold text-brandBlue text-sm uppercase mb-1">ГОЛОМТ БАНК</p>
+                    <p class="font-black text-xl tracking-widest text-brandBlue flex justify-between items-center">
+                        910015003005193474 
+                    </p>
+                    <p class="text-brandGray text-[10px] uppercase font-bold mt-1 tracking-wider">МАГНЕТ ВЭЙ ТРЭЙВЭЛ ХХК</p>
+                </div>
+
+                <div class="bg-yellow-50 p-3 rounded-lg mt-4 border border-yellow-100 text-xs text-yellow-800 font-medium">
+                    <i class="fas fa-exclamation-triangle mr-1 text-yellow-600"></i> Гүйлгээний утга дээр зөвхөн <b>Захиалгын кодоо</b> бичнэ үү!
+                </div>
+            </div>
+
+            <button onclick="downloadTicketFile()" class="w-full bg-brandYellow text-brandBlue font-black py-4 rounded-xl text-sm uppercase tracking-widest shadow-md hover:bg-yellow-400 transition mb-3">
+                <i class="fas fa-download mr-2"></i> Мэдээллээ татаж авах
+            </button>
+            <button onclick="closeSuccessModal()" class="w-full bg-gray-100 text-brandGray font-bold py-3 rounded-xl text-sm uppercase tracking-widest hover:bg-gray-200 transition">
+                Хаах
+            </button>
         </div>
     </div>
 
@@ -673,7 +858,7 @@
         let paxInfant = 0;
 
         // Gemini API Configuration
-        const apiKey = "";
+        const apiKey = ""; // ЭНД ТА ӨӨРИЙН API ТҮЛХҮҮРЭЭ ОРУУЛЖ БОЛНО
         
         async function fetchGeminiAPI(userQuery, systemInstruction) {
             if (!apiKey) return "Уучлаарай, одоогоор хиймэл оюун ухааны систем холбогдоогүй байна.";
@@ -715,6 +900,7 @@
         }
         
         function init() {
+            // Tour render logic
             const heroTours = toursData.filter(t => t.id.startsWith('h'));
             let curSlide = 0;
             window.setSlide = function(index) { curSlide = index; updateHero(); };
@@ -845,8 +1031,12 @@
         function scrollTours(dir) { const container = document.getElementById('h-scroll-tours'); const scrollAmount = container.offsetWidth * 0.8 * dir; container.scrollBy({ left: scrollAmount, behavior: 'smooth' }); }
         
         function changePage(pageId) {
-            document.querySelectorAll('.nav-item').forEach(el => el.classList.remove('nav-active'));
-            if(document.getElementById('nav-'+pageId)) document.getElementById('nav-'+pageId).classList.add('nav-active');
+            document.querySelectorAll('.nav-item').forEach(el => el.classList.remove('nav-active', 'bg-brandYellow'));
+            let navItem = document.getElementById('nav-'+pageId);
+            if(navItem) {
+                if(pageId === 'flights') { navItem.classList.add('bg-yellow-400'); }
+                else { navItem.classList.add('nav-active'); }
+            }
             document.querySelectorAll('.spa-page').forEach(el => el.classList.remove('page-visible'));
             document.getElementById('page-'+pageId).classList.add('page-visible');
             document.getElementById('mobile-menu').classList.add('hidden');
@@ -928,7 +1118,6 @@
 
             const chatContainer = document.getElementById('ai-chat-messages');
             
-            // Append User Message
             chatContainer.innerHTML += `
                 <div class="bg-brandBlue p-3 rounded-xl rounded-tr-none border border-brandBlue/30 self-end max-w-[85%] text-white shadow-sm leading-relaxed ml-auto">
                     ${msg}
@@ -937,7 +1126,6 @@
             inputEl.value = '';
             chatContainer.scrollTop = chatContainer.scrollHeight;
 
-            // Append Loading Indicator
             const loadingId = 'loading-' + Date.now();
             chatContainer.innerHTML += `
                 <div id="${loadingId}" class="bg-white p-4 rounded-xl rounded-tl-none border border-gray-100 self-start max-w-[85%] shadow-sm">
@@ -951,7 +1139,6 @@
 
             const reply = await fetchGeminiAPI(msg, systemPrompt);
 
-            // Remove loading and append AI response
             document.getElementById(loadingId).remove();
             chatContainer.innerHTML += `
                 <div class="bg-white p-3 rounded-xl rounded-tl-none border border-gray-100 self-start max-w-[85%] text-gray-700 shadow-sm leading-relaxed">
@@ -986,7 +1173,336 @@
             document.getElementById('ai-tips-modal').classList.remove('active');
         }
 
-        document.addEventListener('DOMContentLoaded', init);
+        // ============ FLIGHT SEARCH LOGIC ============
+        const popularCities = [
+            { name: "Бээжин", code: "PEK", country: "Хятад" },
+            { name: "Шанхай", code: "PVG", country: "Хятад" },
+            { name: "Токио", code: "NRT", country: "Япон" },
+            { name: "Сөүл", code: "ICN", country: "БНСУ" },
+            { name: "Улаанбаатар", code: "UBN", country: "Монгол" },
+            { name: "Бангкок", code: "BKK", country: "Тайланд" },
+            { name: "Истанбул", code: "IST", country: "Турк" },
+            { name: "Хонг Конг", code: "HKG", country: "Хонг Конг" },
+            { name: "Франкфурт", code: "FRA", country: "Герман" },
+            { name: "Дубай", code: "DXB", country: "Арабын Нэгдсэн Эмират" }
+        ];
+
+        let fPaxAdult = 1, fPaxChild = 0, fPaxInfant = 0;
+        let fTripType = 'oneway';
+
+        window.addEventListener('DOMContentLoaded', function() {
+            const today = new Date();
+            const tomorrow = new Date(today);
+            tomorrow.setDate(tomorrow.getDate() + 1);
+            
+            if(document.getElementById('flight-depart')) document.getElementById('flight-depart').value = tomorrow.toISOString().split('T')[0];
+            
+            const nextWeek = new Date(today);
+            nextWeek.setDate(nextWeek.getDate() + 7);
+            if(document.getElementById('flight-return')) document.getElementById('flight-return').value = nextWeek.toISOString().split('T')[0];
+            
+            init();
+        });
+
+        // Trip Type Toggle (One way / Round trip)
+        function setTripType(type) {
+            fTripType = type;
+            const returnBox = document.getElementById('return-date-box');
+            const returnInput = document.getElementById('flight-return');
+            if(type === 'roundtrip') {
+                returnBox.classList.remove('opacity-40');
+                returnInput.disabled = false;
+                document.getElementById('tab-oneway').className = 'px-5 py-2 rounded-full text-xs font-bold uppercase tracking-wider bg-white/10 text-white hover:bg-white/20 transition';
+                document.getElementById('tab-roundtrip').className = 'px-5 py-2 rounded-full text-xs font-bold uppercase tracking-wider bg-brandYellow text-brandBlue transition shadow-md';
+            } else {
+                returnBox.classList.add('opacity-40');
+                returnInput.disabled = true;
+                document.getElementById('tab-oneway').className = 'px-5 py-2 rounded-full text-xs font-bold uppercase tracking-wider bg-brandYellow text-brandBlue transition shadow-md';
+                document.getElementById('tab-roundtrip').className = 'px-5 py-2 rounded-full text-xs font-bold uppercase tracking-wider bg-white/10 text-white hover:bg-white/20 transition';
+            }
+        }
+
+        // Autocomplete
+        function showAutocomplete(type) {
+            renderAutocomplete(type, popularCities);
+            document.getElementById(`ac-list-${type}`).classList.add('active');
+        }
+
+        function filterAutocomplete(type) {
+            const val = document.getElementById(`flight-${type}`).value.toLowerCase();
+            const filtered = popularCities.filter(c => c.name.toLowerCase().includes(val) || c.code.toLowerCase().includes(val) || c.country.toLowerCase().includes(val));
+            renderAutocomplete(type, filtered);
+            document.getElementById(`ac-list-${type}`).classList.add('active');
+        }
+
+        function renderAutocomplete(type, list) {
+            const container = document.getElementById(`ac-list-${type}`);
+            if(list.length === 0) {
+                container.innerHTML = `<div class="p-4 text-sm text-brandGray font-medium text-center">Илэрц олдсонгүй</div>`;
+                return;
+            }
+            container.innerHTML = list.map(c => `
+                <div class="autocomplete-item" onclick="selectCity('${type}', '${c.name}', '${c.code}')">
+                    <div>
+                        <p class="font-bold text-brandBlue text-sm">${c.name}</p>
+                        <p class="text-xs text-brandGray">${c.country}</p>
+                    </div>
+                    <span class="ac-code">${c.code}</span>
+                </div>
+            `).join('');
+        }
+
+        function selectCity(type, name, code) {
+            document.getElementById(`flight-${type}`).value = `${name} (${code})`;
+            document.getElementById(`ac-list-${type}`).classList.remove('active');
+        }
+
+        document.addEventListener('click', function(e) {
+            if(!e.target.closest('.autocomplete-container')) {
+                document.querySelectorAll('.autocomplete-list').forEach(el => el.classList.remove('active'));
+            }
+            if(!e.target.closest('#pax-box-trigger')) {
+                const d = document.getElementById('pax-dropdown');
+                if(d) d.classList.add('hidden');
+            }
+        });
+
+        function swapCities() {
+            const from = document.getElementById('flight-from');
+            const to = document.getElementById('flight-to');
+            [from.value, to.value] = [to.value, from.value];
+        }
+
+        function togglePaxBox() { document.getElementById('pax-dropdown').classList.toggle('hidden'); }
+
+        function changePax(type, delta) {
+            let nextAdult = fPaxAdult;
+            let nextChild = fPaxChild;
+            let nextInfant = fPaxInfant;
+
+            if(type === 'adult') nextAdult = Math.max(1, nextAdult + delta);
+            if(type === 'child') nextChild = Math.max(0, nextChild + delta);
+            if(type === 'infant') nextInfant = Math.max(0, nextInfant + delta);
+
+            let total = nextAdult + nextChild + nextInfant;
+
+            // Rule 1: Max 9 passengers total
+            if (total > 9) {
+                alert('Агаарын тээврийн дүрмийн дагуу нэг захиалгад хамгийн ихдээ 9 хүн багтах боломжтой.');
+                return;
+            }
+            // Rule 2: Infants cannot exceed adults
+            if (nextInfant > nextAdult) {
+                alert('Нярай хүүхдийн тоо насанд хүрсэн хүний тооноос илүү байж болохгүй.');
+                return;
+            }
+
+            fPaxAdult = nextAdult;
+            fPaxChild = nextChild;
+            fPaxInfant = nextInfant;
+
+            document.getElementById('pax-adult-count').innerText = fPaxAdult;
+            document.getElementById('pax-child-count').innerText = fPaxChild;
+            document.getElementById('pax-infant-count').innerText = fPaxInfant;
+            
+            let parts = [fPaxAdult + ' том хүн'];
+            if(fPaxChild > 0) parts.push(fPaxChild + ' хүүхэд');
+            if(fPaxInfant > 0) parts.push(fPaxInfant + ' нярай');
+            document.getElementById('pax-summary').innerText = parts.join(', ');
+        }
+
+        // Simulate booking process and download ticket
+        let currentTicketData = null;
+        let generatedBookingCode = "";
+        let mockFlightsData = [];
+
+        function simulateBooking(event) {
+            const from = document.getElementById('flight-from').value;
+            const to = document.getElementById('flight-to').value;
+            const departDate = document.getElementById('flight-depart').value;
+
+            if(!from || !to || !departDate) {
+                alert('Мэдээллээ бүрэн оруулна уу.');
+                return;
+            }
+
+            // Show Loading State on button
+            const btn = event ? event.currentTarget : null;
+            let originalHTML = '';
+            if(btn) {
+                originalHTML = btn.innerHTML;
+                btn.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i> Нислэг хайж байна...';
+                btn.disabled = true;
+            }
+
+            setTimeout(() => {
+                if(btn) {
+                    btn.innerHTML = originalHTML;
+                    btn.disabled = false;
+                }
+                generateMockFlights(from, to, departDate);
+                document.getElementById('flight-results-modal').classList.add('active');
+            }, 1000);
+        }
+
+        function generateMockFlights(from, to, date) {
+            const paxInfo = `${fPaxAdult} Том хүн${fPaxChild > 0 ? ', ' + fPaxChild + ' Хүүхэд' : ''}${fPaxInfant > 0 ? ', ' + fPaxInfant + ' Нярай' : ''}`;
+            document.getElementById('fr-route-info').innerText = `${from.split('(')[0].trim()} ➔ ${to.split('(')[0].trim()} | ${date} | ${paxInfo}`;
+            
+            const airlines = [
+                { name: "MIAT Mongolian Airlines", logo: "M" },
+                { name: "Korean Air", logo: "KE" },
+                { name: "Air China", logo: "CA" },
+                { name: "Asiana Airlines", logo: "OZ" },
+                { name: "Turkish Airlines", logo: "TK" }
+            ];
+            
+            mockFlightsData = [];
+            let html = '';
+            
+            for(let i=0; i<3; i++) {
+                const al = airlines[Math.floor(Math.random() * airlines.length)];
+                const depHr = Math.floor(Math.random() * 14) + 6; 
+                const depMin = Math.random() > 0.5 ? '00' : '30';
+                const arrHr = (depHr + Math.floor(Math.random() * 5) + 3) % 24;
+                const arrMin = Math.random() > 0.5 ? '15' : '45';
+                
+                let ecoBasePrice = Math.floor(Math.random() * 90 + 60) * 10000; 
+                if (fTripType === 'roundtrip') ecoBasePrice *= 1.8; 
+                
+                let busBasePrice = ecoBasePrice * 2.5; 
+                
+                const calcTotal = (pricePerAdult) => {
+                    const childPrice = pricePerAdult * 0.75;
+                    const infantPrice = pricePerAdult * 0.10;
+                    return (fPaxAdult * pricePerAdult) + (fPaxChild * childPrice) + (fPaxInfant * infantPrice);
+                };
+                
+                const totalEco = calcTotal(ecoBasePrice);
+                const totalBus = calcTotal(busBasePrice);
+
+                mockFlightsData.push({
+                    airline: al.name,
+                    depTime: `${depHr.toString().padStart(2, '0')}:${depMin}`,
+                    arrTime: `${arrHr.toString().padStart(2, '0')}:${arrMin}`
+                });
+                
+                html += `
+                <div class="bg-white rounded-2xl p-5 border border-gray-200 shadow-sm flex flex-col lg:flex-row gap-5 items-center">
+                    <div class="flex-1 w-full flex items-center justify-between border-b lg:border-b-0 lg:border-r border-gray-100 pb-4 lg:pb-0 lg:pr-5">
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 bg-blue-50 text-brandBlue font-black flex items-center justify-center rounded-lg text-sm border border-blue-100">${al.logo}</div>
+                            <div>
+                                <span class="font-bold text-brandBlue block text-sm">${al.name}</span>
+                                <span class="text-xs text-brandGray">${fTripType === 'roundtrip' ? 'Хоёр талдаа' : 'Нэг талдаа'}</span>
+                            </div>
+                        </div>
+                        <div class="text-center ml-4">
+                            <p class="font-black text-lg text-brandText">${depHr.toString().padStart(2, '0')}:${depMin}</p>
+                            <p class="text-xs text-brandGray font-bold mt-0.5">Явах</p>
+                        </div>
+                        <div class="px-3 text-brandYellow text-sm"><i class="fas fa-arrow-right"></i></div>
+                        <div class="text-center">
+                            <p class="font-black text-lg text-brandText">${arrHr.toString().padStart(2, '0')}:${arrMin}</p>
+                            <p class="text-xs text-brandGray font-bold mt-0.5">Очих</p>
+                        </div>
+                    </div>
+                    
+                    <div class="flex flex-row gap-3 w-full lg:w-auto">
+                        <button onclick="confirmFlightSelect(${i}, 'Economy', ${totalEco})" class="flex-1 lg:w-36 bg-gray-50 border border-gray-200 hover:border-brandBlue hover:bg-blue-50 transition p-3 rounded-xl text-left group">
+                            <p class="text-[10px] font-bold text-brandGray uppercase tracking-widest mb-1 group-hover:text-brandBlue">Энгийн / Eco</p>
+                            <p class="font-black text-brandBlue text-base">${totalEco.toLocaleString()} ₮</p>
+                            <p class="text-[10px] text-brandGray mt-1">Сонгох <i class="fas fa-chevron-right ml-1"></i></p>
+                        </button>
+                        <button onclick="confirmFlightSelect(${i}, 'Business', ${totalBus})" class="flex-1 lg:w-36 bg-yellow-50 border border-yellow-200 hover:border-brandYellow hover:bg-yellow-100 transition p-3 rounded-xl text-left group">
+                            <p class="text-[10px] font-bold text-yellow-700 uppercase tracking-widest mb-1 group-hover:text-yellow-900">Бизнес / Bus</p>
+                            <p class="font-black text-brandBlue text-base">${totalBus.toLocaleString()} ₮</p>
+                            <p class="text-[10px] text-yellow-700 mt-1">Сонгох <i class="fas fa-chevron-right ml-1"></i></p>
+                        </button>
+                    </div>
+                </div>
+                `;
+            }
+            document.getElementById('fr-list').innerHTML = html;
+        }
+
+        function closeFlightResults() {
+            document.getElementById('flight-results-modal').classList.remove('active');
+        }
+
+        function confirmFlightSelect(fIndex, className, totalPrice) {
+            const flight = mockFlightsData[fIndex];
+            const from = document.getElementById('flight-from').value;
+            const to = document.getElementById('flight-to').value;
+            const departDate = document.getElementById('flight-depart').value;
+            const returnDate = document.getElementById('flight-return').value;
+            const pax = document.getElementById('pax-summary').innerText;
+            
+            generatedBookingCode = "MW-" + Math.floor(100000 + Math.random() * 900000);
+            document.getElementById('succ-code').innerText = generatedBookingCode;
+            
+            document.getElementById('succ-class').innerText = className === 'Economy' ? 'Энгийн (Economy)' : 'Бизнес (Business)';
+            document.getElementById('succ-price').innerText = totalPrice.toLocaleString() + ' ₮';
+            
+            currentTicketData = { 
+                from, to, departDate, 
+                returnDate: fTripType === 'roundtrip' ? returnDate : 'Нэг талдаа', 
+                pax, code: generatedBookingCode,
+                airline: flight.airline,
+                depTime: flight.depTime,
+                arrTime: flight.arrTime,
+                className: className,
+                totalPrice: totalPrice.toLocaleString() + ' ₮'
+            };
+
+            closeFlightResults();
+            document.getElementById('booking-success-modal').classList.add('active');
+        }
+
+        function closeSuccessModal() {
+            document.getElementById('booking-success-modal').classList.remove('active');
+        }
+
+        function downloadTicketFile() {
+            if(!currentTicketData) return;
+            const t = currentTicketData;
+            
+            const content = `=========================================
+MAGNET WAY TRAVEL - НИСЛЭГИЙН ХҮСЭЛТ
+=========================================
+ЗАХИАЛГЫН КОД: ${t.code}
+Үүсгэсэн огноо: ${new Date().toLocaleDateString('mn-MN')}
+
+[НИСЛЭГИЙН МЭДЭЭЛЭЛ]
+Авиа компани: ${t.airline}
+Хаанаас: ${t.from} (Явах цаг: ${t.depTime})
+Хаашаа: ${t.to} (Очих цаг: ${t.arrTime})
+Явах огноо: ${t.departDate}
+Буцах огноо: ${t.returnDate}
+Зорчигчид: ${t.pax}
+Сонгосон ангилал: ${t.className === 'Economy' ? 'Энгийн (Economy)' : 'Бизнес (Business)'}
+
+НИЙТ ТӨЛӨХ ДҮН: ${t.totalPrice}
+=========================================
+[ТӨЛБӨРИЙН ЗААВАР]
+Данс: Голомт банк - 910015003005193474
+Хүлээн авагч: МАГНЕТ ВЭЙ ТРЭЙВЭЛ ХХК
+Гүйлгээний утга: ${t.code} (Заавал бичнэ үү)
+
+Төлбөр баталгаажсаны дараа бид таны электрон 
+тийзийг (E-Ticket) мэйлээр илгээх болно.
+=========================================
+Холбоо барих: 7610-6941, 8011-3677
+Имэйл: magnetwaytravel@gmail.com`;
+
+            const blob = new Blob([content], { type: 'text/plain;charset=utf-8' });
+            const a = document.createElement('a');
+            a.href = URL.createObjectURL(blob);
+            a.download = `Захиалга_${t.code}.txt`;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+        }
     </script>
 </body>
 </html>
