@@ -69,7 +69,6 @@
         .weather-scroll::-webkit-scrollbar-track { background: #f1f1f1; border-radius: 4px;}
         .weather-scroll::-webkit-scrollbar-thumb { background: #FFD700; border-radius: 4px; }
 
-        /* AI Chat Styles */
         .typing-indicator span { display: inline-block; width: 6px; height: 6px; background-color: #9CA3AF; border-radius: 50%; animation: typing 1.4s infinite ease-in-out both; }
         .typing-indicator span:nth-child(1) { animation-delay: -0.32s; }
         .typing-indicator span:nth-child(2) { animation-delay: -0.16s; }
@@ -81,7 +80,6 @@
 </head>
 <body class="text-brandText font-sans">
 
-    <!-- Top Contact Bar -->
     <div class="bg-brandBlue text-white py-2.5 hidden md:block text-[12px] font-medium border-b border-brandYellow/30 tracking-wider">
         <div class="container mx-auto px-4 flex justify-between items-center">
             <div class="flex gap-8">
@@ -96,7 +94,6 @@
         </div>
     </div>
 
-    <!-- Navigation -->
     <nav class="glass-nav sticky top-0 z-50">
         <div class="container mx-auto px-4 py-3 flex justify-between items-center">
             <div class="flex items-center cursor-pointer" onclick="changePage('home')">
@@ -121,7 +118,6 @@
             </button>
         </div>
         
-        <!-- Mobile Menu -->
         <div id="mobile-menu" class="hidden lg:hidden bg-white border-t px-4 py-4 flex flex-col gap-4 absolute w-full z-40 shadow-lg">
             <span onclick="changePage('home')" class="font-bold text-brandBlue border-b pb-3 cursor-pointer uppercase text-sm tracking-wider">Нүүр хуудас</span>
             <span onclick="changePage('tours-intl')" class="font-bold text-brandBlue border-b pb-3 cursor-pointer uppercase text-sm tracking-wider">Гадаад аялал</span>
@@ -132,10 +128,8 @@
         </div>
     </nav>
 
-    <!-- ===================== PAGE: HOME ===================== -->
     <div id="page-home" class="spa-page page-visible">
         
-        <!-- Hero Slider -->
         <div id="hero-slider" class="relative h-[75vh] md:h-[85vh] bg-cover bg-center transition-all duration-700">
             <div class="absolute inset-0 bg-gradient-to-r from-brandBlue/90 via-brandBlue/40 to-transparent"></div>
             
@@ -159,7 +153,6 @@
                     </button>
                 </div>
 
-                <!-- Text Indicators -->
                 <div id="hero-text-indicators" class="absolute bottom-10 left-8 md:left-16 flex gap-8 overflow-x-auto max-w-full text-white/50 text-sm font-bold uppercase tracking-widest pb-2">
                     <span class="cursor-pointer transition whitespace-nowrap" onclick="setSlide(0)">Япон 4 хот</span>
                     <span class="cursor-pointer transition whitespace-nowrap" onclick="setSlide(1)">Бээжин-Шанхай</span>
@@ -170,7 +163,6 @@
             </div>
         </div>
 
-        <!-- Flight Search Section -->
         <div class="bg-brandBlue py-10 border-t border-brandYellow/20">
             <div class="container mx-auto px-4">
                 <div class="flex items-center justify-between mb-6">
@@ -186,42 +178,35 @@
                     </button>
                 </div>
 
-                <!-- Trip type tabs -->
                 <div class="flex gap-2 mb-5">
                     <button onclick="setTripType('oneway')" id="tab-oneway" class="px-5 py-2 rounded-full text-xs font-bold uppercase tracking-wider bg-brandYellow text-brandBlue transition">Нэг чиглэл</button>
                     <button onclick="setTripType('roundtrip')" id="tab-roundtrip" class="px-5 py-2 rounded-full text-xs font-bold uppercase tracking-wider bg-white/10 text-white hover:bg-white/20 transition">Тойрог</button>
                 </div>
 
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-3">
-                    <!-- From -->
                     <div class="bg-white/10 backdrop-blur rounded-2xl p-4 border border-white/20 hover:border-brandYellow/50 transition">
                         <label class="text-white/60 text-xs font-bold uppercase tracking-widest block mb-2">✈ Хаанаас</label>
                         <input type="text" id="flight-from" value="Улаанбаатар (UBN)" class="w-full bg-transparent text-white font-bold text-base focus:outline-none placeholder-white/40" placeholder="Хот нэр...">
                     </div>
-                    <!-- Swap button + To -->
                     <div class="relative bg-white/10 backdrop-blur rounded-2xl p-4 border border-white/20 hover:border-brandYellow/50 transition">
                         <label class="text-white/60 text-xs font-bold uppercase tracking-widest block mb-2">🛬 Хаашаа</label>
                         <input type="text" id="flight-to" class="w-full bg-transparent text-white font-bold text-base focus:outline-none placeholder-white/40" placeholder="Хүрэх хот...">
                         <button onclick="swapCities()" class="absolute -left-4 top-1/2 -translate-y-1/2 w-8 h-8 bg-brandYellow rounded-full flex items-center justify-center text-brandBlue font-black shadow-lg z-10 hover:scale-110 transition hidden lg:flex">⇄</button>
                     </div>
-                    <!-- Depart date -->
                     <div class="bg-white/10 backdrop-blur rounded-2xl p-4 border border-white/20 hover:border-brandYellow/50 transition">
                         <label class="text-white/60 text-xs font-bold uppercase tracking-widest block mb-2">📅 Явах огноо</label>
                         <input type="date" id="flight-depart" class="w-full bg-transparent text-white font-bold text-base focus:outline-none">
                     </div>
-                    <!-- Return date -->
                     <div id="return-date-box" class="bg-white/10 backdrop-blur rounded-2xl p-4 border border-white/20 hover:border-brandYellow/50 transition opacity-40">
                         <label class="text-white/60 text-xs font-bold uppercase tracking-widest block mb-2">📅 Буцах огноо</label>
                         <input type="date" id="flight-return" class="w-full bg-transparent text-white font-bold text-base focus:outline-none" disabled>
                     </div>
-                    <!-- Passengers -->
                     <div class="bg-white/10 backdrop-blur rounded-2xl p-4 border border-white/20 hover:border-brandYellow/50 transition relative" id="pax-box-trigger" onclick="togglePaxBox()">
                         <label class="text-white/60 text-xs font-bold uppercase tracking-widest block mb-2">👤 Зорчигч</label>
                         <div class="text-white font-bold text-base cursor-pointer flex justify-between items-center">
                             <span id="pax-summary">1 том хүн</span>
                             <i class="fas fa-chevron-down text-xs text-white/50"></i>
                         </div>
-                        <!-- Pax dropdown -->
                         <div id="pax-dropdown" class="hidden absolute top-full left-0 right-0 mt-2 bg-white rounded-2xl shadow-2xl border border-gray-100 p-5 z-50 min-w-[220px]">
                             <div class="flex items-center justify-between mb-4">
                                 <div><p class="font-bold text-brandBlue text-sm">Том хүн</p><p class="text-xs text-brandGray">12+</p></div>
@@ -258,7 +243,6 @@
             </div>
         </div>
 
-        <!-- Weather Widget (7 Days) -->
         <div class="bg-white border-b border-gray-200 py-10">
             <div class="container mx-auto px-4">
                 <div class="flex flex-col md:flex-row items-center justify-between gap-8 mb-8">
@@ -282,14 +266,12 @@
                         </select>
                     </div>
                 </div>
-                <!-- 7 Day Forecast Grid -->
                 <div id="weather-result" class="flex overflow-x-auto weather-scroll gap-4 pb-4">
                     <div class="text-sm text-brandGray w-full text-center py-6 font-bold"><i class="fas fa-spinner fa-spin mr-2"></i> Уншиж байна...</div>
                 </div>
             </div>
         </div>
 
-        <!-- Stats Section -->
         <div class="bg-brandLight py-16 border-b border-gray-200 text-center">
             <div class="container mx-auto px-4 grid grid-cols-2 md:grid-cols-4 gap-10">
                 <div>
@@ -311,7 +293,6 @@
             </div>
         </div>
 
-        <!-- Scrollable Tours Section (ГАДААД АЯЛЛУУД) -->
         <div class="py-24 container mx-auto px-4">
             <div class="text-center mb-16">
                 <span class="text-brandYellow font-bold uppercase tracking-[0.2em] text-sm">ГАДААД АЯЛЛУУД</span>
@@ -320,9 +301,7 @@
             </div>
 
             <div class="relative group">
-                <div id="h-scroll-tours" class="h-scroll-container">
-                    <!-- Injected by JS -->
-                </div>
+                <div id="h-scroll-tours" class="h-scroll-container"></div>
                 <button onclick="scrollTours(-1)" class="absolute left-0 top-1/2 -translate-y-1/2 -ml-5 w-14 h-14 bg-white border border-gray-100 rounded-full shadow-xl text-brandBlue hover:bg-brandYellow hover:text-white transition z-10 flex items-center justify-center hidden md:flex text-xl"><i class="fas fa-chevron-left"></i></button>
                 <button onclick="scrollTours(1)" class="absolute right-0 top-1/2 -translate-y-1/2 -mr-5 w-14 h-14 bg-white border border-gray-100 rounded-full shadow-xl text-brandBlue hover:bg-brandYellow hover:text-white transition z-10 flex items-center justify-center hidden md:flex text-xl"><i class="fas fa-chevron-right"></i></button>
             </div>
@@ -334,58 +313,53 @@
             </div>
         </div>
 
-        <!-- ZURVAS - Why Choose Us -->
         <div class="py-24 relative overflow-hidden bg-cover bg-center" style="background-image: url('https://images.pexels.com/photos/10332840/pexels-photo-10332840.jpeg?auto=compress&cs=tinysrgb&w=1920');">
             <div class="absolute inset-0 bg-brandBlue/85 backdrop-blur-[2px]"></div>
             <div class="container mx-auto px-4 flex flex-col lg:flex-row gap-16 relative z-10">
-          <section id="contact-section" class="py-20 bg-white">
-        <div class="container mx-auto px-4 max-w-2xl">
-            <div class="text-center mb-12">
-                <span class="text-brandYellow font-bold uppercase tracking-[0.2em] text-xs">ХОЛБОО БАРИХ</span>
-                <h2 class="section-title text-brandBlue mt-3 mb-6">Бидэнд зурвас илгээх</h2>
+                <div class="lg:w-2/5">
+                    <span class="text-brandYellow font-bold uppercase tracking-[0.2em] text-sm">ЗУРВАС</span>
+                    <h2 class="section-title text-white mt-3 mb-8 leading-tight">Яагаад Magnet Way-ийг сонгох вэ?</h2>
+                    <p class="text-white mb-10 text-lg leading-relaxed font-medium">Magnet way нь Монголдоо тэргүүлэх аялал жуулчлалын компаниудын нэг бөгөөд 2015 оноос хойших арвин туршлага, найдвартай үйл ажиллагаагаараа салбартаа танигдсан компани юм.</p>
+                    <div class="bg-white/10 p-6 rounded-2xl border-l-4 border-brandYellow backdrop-blur inline-block shadow-lg">
+                        <h3 class="text-3xl font-black text-brandYellow font-serif">10+ ЖИЛИЙН</h3>
+                        <p class="text-white mt-2 font-bold uppercase tracking-wider text-xs">Туршлага (Баг бүрэлдэхүүн)</p>
+                    </div>
+                </div>
+                <div class="lg:w-3/5 grid grid-cols-1 sm:grid-cols-2 gap-x-10 gap-y-12">
+                    <div>
+                        <div class="w-14 h-14 bg-brandYellow text-brandBlue rounded-xl flex items-center justify-center text-2xl mb-5 shadow-md"><i class="fas fa-users"></i></div>
+                        <h4 class="text-xl font-bold mb-3 font-serif text-brandYellow">Найдвартай, туршлагатай хамт олон</h4>
+                        <p class="text-white leading-relaxed text-sm">Аяллын мэргэшсэн шилдгийн шилдэг экспертүүд таны хүссэн улс руу мэргэжлийн өндөр төвшинд таны аяллыг урлах болно.</p>
+                    </div>
+                    <div>
+                        <div class="w-14 h-14 bg-brandYellow text-brandBlue rounded-xl flex items-center justify-center text-2xl mb-5 shadow-md"><i class="fas fa-shield-alt"></i></div>
+                        <h4 class="text-xl font-bold mb-3 font-serif text-brandYellow">Аюулгүй, баталгаатай үйлчилгээ</h4>
+                        <p class="text-white leading-relaxed text-sm">Таны тав тух, аюулгүй байдлыг нэн тэргүүнд тавина.</p>
+                    </div>
+                    <div>
+                        <div class="w-14 h-14 bg-brandYellow text-brandBlue rounded-xl flex items-center justify-center text-2xl mb-5 shadow-md"><i class="fas fa-couch"></i></div>
+                        <h4 class="text-xl font-bold mb-3 font-serif text-brandYellow">Тав тухтай, сэтгэл амар аялал</h4>
+                        <p class="text-white leading-relaxed text-sm">Бүх зохион байгуулалтыг бид хариуцна.</p>
+                    </div>
+                    <div>
+                        <div class="w-14 h-14 bg-brandYellow text-brandBlue rounded-xl flex items-center justify-center text-2xl mb-5 shadow-md"><i class="fas fa-hand-holding-usd"></i></div>
+                        <h4 class="text-xl font-bold mb-3 font-serif text-brandYellow">Төлбөрийн уян хатан нөхцөл</h4>
+                        <p class="text-white leading-relaxed text-sm">Төсөвт тохирсон олон төрлийн аяллын багц, хөнгөлөлт, урамшуулал, хуваан төлөх боломжуудыг санал болгоно.</p>
+                    </div>
+                    <div>
+                        <div class="w-14 h-14 bg-brandYellow text-brandBlue rounded-xl flex items-center justify-center text-2xl mb-5 shadow-md"><i class="fas fa-handshake"></i></div>
+                        <h4 class="text-xl font-bold mb-3 font-serif text-brandYellow">Итгэл даах хамтрагч</h4>
+                        <p class="text-white leading-relaxed text-sm">Амласан үйлчилгээгээ хариуцлагатайгаар хэрэгжүүлнэ.</p>
+                    </div>
+                    <div>
+                        <div class="w-14 h-14 bg-brandYellow text-brandBlue rounded-xl flex items-center justify-center text-2xl mb-5 shadow-md"><i class="fas fa-map-marked-alt"></i></div>
+                        <h4 class="text-xl font-bold mb-3 font-serif text-brandYellow">Онцгой маршрут, өргөн сонголт</h4>
+                        <p class="text-white leading-relaxed text-sm">Дэлхийн олон улс орон руу таны хүсэл, хэрэгцээнд нийцсэн аяллын өргөн сонголтыг санал болгоно.</p>
+                    </div>
+                </div>
             </div>
-            <form action="https://formspree.io/f/mjgzeprn" method="POST" class="space-y-6 bg-brandLight p-8 md:p-12 rounded-3xl border border-gray-100 shadow-xl">
-                <div>
-                    <label class="text-xs font-bold text-brandGray uppercase block mb-3">Таны нэр</label>
-                    <input type="text" name="name" required class="w-full bg-white border border-gray-200 p-4 rounded-xl focus:outline-none focus:ring-2 focus:ring-brandYellow transition text-sm font-bold" placeholder="Нэрээ бичнэ үү">
-                </div>
-                <div>
-                    <label class="text-xs font-bold text-brandGray uppercase block mb-3">И-мэйл хаяг</label>
-                    <input type="email" name="email" required class="w-full bg-white border border-gray-200 p-4 rounded-xl focus:outline-none focus:ring-2 focus:ring-brandYellow transition text-sm font-bold" placeholder="example@mail.com">
-                </div>
-                <div>
-                    <label class="text-xs font-bold text-brandGray uppercase block mb-3">Зурвас</label>
-                    <textarea name="message" required rows="5" class="w-full bg-white border border-gray-200 p-4 rounded-xl focus:outline-none focus:ring-2 focus:ring-brandYellow transition text-sm font-bold" placeholder="Таны асуулт эсвэл хүсэлт..."></textarea>
-                </div>
-                <button type="submit" class="w-full btn-animated font-bold py-5 rounded-xl shadow-lg uppercase tracking-widest text-sm text-brandBlue">Зурвас илгээх</button>
-            </form>
         </div>
-    </section>
-    <footer class="relative text-white pt-20 pb-10 border-t-[8px] border-brandYellow mt-16 bg-cover bg-center" style="background-image: url('https://images.pexels.com/photos/1450353/pexels-photo-1450353.jpeg?auto=compress&cs=tinysrgb&w=1920');"><section id="contact-section" class="py-20 bg-white">
-        <div class="container mx-auto px-4 max-w-2xl">
-            <div class="text-center mb-12">
-                <span class="text-brandYellow font-bold uppercase tracking-[0.2em] text-xs">ХОЛБОО БАРИХ</span>
-                <h2 class="section-title text-brandBlue mt-3 mb-6">Бидэнд зурвас илгээх</h2>
-            </div>
-            <form action="https://formspree.io/f/mjgzeprn" method="POST" class="space-y-6 bg-brandLight p-8 md:p-12 rounded-3xl border border-gray-100 shadow-xl">
-                <div>
-                    <label class="text-xs font-bold text-brandGray uppercase block mb-3">Таны нэр</label>
-                    <input type="text" name="name" required class="w-full bg-white border border-gray-200 p-4 rounded-xl focus:outline-none focus:ring-2 focus:ring-brandYellow transition text-sm font-bold" placeholder="Нэрээ бичнэ үү">
-                </div>
-                <div>
-                    <label class="text-xs font-bold text-brandGray uppercase block mb-3">И-мэйл хаяг</label>
-                    <input type="email" name="email" required class="w-full bg-white border border-gray-200 p-4 rounded-xl focus:outline-none focus:ring-2 focus:ring-brandYellow transition text-sm font-bold" placeholder="example@mail.com">
-                </div>
-                <div>
-                    <label class="text-xs font-bold text-brandGray uppercase block mb-3">Зурвас</label>
-                    <textarea name="message" required rows="5" class="w-full bg-white border border-gray-200 p-4 rounded-xl focus:outline-none focus:ring-2 focus:ring-brandYellow transition text-sm font-bold" placeholder="Таны асуулт эсвэл хүсэлт..."></textarea>
-                </div>
-                <button type="submit" class="w-full btn-animated font-bold py-5 rounded-xl shadow-lg uppercase tracking-widest text-sm text-brandBlue">Зурвас илгээх</button>
-            </form>
-        </div>
-    </section>
 
-    <footer class="relative text-white pt-20 pb-10 border-t-[8px] border-brandYellow mt-16 bg-cover bg-center" style="background-image: url('https://images.pexels.com/photos/1450353/pexels-photo-1450353.jpeg?auto=compress&cs=tinysrgb&w=1920');">
         <div class="bg-white py-24">
             <div class="container mx-auto px-4">
                 <div class="text-center mb-16">
@@ -397,7 +371,6 @@
             </div>
         </div>
 
-        <!-- Testimonials Marquee -->
         <div class="py-24 bg-brandLight overflow-hidden border-t border-gray-200">
             <div class="container mx-auto px-4 text-center mb-12">
                 <span class="text-brandYellow font-bold uppercase tracking-[0.2em] text-xs">СЭТГЭГДЭЛ</span>
@@ -415,7 +388,6 @@
 
     </div>
 
-    <!-- SPA PAGES -->
     <div id="page-tours-intl" class="spa-page py-20 bg-white min-h-screen">
         <div class="container mx-auto px-4">
             <h2 class="section-title text-brandBlue mb-6 text-center">ГАДААД АЯЛЛУУД</h2>
@@ -452,7 +424,6 @@
         </div>
     </div>
 
-    <!-- POLICY PAGE -->
     <div id="page-terms" class="spa-page py-20 bg-white min-h-screen">
         <div class="container mx-auto px-4 max-w-4xl">
             <button onclick="goBack()" class="mb-8 font-bold text-brandBlue hover:text-brandYellow transition uppercase text-sm flex items-center"><i class="fas fa-arrow-left mr-3"></i> Буцах</button>
@@ -467,7 +438,6 @@
         </div>
     </div>
 
-    <!-- DETAIL PAGE -->
     <div id="page-detail" class="spa-page bg-brandLight pb-24 min-h-screen">
         <div class="relative h-[50vh] md:h-[60vh] bg-brandBlue">
             <img id="dt-img" src="" class="w-full h-full object-cover opacity-60" alt="Cover">
@@ -518,11 +488,16 @@
                     <p class="text-xs font-bold text-brandGray uppercase tracking-widest text-center mb-2">Эхлэх үнэ</p>
                     <h2 id="dt-price-display" class="text-4xl font-black text-brandBlue text-center mb-1 font-serif"></h2>
                     <p class="text-center text-sm font-bold text-brandGray mb-8">/ хүн</p>
-            <form action="https://formspree.io/f/mjgzeprn" method="POST" onsubmit="submitForm(event)" class="space-y-6">
+                    
+                    <form action="https://formspree.io/f/mjgzeprn" method="POST" onsubmit="submitForm(event)" class="space-y-6">
+                        <input type="hidden" name="Аяллын_нэр" id="hidden-tour-name">
+                        <input type="hidden" name="Огноо" id="hidden-tour-date">
+                        <input type="hidden" name="Нийт_үнэ" id="hidden-total-price">
+
                         <div>
                             <label class="text-xs font-bold text-brandGray uppercase block mb-3">Явах огноог сонгоно уу</label>
                             <div class="relative">
-                                <select id="dt-dates" required class="w-full bg-brandLight border border-gray-200 p-4 rounded-xl focus:outline-none focus:ring-2 focus:ring-brandYellow transition text-brandText font-bold appearance-none cursor-pointer tracking-wider" onchange="updateSeats()">
+                                <select id="dt-dates" required class="w-full bg-brandLight border border-gray-200 p-4 rounded-xl focus:outline-none focus:ring-2 focus:ring-brandYellow transition text-brandText font-bold appearance-none cursor-pointer tracking-wider" onchange="updateSeats(); updatePricing();">
                                 </select>
                                 <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-brandGray"><i class="fas fa-chevron-down"></i></div>
                             </div>
@@ -565,7 +540,6 @@
                         
                         <button type="submit" class="w-full btn-animated font-bold py-5 rounded-xl shadow-lg mt-6 uppercase tracking-widest text-sm text-brandBlue">Захиалга үүсгэх</button>
                         
-                        <!-- AI Button -->
                         <button type="button" onclick="generateTourTips()" class="w-full mt-4 text-white font-bold py-4 rounded-xl shadow-lg uppercase tracking-widest text-sm transition hover:opacity-90" style="background: linear-gradient(90deg, #8B5CF6 0%, #D946EF 50%, #8B5CF6 100%); background-size: 200% auto;">
                             <i class="fas fa-magic mr-2"></i> Энэ аялалд юу бэлдэх вэ? (AI)
                         </button>
@@ -586,7 +560,6 @@
         </div>
     </div>
 
-    <!-- NEWS DETAIL -->
     <div id="page-news-detail" class="spa-page bg-white min-h-screen pb-20 pt-8">
         <div class="container mx-auto px-4 max-w-4xl">
             <button onclick="goBack()" class="text-brandBlue font-bold text-sm uppercase mb-6 hover:text-brandYellow transition"><i class="fas fa-arrow-left mr-2"></i> Буцах</button>
@@ -598,7 +571,6 @@
         </div>
     </div>
 
-    <!-- FLIGHTS PAGE -->
     <div id="page-flights" class="spa-page bg-brandLight min-h-screen pb-20">
         <div class="bg-brandBlue py-16">
             <div class="container mx-auto px-4 text-center">
@@ -610,19 +582,16 @@
 
         <div class="container mx-auto px-4 -mt-6">
             <div class="bg-white rounded-3xl shadow-2xl border border-gray-100 p-8 md:p-10">
-                <!-- Trip type -->
                 <div class="flex gap-2 mb-6">
                     <button onclick="setTripType2('oneway')" id="tab2-oneway" class="px-6 py-2.5 rounded-full text-sm font-bold uppercase tracking-wider bg-brandBlue text-white transition">Нэг чиглэл</button>
                     <button onclick="setTripType2('roundtrip')" id="tab2-roundtrip" class="px-6 py-2.5 rounded-full text-sm font-bold uppercase tracking-wider bg-gray-100 text-brandGray hover:bg-gray-200 transition">Тойрог</button>
                 </div>
 
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
-                    <!-- From -->
                     <div class="border-2 border-gray-100 rounded-2xl p-4 hover:border-brandYellow transition focus-within:border-brandYellow">
                         <label class="text-brandGray text-xs font-bold uppercase tracking-widest block mb-1">✈ Хаанаас</label>
                         <input type="text" id="flight2-from" value="Улаанбаатар (UBN)" class="w-full text-brandBlue font-bold text-lg focus:outline-none bg-transparent" placeholder="Хот нэр...">
                     </div>
-                    <!-- To -->
                     <div class="border-2 border-gray-100 rounded-2xl p-4 hover:border-brandYellow transition focus-within:border-brandYellow relative">
                         <label class="text-brandGray text-xs font-bold uppercase tracking-widest block mb-1">🛬 Хаашаа</label>
                         <input type="text" id="flight2-to" class="w-full text-brandBlue font-bold text-lg focus:outline-none bg-transparent" placeholder="Хүрэх хот...">
@@ -631,24 +600,20 @@
                 </div>
 
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
-                    <!-- Depart -->
                     <div class="border-2 border-gray-100 rounded-2xl p-4 hover:border-brandYellow transition focus-within:border-brandYellow">
                         <label class="text-brandGray text-xs font-bold uppercase tracking-widest block mb-1">📅 Явах огноо</label>
                         <input type="date" id="flight2-depart" class="w-full text-brandBlue font-bold text-base focus:outline-none bg-transparent">
                     </div>
-                    <!-- Return -->
                     <div id="return2-box" class="border-2 border-gray-100 rounded-2xl p-4 opacity-40 transition">
                         <label class="text-brandGray text-xs font-bold uppercase tracking-widest block mb-1">📅 Буцах огноо</label>
                         <input type="date" id="flight2-return" class="w-full text-brandBlue font-bold text-base focus:outline-none bg-transparent" disabled>
                     </div>
-                    <!-- Passengers -->
                     <div class="border-2 border-gray-100 rounded-2xl p-4 hover:border-brandYellow transition relative cursor-pointer" onclick="togglePaxBox2()">
                         <label class="text-brandGray text-xs font-bold uppercase tracking-widest block mb-1">👤 Зорчигч</label>
                         <div class="flex justify-between items-center">
                             <span id="pax2-summary" class="text-brandBlue font-bold text-base">1 том хүн</span>
                             <i class="fas fa-chevron-down text-brandGray text-xs"></i>
                         </div>
-                        <!-- Pax dropdown 2 -->
                         <div id="pax2-dropdown" class="hidden absolute top-full left-0 right-0 mt-2 bg-white rounded-2xl shadow-2xl border border-gray-100 p-5 z-50">
                             <div class="flex items-center justify-between mb-4">
                                 <div><p class="font-bold text-brandBlue">Том хүн</p><p class="text-xs text-brandGray">12+ нас</p></div>
@@ -684,9 +649,6 @@
                 </button>
             </div>
 
-            <!-- Results area -->
-            <div id="flight2-results" class="mt-8"></div>
-
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-10">
                 <div class="bg-white rounded-2xl p-6 border border-gray-100 shadow-md text-center card-shadow">
                     <div class="w-12 h-12 bg-blue-50 text-brandBlue rounded-xl flex items-center justify-center text-2xl mx-auto mb-4">🛫</div>
@@ -720,35 +682,12 @@
         </div>
     </div>
 
-    <footer class="relative <section id="contact-section" class="py-20 bg-white">
-        <div class="container mx-auto px-4 max-w-2xl">
-            <div class="text-center mb-12">
-                <span class="text-brandYellow font-bold uppercase tracking-[0.2em] text-xs">ХОЛБОО БАРИХ</span>
-                <h2 class="section-title text-brandBlue mt-3 mb-6">Бидэнд зурвас илгээх</h2>
-            </div>
-            <form action="https://formspree.io/f/mjgzeprn" method="POST" class="space-y-6 bg-brandLight p-8 md:p-12 rounded-3xl border border-gray-100 shadow-xl">
-                <div>
-                    <label class="text-xs font-bold text-brandGray uppercase block mb-3">Таны нэр</label>
-                    <input type="text" name="name" required class="w-full bg-white border border-gray-200 p-4 rounded-xl focus:outline-none focus:ring-2 focus:ring-brandYellow transition text-sm font-bold" placeholder="Нэрээ бичнэ үү">
-                </div>
-                <div>
-                    <label class="text-xs font-bold text-brandGray uppercase block mb-3">И-мэйл хаяг</label>
-                    <input type="email" name="email" required class="w-full bg-white border border-gray-200 p-4 rounded-xl focus:outline-none focus:ring-2 focus:ring-brandYellow transition text-sm font-bold" placeholder="example@mail.com">
-                </div>
-                <div>
-                    <label class="text-xs font-bold text-brandGray uppercase block mb-3">Зурвас</label>
-                    <textarea name="message" required rows="5" class="w-full bg-white border border-gray-200 p-4 rounded-xl focus:outline-none focus:ring-2 focus:ring-brandYellow transition text-sm font-bold" placeholder="Таны асуулт эсвэл хүсэлт..."></textarea>
-                </div>
-                <button type="submit" class="w-full btn-animated font-bold py-5 rounded-xl shadow-lg uppercase tracking-widest text-sm text-brandBlue">Зурвас илгээх</button>
-            </form>
-        </div>
-    </section>
-        text-white pt-20 pb-10 border-t-[8px] border-brandYellow mt-16 bg-cover bg-center" style="background-image: url('https://images.pexels.com/photos/1450353/pexels-photo-1450353.jpeg?auto=compress&cs=tinysrgb&w=1920');">
+    <footer class="relative text-white pt-20 pb-10 border-t-[8px] border-brandYellow mt-16 bg-cover bg-center" style="background-image: url('https://images.pexels.com/photos/1450353/pexels-photo-1450353.jpeg?auto=compress&cs=tinysrgb&w=1920');">
         <div class="absolute inset-0 bg-brandBlue/90 backdrop-blur-sm"></div>
         <div class="container mx-auto px-4 relative z-10">
             <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-12 mb-16 border-b border-white/20 pb-16">
                 <div class="lg:col-span-2">
-                    <div class="inline-block bg-white px-4 py-3 rounded-2xl mb-8 shadow-lg"><img src="black minimalist initial luxury monogram logo design.png" alt="Magnet Way" class="h-20 object-contain logo-enhanced"></div>
+                    <div class="inline-block bg-white px-4 py-3 rounded-2xl mb-8 shadow-lg"><img src="932F2A9E-33F7-497F-A60B-8BDB579F465B.png" alt="Magnet Way" class="h-20 object-contain logo-enhanced"></div>
                     <p class="text-white text-base leading-relaxed max-w-md drop-shadow-md font-medium">2015 оноос хойш үйл ажиллагаа явуулж буй, Монголдоо тэргүүлэгч аяллын компани — <strong class="text-brandYellow">Magnet Way Travel</strong>. Ази, Европ руу хөтөлбөртэй болон захиалгат аяллуудыг тогтмол зохион байгуулж байна.</p>
                     <div class="flex gap-6 mt-8">
                         <a href="https://www.facebook.com/profile.php?id=61578622845513" target="_blank" class="w-12 h-12 rounded-full bg-white/20 flex items-center justify-center hover:bg-brandYellow hover:text-brandBlue transition backdrop-blur-sm shadow-md text-xl"><i class="fab fa-facebook-f"></i></a>
@@ -765,12 +704,10 @@
         </div>
     </footer>
 
-    <!-- AI Chatbot FAB -->
     <button onclick="toggleAiChat()" class="fixed bottom-6 right-6 w-16 h-16 bg-gradient-to-r from-purple-500 to-pink-500 text-white rounded-full shadow-2xl flex items-center justify-center text-3xl hover:scale-110 transition z-50">
         ✨
     </button>
 
-    <!-- AI Chat Window -->
     <div id="ai-chat-window" class="hidden fixed bottom-28 right-6 w-80 md:w-96 bg-white rounded-2xl shadow-2xl border border-gray-100 flex-col z-50 overflow-hidden font-sans">
         <div class="bg-gradient-to-r from-purple-600 to-brandBlue text-white p-4 flex justify-between items-center">
             <h3 class="font-bold text-sm uppercase tracking-widest"><i class="fas fa-robot mr-2"></i> AI Аяллын Зөвлөх</h3>
@@ -787,7 +724,6 @@
         </div>
     </div>
 
-    <!-- AI Tour Tips Modal -->
     <div id="ai-tips-modal" class="modal-overlay font-sans">
         <div class="bg-white rounded-3xl w-full max-w-2xl max-h-[85vh] overflow-hidden flex flex-col shadow-2xl">
             <div class="bg-gradient-to-r from-purple-600 to-pink-500 text-white p-6 flex justify-between items-center">
@@ -870,7 +806,6 @@
               prog: [ { d: "Өдөр 1: Элсэн тасархай - Хархорин", t: "Элсэн тасархайгаар дайрч Хархоринд ирнэ. Эрдэнэзуу хийд, музей үзнэ." }, { d: "Өдөр 2: Орхоны хүрхрээ", t: "Улаан цутгалан хүрхрээ үзэж, морь унана." }, { d: "Өдөр 3: Буцах", t: "Улаанбаатар руу хөдөлнө." }] }
         ];
 
-        // --- NEWS DATA (BLOG) ---
         const newsData = [
             { id: "n1", date: "2026.05.15", tag: "Аялал", title: "Жанжиажэ хотын гайхамшигт цамхаг", desc: "Аватар киноны зураг авалт хийгдсэн Жанжиажэ байгалийн цогцолборт газрын тухай.", src: "Аяллын хөтөч", img: "https://images.pexels.com/photos/10332840/pexels-photo-10332840.jpeg?auto=compress&cs=tinysrgb&w=800",
               content: "<p>Жанжиажэ үндэсний цэцэрлэгт хүрээлэн нь Хятадын Хунань мужид байрладаг бөгөөд 1992 онд ЮНЕСКО-гийн дэлхийн өвд бүртгэгдсэн. Хамгийн алдартай нь \"Аватар\" киноны Халлелуяа уулын зураг авалтыг хийсэн 3,000 гаруй босоо чулуун багананууд юм.</p><p class='mt-4'>Мөн дэлхийн хамгийн өндөр, хамгийн хурдан гадаах цахилгаан шат болох 'Bailong Elevator' (Зуун луугийн цахилгаан шат) энд байдаг. Та энэ цахилгаан шатаар дээш гарч үүлсийн дээрээс гайхалтай үзэмжийг тольдох боломжтой.</p>" },
@@ -882,7 +817,6 @@
               content: "<p>Гадаад улс руу аялахад хамгийн түрүүнд гадаад паспортын хүчинтэй хугацааг шалгах хэрэгтэй. Ихэнх улс орнууд хилээр нэвтрэхэд паспортын хүчинтэй хугацаа 6 сараас дээш байхыг шаарддаг.</p><p class='mt-4'>Мөн аяллын даатгалаа заавал хийлгэх, орон нутгийн цаг агаарт тохируулан хувцсаа бэлдэх, хувийн хэрэглээний эм тангаа (өвчин намдаах, ходоодны эм г.м) авч явахыг зөвлөж байна.</p>" }
         ];
 
-        // --- REVIEWS FOR MARQUEE ---
         const reviews = [
             { name: "Болормаа Б.", loc: "Тайланд аялал", text: "Тайланд аялал маш гайхалтай байсан. Бүх зүйл маш сайн зохион байгуулагдсан, хоол, зочид буудал бүгд дээд зэргийн байсан. Дахин аялна!" },
             { name: "Энхбат Д.", loc: "Бали аялал", text: "Бали аялал бидний гэр бүлийн хамгийн сайхан дурсамж болсон. Баг маш мэргэжлийн түвшинд ажилласан. Баярлалаа!" },
@@ -907,7 +841,6 @@
         let paxChild = 0;
         let paxInfant = 0;
 
-        // Gemini API Configuration
         const apiKey = "";
         
         async function fetchGeminiAPI(userQuery, systemInstruction) {
@@ -1092,6 +1025,7 @@
         function showDetail(id) {
             const t = toursData.find(x => x.id === id); if(!t) return;
             curTourObj = t; paxAdult = 1; paxChild = 0; paxInfant = 0; updatePaxUI();
+            
             document.getElementById('dt-img').src = t.img;
             document.getElementById('dt-title').innerText = t.title;
             document.getElementById('dt-loc').innerHTML = `<i class="fas fa-map-marker-alt mr-2 text-brandYellow"></i> ${t.loc}`;
@@ -1103,6 +1037,9 @@
             document.getElementById('price-lbl-adult').innerText = t.aPrice ? t.aPrice.toLocaleString() + '₮' : 'Асуух';
             document.getElementById('price-lbl-child').innerText = t.cPrice ? t.cPrice.toLocaleString() + '₮' : 'Асуух';
             document.getElementById('dt-dates').innerHTML = t.dates.map(date => `<option value="${date}">${date}</option>`).join('');
+            
+            document.getElementById('hidden-tour-name').value = t.title;
+
             updateSeats();
             document.getElementById('dt-program').innerHTML = (t.prog || []).map((p, i) => `<div class="relative pl-12 pb-6"><div class="absolute left-[-20px] top-0 w-10 h-10 rounded-full bg-brandBlue text-brandYellow font-black flex items-center justify-center border-4 border-white shadow-md z-10 text-lg font-serif">${i+1}</div><div class="bg-white p-8 rounded-3xl border border-gray-100 shadow-sm hover:shadow-md transition"><h4 class="font-bold text-brandBlue mb-4 text-lg font-serif">${p.d}</h4><p class="body-text text-sm leading-relaxed">${p.t}</p></div></div>`).join('');
             
@@ -1122,11 +1059,20 @@
         function updateSeats() { document.getElementById('dt-seats').innerText = Math.floor(Math.random() * 11) + 10; }
         function updatePax(type, delta) { if(type === 'adult') paxAdult = Math.max(1, paxAdult + delta); if(type === 'child') paxChild = Math.max(0, paxChild + delta); if(type === 'infant') paxInfant = Math.max(0, paxInfant + delta); updatePaxUI(); updatePricing(); }
         function updatePaxUI() { document.getElementById('pax-adult').innerText = paxAdult; document.getElementById('pax-child').innerText = paxChild; document.getElementById('pax-infant').innerText = paxInfant; }
+        
         function updatePricing() {
-            if(!curTourObj || curTourObj.aPrice === 0) { document.getElementById('calc-total').innerText = "Асуух"; document.getElementById('calc-deposit').innerText = "Асуух"; return; }
+            if(!curTourObj || curTourObj.aPrice === 0) { 
+                document.getElementById('calc-total').innerText = "Асуух"; 
+                document.getElementById('calc-deposit').innerText = "Асуух"; 
+                document.getElementById('hidden-total-price').value = "Асуух";
+                return; 
+            }
             const total = (paxAdult * curTourObj.aPrice) + (paxChild * (curTourObj.cPrice || 0)) + (paxInfant * (curTourObj.iPrice || 0));
             document.getElementById('calc-total').innerText = total.toLocaleString() + ' ₮';
             document.getElementById('calc-deposit').innerText = (total / 2).toLocaleString() + ' ₮';
+            
+            document.getElementById('hidden-total-price').value = total.toLocaleString() + ' ₮';
+            document.getElementById('hidden-tour-date').value = document.getElementById('dt-dates').value;
         }
 
         function goBack() { changePage(lastPage); }
@@ -1140,44 +1086,45 @@
             else if(platform === 'messenger') window.open(`fb-messenger://share/?link=${encodeURIComponent(url)}`, '_blank');
             document.getElementById('share-menu').classList.add('hidden');
         }
+        
         async function submitForm(e) {
-    e.preventDefault();
-    const form = e.target;
-    const btn = form.querySelector('button[type="submit"]');
-    const originalText = btn.innerText;
-    
-    btn.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i> Илгээж байна...';
-    btn.disabled = true;
+            e.preventDefault();
+            const form = e.target;
+            const btn = form.querySelector('button[type="submit"]');
+            const originalText = btn.innerText;
+            
+            btn.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i> Илгээж байна...';
+            btn.disabled = true;
 
-    const data = new FormData(form);
-    
-    try {
-        const response = await fetch(form.action, {
-            method: form.method,
-            body: data,
-            headers: { 'Accept': 'application/json' }
-        });
+            const data = new FormData(form);
+            
+            try {
+                const response = await fetch(form.action, {
+                    method: form.method,
+                    body: data,
+                    headers: { 'Accept': 'application/json' }
+                });
 
-        if (response.ok) {
-            btn.innerHTML = '<i class="fas fa-check mr-2"></i> Захиалга үүслээ!';
-            btn.style.background = '#22c55e';
-            btn.style.color = '#fff';
-            form.reset();
-            setTimeout(() => {
+                if (response.ok) {
+                    btn.innerHTML = '<i class="fas fa-check mr-2"></i> Захиалга үүслээ!';
+                    btn.style.background = '#22c55e';
+                    btn.style.color = '#fff';
+                    form.reset();
+                    setTimeout(() => {
+                        btn.innerText = originalText;
+                        btn.style.background = '';
+                        btn.style.color = '';
+                        btn.disabled = false;
+                    }, 5000);
+                } else {
+                    throw new Error('Алдаа гарлаа');
+                }
+            } catch (error) {
+                alert("Илгээхэд алдаа гарлаа. Дахин оролдоно уу.");
                 btn.innerText = originalText;
-                btn.style.background = '';
-                btn.style.color = '';
                 btn.disabled = false;
-            }, 5000);
-        } else {
-            throw new Error('Алдаа гарлаа');
+            }
         }
-    } catch (error) {
-        alert("Илгээхэд алдаа гарлаа. Дахин оролдоно уу.");
-        btn.innerText = originalText;
-        btn.disabled = false;
-    }
-}
 
         // --- AI FEATURES ---
         function toggleAiChat() {
@@ -1196,7 +1143,6 @@
 
             const chatContainer = document.getElementById('ai-chat-messages');
             
-            // Append User Message
             chatContainer.innerHTML += `
                 <div class="bg-brandBlue p-3 rounded-xl rounded-tr-none border border-brandBlue/30 self-end max-w-[85%] text-white shadow-sm leading-relaxed ml-auto">
                     ${msg}
@@ -1205,7 +1151,6 @@
             inputEl.value = '';
             chatContainer.scrollTop = chatContainer.scrollHeight;
 
-            // Append Loading Indicator
             const loadingId = 'loading-' + Date.now();
             chatContainer.innerHTML += `
                 <div id="${loadingId}" class="bg-white p-4 rounded-xl rounded-tl-none border border-gray-100 self-start max-w-[85%] shadow-sm">
@@ -1219,7 +1164,6 @@
 
             const reply = await fetchGeminiAPI(msg, systemPrompt);
 
-            // Remove loading and append AI response
             document.getElementById(loadingId).remove();
             chatContainer.innerHTML += `
                 <div class="bg-white p-3 rounded-xl rounded-tl-none border border-gray-100 self-start max-w-[85%] text-gray-700 shadow-sm leading-relaxed">
@@ -1255,13 +1199,11 @@
         }
 
         // ============ FLIGHT SEARCH FUNCTIONS ============
-        // Shared pax state
         let fPaxAdult = 1, fPaxChild = 0, fPaxInfant = 0;
         let fTripType = 'oneway';
         let fPaxAdult2 = 1, fPaxChild2 = 0, fPaxInfant2 = 0;
         let fTripType2 = 'oneway';
 
-        // Set today as default date
         window.addEventListener('DOMContentLoaded', function() {
             const today = new Date().toISOString().split('T')[0];
             const tomorrow = new Date(Date.now() + 86400000).toISOString().split('T')[0];
@@ -1369,13 +1311,11 @@
         }
 
         function openAviasales(from, to, depart, ret, adults, children, infants, tripType) {
-            // Format date YYYYMMDD -> DDMM
             const formatDate = (d) => { if(!d) return ''; const parts = d.split('-'); return parts[2] + parts[1]; };
             
             const dDate = formatDate(depart);
             const rDate = formatDate(ret);
 
-            // Build Aviasales URL (Travelpayouts partner link)
             let url = `https://www.aviasales.com/search/${encodeURIComponent(from.substring(0,3).toUpperCase())}${dDate}${encodeURIComponent(to.substring(0,3).toUpperCase())}`;
             
             if(tripType === 'roundtrip' && rDate) {
@@ -1389,7 +1329,6 @@
             window.open(url, '_blank');
         }
 
-        // Close dropdowns when clicking outside
         document.addEventListener('click', function(e) {
             if(!e.target.closest('#pax-box-trigger')) {
                 const d = document.getElementById('pax-dropdown');
@@ -1403,5 +1342,5 @@
 
         document.addEventListener('DOMContentLoaded', init);
     </script>
-https://formspree.io/f/mjgzeprn
+</body>
 </html>
