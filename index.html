@@ -338,41 +338,31 @@
         <div class="py-24 relative overflow-hidden bg-cover bg-center" style="background-image: url('https://images.pexels.com/photos/10332840/pexels-photo-10332840.jpeg?auto=compress&cs=tinysrgb&w=1920');">
             <div class="absolute inset-0 bg-brandBlue/85 backdrop-blur-[2px]"></div>
             <div class="container mx-auto px-4 flex flex-col lg:flex-row gap-16 relative z-10">
-            div class="lg:w-2/5">
-                    <span class="text-brandYellow font-bold uppercase tracking-[0.2em] text-sm">ЗУРВАС</span>
-                    <h2 class="section-title text-white mt-3 mb-8 leading-tight">Яагаад Magnet Way-ийг сонгох вэ?</h2>
-                    <p class="text-white mb-10 text-lg leading-relaxed font-medium">Magnet way нь Монголдоо тэргүүлэх аялал жуулчлалын компаниудын нэг бөгөөд 2015 оноос хойших арвин туршлага, найдвартай үйл ажиллагаагаараа салбартаа танигдсан компани юм.</p>
-                    <div class="bg-white/10 p-6 rounded-2xl border-l-4 border-brandYellow backdrop-blur inline-block shadow-lg">
-                        <h3 class="text-3xl font-black text-brandYellow font-serif">10+ ЖИЛИЙН</h3>
-                        <p class="text-white mt-2 font-bold uppercase tracking-wider text-xs">Туршлага (Баг бүрэлдэхүүн)</p>
-                    </div>
+          <section id="contact-section" class="py-20 bg-white">
+        <div class="container mx-auto px-4 max-w-2xl">
+            <div class="text-center mb-12">
+                <span class="text-brandYellow font-bold uppercase tracking-[0.2em] text-xs">ХОЛБОО БАРИХ</span>
+                <h2 class="section-title text-brandBlue mt-3 mb-6">Бидэнд зурвас илгээх</h2>
+            </div>
+            <form action="https://formspree.io/f/mjgzeprn" method="POST" class="space-y-6 bg-brandLight p-8 md:p-12 rounded-3xl border border-gray-100 shadow-xl">
+                <div>
+                    <label class="text-xs font-bold text-brandGray uppercase block mb-3">Таны нэр</label>
+                    <input type="text" name="name" required class="w-full bg-white border border-gray-200 p-4 rounded-xl focus:outline-none focus:ring-2 focus:ring-brandYellow transition text-sm font-bold" placeholder="Нэрээ бичнэ үү">
                 </div>
-                <div class="lg:w-3/5 grid grid-cols-1 sm:grid-cols-2 gap-x-10 gap-y-12">
-                    <div>
-                        <div class="w-14 h-14 bg-brandYellow text-brandBlue rounded-xl flex items-center justify-center text-2xl mb-5 shadow-md"><i class="fas fa-users"></i></div>
-                        <h4 class="text-xl font-bold mb-3 font-serif text-brandYellow">Найдвартай, туршлагатай хамт олон</h4>
-                        <p class="text-white leading-relaxed text-sm">Аяллын мэргэшсэн шилдгийн шилдэг экспертүүд таны хүссэн улс руу мэргэжлийн өндөр төвшинд таны аяллыг урлах болно.</p>
-                    </div>
-                    <div>
-                        <div class="w-14 h-14 bg-brandYellow text-brandBlue rounded-xl flex items-center justify-center text-2xl mb-5 shadow-md"><i class="fas fa-shield-alt"></i></div>
-                        <h4 class="text-xl font-bold mb-3 font-serif text-brandYellow">Аюулгүй, баталгаатай үйлчилгээ</h4>
-                        <p class="text-white leading-relaxed text-sm">Таны тав тух, аюулгүй байдлыг нэн тэргүүнд тавина.</p>
-                    </div>
+                <div>
+                    <label class="text-xs font-bold text-brandGray uppercase block mb-3">И-мэйл хаяг</label>
+                    <input type="email" name="email" required class="w-full bg-white border border-gray-200 p-4 rounded-xl focus:outline-none focus:ring-2 focus:ring-brandYellow transition text-sm font-bold" placeholder="example@mail.com">
+                </div>
+                <div>
+                    <label class="text-xs font-bold text-brandGray uppercase block mb-3">Зурвас</label>
+                    <textarea name="message" required rows="5" class="w-full bg-white border border-gray-200 p-4 rounded-xl focus:outline-none focus:ring-2 focus:ring-brandYellow transition text-sm font-bold" placeholder="Таны асуулт эсвэл хүсэлт..."></textarea>
+                </div>
+                <button type="submit" class="w-full btn-animated font-bold py-5 rounded-xl shadow-lg uppercase tracking-widest text-sm text-brandBlue">Зурвас илгээх</button>
             </form>
         </div>
     </section>
 
     <footer class="relative text-white pt-20 pb-10 border-t-[8px] border-brandYellow mt-16 bg-cover bg-center" style="background-image: url('https://images.pexels.com/photos/1450353/pexels-photo-1450353.jpeg?auto=compress&cs=tinysrgb&w=1920');">
-                    <div>
-                        <div class="w-14 h-14 bg-brandYellow text-brandBlue rounded-xl flex items-center justify-center text-2xl mb-5 shadow-md"><i class="fas fa-couch"></i></div>
-                        <h4 class="text-xl font-bold mb-3 font-serif text-brandYellow">Тав тухтай, сэтгэл амар аялал</h4>
-                        <p class="text-white leading-relaxed text-sm">Бүх зохион байгуулалтыг бид хариуцна.</p>
-                    </div>
-                    <div>
-                        <div class="w-14 h-14 bg-brandYellow text-brandBlue rounded-xl flex items-center justify-center text-2xl mb-5 shadow-md"><i class="fas fa-hand-holding-usd"></i></div>
-                        <h4 class="text-xl font-bold mb-3 font-serif text-brandYellow">Төлбөрийн уян хатан нөхцөл</h4>
-                        <p class="text-white leading-relaxed text-sm">Төсөвт тохирсон олон төрлийн аяллын багц, хөнгөлөлт, урамшуулал, хуваан төлөх боломжуудыг санал болгоно.</p>
-                    </div>
                     <div>
                         <div class="w-14 h-14 bg-brandYellow text-brandBlue rounded-xl flex items-center justify-center text-2xl mb-5 shadow-md"><i class="fas fa-handshake"></i></div>
                         <h4 class="text-xl font-bold mb-3 font-serif text-brandYellow">Итгэл даах хамтрагч</h4>
