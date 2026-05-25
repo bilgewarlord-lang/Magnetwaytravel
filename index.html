@@ -6,7 +6,7 @@
     <title>Magnet Way Travel | Таны аяллын найдвартай түнш</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Mongolian&family=Noto+Sans:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     
     <script>
         tailwind.config = {
@@ -22,15 +22,15 @@
                         cream: '#F5F0E8'
                     },
                     fontFamily: {
-                        sans: ['Montserrat', 'sans-serif'],
-                        serif: ['Playfair Display', 'serif'],
+                        sans: ['Noto Sans', 'Noto Sans Mongolian', 'sans-serif'],
+                        serif: ['Noto Sans', 'Noto Sans Mongolian', 'sans-serif'],
                     }
                 }
             }
         }
     </script>
     <style>
-        body { font-family: 'Montserrat', sans-serif; background-color: #F8F9FA; overflow-x: hidden; scroll-behavior: smooth; color: #2D3748; }
+        body { font-family: 'Noto Sans', 'Noto Sans Mongolian', sans-serif; background-color: #F8F9FA; overflow-x: hidden; scroll-behavior: smooth; color: #2D3748; }
         
         .section-title { font-weight: 800; text-transform: uppercase; font-size: 2.25rem; line-height: 1.2; letter-spacing: 0.02em; }
         @media (max-width: 768px) { .section-title { font-size: 1.875rem; } }
@@ -41,34 +41,34 @@
         .nav-item:hover, .nav-active { color: #FFD700; }
         .nav-item::after { content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 3px; background-color: #FFD700; transition: width 0.3s ease-in-out; }
         .nav-item:hover::after, .nav-active::after { width: 100%; }
-
+ 
         .spa-page { display: none; opacity: 0; animation: fadeIn 0.4s forwards; }
         .page-visible { display: block; }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
-
+ 
         .logo-enhanced { mix-blend-mode: multiply; filter: contrast(130%) saturate(150%); }
-
+ 
         .h-scroll-container { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; gap: 1.5rem; padding-bottom: 1.5rem; padding-top: 1rem; }
         .h-scroll-container::-webkit-scrollbar { display: none; }
         .h-scroll-item { scroll-snap-align: start; flex: 0 0 calc(100% - 2rem); }
         @media (min-width: 768px) { .h-scroll-item { flex: 0 0 calc(50% - 1rem); } }
         @media (min-width: 1024px) { .h-scroll-item { flex: 0 0 calc(33.333% - 1rem); } }
-
+ 
         .btn-animated { background: linear-gradient(90deg, #FFD700 0%, #F59E0B 50%, #FFD700 100%); background-size: 200% auto; transition: all 0.4s ease; color: #0A3161; }
         .btn-animated:hover { background-position: right center; box-shadow: 0 8px 20px rgba(255, 215, 0, 0.4); transform: translateY(-2px); }
-
+ 
         .marquee-wrapper { display: flex; overflow: hidden; width: 100%; padding: 30px 0; }
         .marquee-content { display: flex; animation: marquee 40s linear infinite; }
         .marquee-content:hover { animation-play-state: paused; }
         @keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-100%); } }
-
+ 
         .card-shadow { box-shadow: 0 10px 30px rgba(10, 49, 97, 0.08); transition: transform 0.3s, box-shadow 0.3s; }
         .card-shadow:hover { transform: translateY(-5px); box-shadow: 0 15px 40px rgba(10, 49, 97, 0.15); }
         
         .weather-scroll::-webkit-scrollbar { height: 6px; }
         .weather-scroll::-webkit-scrollbar-track { background: #f1f1f1; border-radius: 4px;}
         .weather-scroll::-webkit-scrollbar-thumb { background: #FFD700; border-radius: 4px; }
-
+ 
         .typing-indicator span { display: inline-block; width: 6px; height: 6px; background-color: #9CA3AF; border-radius: 50%; animation: typing 1.4s infinite ease-in-out both; }
         .typing-indicator span:nth-child(1) { animation-delay: -0.32s; }
         .typing-indicator span:nth-child(2) { animation-delay: -0.16s; }
@@ -79,7 +79,7 @@
     </style>
 </head>
 <body class="text-brandText font-sans">
-
+ 
     <div class="bg-brandBlue text-white py-2.5 hidden md:block text-[12px] font-medium border-b border-brandYellow/30 tracking-wider">
         <div class="container mx-auto px-4 flex justify-between items-center">
             <div class="flex gap-8">
@@ -93,7 +93,7 @@
             </div>
         </div>
     </div>
-
+ 
     <nav class="glass-nav sticky top-0 z-50">
         <div class="container mx-auto px-4 py-3 flex justify-between items-center">
             <div class="flex items-center cursor-pointer" onclick="changePage('home')">
@@ -112,7 +112,7 @@
                 <span onclick="changePage('news')" id="nav-news" class="nav-item">Мэдээлэл</span>
                 <span onclick="changePage('about')" id="nav-about" class="nav-item">Бидний тухай</span>
             </div>
-
+ 
             <button class="lg:hidden text-2xl text-brandBlue" onclick="document.getElementById('mobile-menu').classList.toggle('hidden')">
                 <i class="fas fa-bars"></i>
             </button>
@@ -127,7 +127,7 @@
             <span onclick="changePage('about')" class="font-bold text-brandBlue pb-3 cursor-pointer uppercase text-sm tracking-wider">Бидний тухай</span>
         </div>
     </nav>
-
+ 
     <div id="page-home" class="spa-page page-visible">
         
         <div id="hero-slider" class="relative h-[75vh] md:h-[85vh] bg-cover bg-center transition-all duration-700">
@@ -152,7 +152,7 @@
                         Хөтөлбөр үзэх
                     </button>
                 </div>
-
+ 
                 <div id="hero-text-indicators" class="absolute bottom-10 left-8 md:left-16 flex gap-8 overflow-x-auto max-w-full text-white/50 text-sm font-bold uppercase tracking-widest pb-2">
                     <span class="cursor-pointer transition whitespace-nowrap" onclick="setSlide(0)">Япон 4 хот</span>
                     <span class="cursor-pointer transition whitespace-nowrap" onclick="setSlide(1)">Бээжин-Шанхай</span>
@@ -162,7 +162,7 @@
                 </div>
             </div>
         </div>
-
+ 
         <div class="bg-brandBlue py-10 border-t border-brandYellow/20">
             <div class="container mx-auto px-4">
                 <div class="flex items-center justify-between mb-6">
@@ -177,12 +177,12 @@
                         Бүрэн хайлт →
                     </button>
                 </div>
-
+ 
                 <div class="flex gap-2 mb-5">
                     <button onclick="setTripType('oneway')" id="tab-oneway" class="px-5 py-2 rounded-full text-xs font-bold uppercase tracking-wider bg-brandYellow text-brandBlue transition">Нэг чиглэл</button>
                     <button onclick="setTripType('roundtrip')" id="tab-roundtrip" class="px-5 py-2 rounded-full text-xs font-bold uppercase tracking-wider bg-white/10 text-white hover:bg-white/20 transition">Тойрог</button>
                 </div>
-
+ 
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-3">
                     <div class="bg-white/10 backdrop-blur rounded-2xl p-4 border border-white/20 hover:border-brandYellow/50 transition">
                         <label class="text-white/60 text-xs font-bold uppercase tracking-widest block mb-2">✈ Хаанаас</label>
@@ -236,13 +236,13 @@
                         </div>
                     </div>
                 </div>
-
+ 
                 <button onclick="searchFlights()" class="mt-4 w-full md:w-auto md:px-16 bg-brandYellow text-brandBlue font-black py-4 rounded-2xl text-base uppercase tracking-widest shadow-lg hover:opacity-90 transition flex items-center justify-center gap-3">
                     <i class="fas fa-search"></i> Нислэг хайх
                 </button>
             </div>
         </div>
-
+ 
         <div class="bg-white border-b border-gray-200 py-10">
             <div class="container mx-auto px-4">
                 <div class="flex flex-col md:flex-row items-center justify-between gap-8 mb-8">
@@ -271,7 +271,7 @@
                 </div>
             </div>
         </div>
-
+ 
         <div class="bg-brandLight py-16 border-b border-gray-200 text-center">
             <div class="container mx-auto px-4 grid grid-cols-2 md:grid-cols-4 gap-10">
                 <div>
@@ -292,14 +292,14 @@
                 </div>
             </div>
         </div>
-
+ 
         <div class="py-24 container mx-auto px-4">
             <div class="text-center mb-16">
                 <span class="text-brandYellow font-bold uppercase tracking-[0.2em] text-sm">ГАДААД АЯЛЛУУД</span>
                 <h2 class="section-title text-brandBlue mt-3 mb-6">Аяллын Сонголтууд</h2>
                 <p class="text-brandGray max-w-3xl mx-auto text-lg leading-relaxed font-medium">Манай компани нь та болон танай хамт олон, гэр бүл, найз нөхдөд зориулан чанартай, найдвартай аяллын багцуудыг санал болгож байна.</p>
             </div>
-
+ 
             <div class="relative group">
                 <div id="h-scroll-tours" class="h-scroll-container"></div>
                 <button onclick="scrollTours(-1)" class="absolute left-0 top-1/2 -translate-y-1/2 -ml-5 w-14 h-14 bg-white border border-gray-100 rounded-full shadow-xl text-brandBlue hover:bg-brandYellow hover:text-white transition z-10 flex items-center justify-center hidden md:flex text-xl"><i class="fas fa-chevron-left"></i></button>
@@ -312,7 +312,7 @@
                 </button>
             </div>
         </div>
-
+ 
         <div class="py-24 relative overflow-hidden bg-cover bg-center" style="background-image: url('https://images.pexels.com/photos/10332840/pexels-photo-10332840.jpeg?auto=compress&cs=tinysrgb&w=1920');">
             <div class="absolute inset-0 bg-brandBlue/85 backdrop-blur-[2px]"></div>
             <div class="container mx-auto px-4 flex flex-col lg:flex-row gap-16 relative z-10">
@@ -359,7 +359,7 @@
                 </div>
             </div>
         </div>
-
+ 
         <div class="bg-white py-24">
             <div class="container mx-auto px-4">
                 <div class="text-center mb-16">
@@ -370,7 +370,7 @@
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-8" id="highlight-grid"></div>
             </div>
         </div>
-
+ 
         <div class="py-24 bg-brandLight overflow-hidden border-t border-gray-200">
             <div class="container mx-auto px-4 text-center mb-12">
                 <span class="text-brandYellow font-bold uppercase tracking-[0.2em] text-xs">СЭТГЭГДЭЛ</span>
@@ -385,9 +385,9 @@
                 <div class="marquee-content gap-6 px-4" id="marquee-2" style="animation-direction: reverse; animation-duration: 50s;"></div>
             </div>
         </div>
-
+ 
     </div>
-
+ 
     <div id="page-tours-intl" class="spa-page py-20 bg-white min-h-screen">
         <div class="container mx-auto px-4">
             <h2 class="section-title text-brandBlue mb-6 text-center">ГАДААД АЯЛЛУУД</h2>
@@ -395,7 +395,7 @@
             <div id="grid-intl" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8"></div>
         </div>
     </div>
-
+ 
     <div id="page-tours-dom" class="spa-page py-20 bg-brandLight min-h-screen">
         <div class="container mx-auto px-4">
             <h2 class="section-title text-brandBlue mb-6 text-center">ДОТООД АЯЛЛУУД</h2>
@@ -403,7 +403,7 @@
             <div id="grid-dom" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8"></div>
         </div>
     </div>
-
+ 
     <div id="page-news" class="spa-page py-20 bg-white min-h-screen">
         <div class="container mx-auto px-4">
             <h2 class="section-title text-brandBlue mb-6 text-center">МЭДЭЭ МЭДЭЭЛЭЛ</h2>
@@ -411,7 +411,7 @@
             <div id="grid-news" class="grid grid-cols-1 md:grid-cols-3 gap-10"></div>
         </div>
     </div>
-
+ 
     <div id="page-about" class="spa-page py-20 bg-brandLight min-h-screen">
         <div class="container mx-auto px-4 max-w-4xl text-center">
             <img src="932F2A9E-33F7-497F-A60B-8BDB579F465B.png" class="h-28 mx-auto mb-8 logo-enhanced object-contain">
@@ -423,7 +423,7 @@
             </div>
         </div>
     </div>
-
+ 
     <div id="page-terms" class="spa-page py-20 bg-white min-h-screen">
         <div class="container mx-auto px-4 max-w-4xl">
             <button onclick="goBack()" class="mb-8 font-bold text-brandBlue hover:text-brandYellow transition uppercase text-sm flex items-center"><i class="fas fa-arrow-left mr-3"></i> Буцах</button>
@@ -437,7 +437,7 @@
             </div>
         </div>
     </div>
-
+ 
     <div id="page-detail" class="spa-page bg-brandLight pb-24 min-h-screen">
         <div class="relative h-[50vh] md:h-[60vh] bg-brandBlue">
             <img id="dt-img" src="" class="w-full h-full object-cover opacity-60" alt="Cover">
@@ -462,7 +462,7 @@
                 </div>
             </div>
         </div>
-
+ 
         <div class="container mx-auto px-4 py-16 flex flex-col lg:flex-row gap-12">
             <div class="flex-1">
                 <div class="bg-white p-8 md:p-10 rounded-3xl border border-gray-100 shadow-lg mb-12">
@@ -493,7 +493,7 @@
                         <input type="hidden" name="Аяллын_нэр" id="hidden-tour-name">
                         <input type="hidden" name="Огноо" id="hidden-tour-date">
                         <input type="hidden" name="Нийт_үнэ" id="hidden-total-price">
-
+ 
                         <div>
                             <label class="text-xs font-bold text-brandGray uppercase block mb-3">Явах огноог сонгоно уу</label>
                             <div class="relative">
@@ -559,7 +559,7 @@
             <div class="text-center mt-16"><button onclick="changePage('tours-intl')" class="border-2 border-brandBlue text-brandBlue font-bold px-12 py-4 rounded-full hover:bg-brandBlue hover:text-white transition uppercase text-sm tracking-widest shadow-sm">Бүх аяллуудыг үзэх</button></div>
         </div>
     </div>
-
+ 
     <div id="page-news-detail" class="spa-page bg-white min-h-screen pb-20 pt-8">
         <div class="container mx-auto px-4 max-w-4xl">
             <button onclick="goBack()" class="text-brandBlue font-bold text-sm uppercase mb-6 hover:text-brandYellow transition"><i class="fas fa-arrow-left mr-2"></i> Буцах</button>
@@ -570,7 +570,7 @@
             <div id="nd-content" class="text-brandText text-lg space-y-6 leading-relaxed font-medium"></div>
         </div>
     </div>
-
+ 
     <div id="page-flights" class="spa-page bg-brandLight min-h-screen pb-20">
         <div class="bg-brandBlue py-16">
             <div class="container mx-auto px-4 text-center">
@@ -579,14 +579,14 @@
                 <p class="text-white/70 mt-4 text-lg font-medium max-w-2xl mx-auto">Дэлхийн 1000+ авиа компанийн нислэгийг харьцуулж хамгийн хямд үнээр захиалаарай</p>
             </div>
         </div>
-
+ 
         <div class="container mx-auto px-4 -mt-6">
             <div class="bg-white rounded-3xl shadow-2xl border border-gray-100 p-8 md:p-10">
                 <div class="flex gap-2 mb-6">
                     <button onclick="setTripType2('oneway')" id="tab2-oneway" class="px-6 py-2.5 rounded-full text-sm font-bold uppercase tracking-wider bg-brandBlue text-white transition">Нэг чиглэл</button>
                     <button onclick="setTripType2('roundtrip')" id="tab2-roundtrip" class="px-6 py-2.5 rounded-full text-sm font-bold uppercase tracking-wider bg-gray-100 text-brandGray hover:bg-gray-200 transition">Тойрог</button>
                 </div>
-
+ 
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
                     <div class="border-2 border-gray-100 rounded-2xl p-4 hover:border-brandYellow transition focus-within:border-brandYellow">
                         <label class="text-brandGray text-xs font-bold uppercase tracking-widest block mb-1">✈ Хаанаас</label>
@@ -598,7 +598,7 @@
                         <button onclick="swapCities2()" class="absolute -left-5 top-1/2 -translate-y-1/2 w-10 h-10 bg-brandYellow rounded-full flex items-center justify-center text-brandBlue font-black shadow-lg hover:scale-110 transition">⇄</button>
                     </div>
                 </div>
-
+ 
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
                     <div class="border-2 border-gray-100 rounded-2xl p-4 hover:border-brandYellow transition focus-within:border-brandYellow">
                         <label class="text-brandGray text-xs font-bold uppercase tracking-widest block mb-1">📅 Явах огноо</label>
@@ -643,12 +643,12 @@
                         </div>
                     </div>
                 </div>
-
+ 
                 <button onclick="searchFlights2()" class="w-full bg-brandBlue text-white font-black py-5 rounded-2xl text-lg uppercase tracking-widest shadow-xl hover:opacity-90 transition flex items-center justify-center gap-3">
                     <i class="fas fa-search text-brandYellow"></i> Нислэг хайх
                 </button>
             </div>
-
+ 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-10">
                 <div class="bg-white rounded-2xl p-6 border border-gray-100 shadow-md text-center card-shadow">
                     <div class="w-12 h-12 bg-blue-50 text-brandBlue rounded-xl flex items-center justify-center text-2xl mx-auto mb-4">🛫</div>
@@ -666,7 +666,7 @@
                     <p class="text-brandGray text-sm font-medium">Карт, дижитал төлбөрөөр шууд захиалж тийзээ авах боломжтой</p>
                 </div>
             </div>
-
+ 
             <div class="mt-10 bg-brandBlue rounded-3xl p-8 text-center">
                 <p class="text-white font-bold text-lg mb-2">Нислэгийн асуулт байна уу?</p>
                 <p class="text-white/70 text-sm mb-5">Манай менежерүүд танд туслахад бэлэн!</p>
@@ -681,7 +681,7 @@
             </div>
         </div>
     </div>
-
+ 
     <footer class="relative text-white pt-20 pb-10 border-t-[8px] border-brandYellow mt-16 bg-cover bg-center" style="background-image: url('https://images.pexels.com/photos/1450353/pexels-photo-1450353.jpeg?auto=compress&cs=tinysrgb&w=1920');">
         <div class="absolute inset-0 bg-brandBlue/90 backdrop-blur-sm"></div>
         <div class="container mx-auto px-4 relative z-10">
@@ -703,11 +703,11 @@
             </div>
         </div>
     </footer>
-
+ 
     <button onclick="toggleAiChat()" class="fixed bottom-6 right-6 w-16 h-16 bg-gradient-to-r from-purple-500 to-pink-500 text-white rounded-full shadow-2xl flex items-center justify-center text-3xl hover:scale-110 transition z-50">
         ✨
     </button>
-
+ 
     <div id="ai-chat-window" class="hidden fixed bottom-28 right-6 w-80 md:w-96 bg-white rounded-2xl shadow-2xl border border-gray-100 flex-col z-50 overflow-hidden font-sans">
         <div class="bg-gradient-to-r from-purple-600 to-brandBlue text-white p-4 flex justify-between items-center">
             <h3 class="font-bold text-sm uppercase tracking-widest"><i class="fas fa-robot mr-2"></i> AI Аяллын Зөвлөх</h3>
@@ -723,7 +723,7 @@
             <button onclick="sendAiMessage()" class="w-10 h-10 bg-purple-600 text-white rounded-full flex items-center justify-center hover:bg-purple-700 transition shadow-sm"><i class="fas fa-paper-plane"></i></button>
         </div>
     </div>
-
+ 
     <div id="ai-tips-modal" class="modal-overlay font-sans">
         <div class="bg-white rounded-3xl w-full max-w-2xl max-h-[85vh] overflow-hidden flex flex-col shadow-2xl">
             <div class="bg-gradient-to-r from-purple-600 to-pink-500 text-white p-6 flex justify-between items-center">
@@ -736,7 +736,7 @@
             </div>
         </div>
     </div>
-
+ 
     <script>
         const toursData = [
             { id: "h1", cat: "intl", feat: true, loc: "Бээжин-Шанхай", title: "БЭЭЖИН ШАНХАЙ ХОСОЛСОН АЯЛАЛ", dur: "8 хоног", priceStr: "2,790,000₮", aPrice: 2790000, cPrice: 2490000, iPrice: 650000, type: "4 Нислэгтэй", dates: ["05/12", "05/19", "05/26", "06/02"], img: "https://images.pexels.com/photos/16460876/pexels-photo-16460876.jpeg?auto=compress&cs=tinysrgb&w=1920", desc: "Орчин үеийн хөгжил ба түүхэн соёл төгс хосолсон мега хотуудын аялал. Диснейлэнд, Юниверсал парк багтсан 4 нислэгтэй аялал.", 
@@ -762,7 +762,7 @@
               included: ["УБ-Саньяа-УБ шууд нислэг", "5 одтой зочид буудал", "Өглөөний цай", "Атлантис усан парк, Сармагчингийн арал тасалбар", "Даатгал"],
               excluded: ["Өдөр, оройн хоол", "Хувийн зардал", "Ганцаарлах төлбөр"],
               prog: [ { d: "Өдөр 1: УБ - Саньяа", t: "Шууд нислэгээр Хайнань аралд бууна." }, { d: "Өдөр 2-3: Шөнийн Саньяа", t: "Зайсан толгойгоос хотыг харах, далайн эрэгт амрах." }, { d: "Өдөр 4-5: Далайн аялал", t: "Задгай далайд завиар аялах, нисдэг тэрэг." }, { d: "Өдөр 6: Атлантис", t: "Атлантис усан паркад бүтэн өдөр тоглоно." }, { d: "Өдөр 7-8: Сармагчингийн арал", t: "Сармагчингийн арал болон шилэн гүүр үзээд буцна." }] },
-
+ 
             { id: "t5", cat: "intl", feat: false, loc: "Япон", title: "ЯПОН 4 ХОТЫН АЯЛАЛ", dur: "5 хоног", priceStr: "4,990,000₮", aPrice: 4990000, cPrice: 3990000, iPrice: 650000, type: "Шууд нислэг", dates: ["05/28", "06/10", "06/25"], img: "https://images.pexels.com/photos/2451038/pexels-photo-2451038.jpeg?auto=compress&cs=tinysrgb&w=800", desc: "Токио, Осака, Киото зэрэг 4 хотыг нэг зэрэг үзэх онцгой аялал.", 
               features: ["Шууд нислэгтэй", "4 хотыг нэг зэрэг", "Шинкансэн туршлага", "Мэргэжлийн хөтөчтэй"],
               included: ["УБ–Хирошима–УБ шууд нислэгийн тийз", "Аяллын даатгал", "3 одтой зочид буудал", "Хөтөлбөрт заагдсан хоол, унаа", "Хөтөлбөрт заагдсан үзвэр, үйлчилгээ", "Япон улсын цахим визний хураамж"],
@@ -805,7 +805,7 @@
               included: ["Унаа", "Жуулчны бааз", "Хоол", "Хөтөч", "Музейн тасалбар"], excluded: ["Хувийн зардал"],
               prog: [ { d: "Өдөр 1: Элсэн тасархай - Хархорин", t: "Элсэн тасархайгаар дайрч Хархоринд ирнэ. Эрдэнэзуу хийд, музей үзнэ." }, { d: "Өдөр 2: Орхоны хүрхрээ", t: "Улаан цутгалан хүрхрээ үзэж, морь унана." }, { d: "Өдөр 3: Буцах", t: "Улаанбаатар руу хөдөлнө." }] }
         ];
-
+ 
         const newsData = [
             { id: "n1", date: "2026.05.15", tag: "Аялал", title: "Жанжиажэ хотын гайхамшигт цамхаг", desc: "Аватар киноны зураг авалт хийгдсэн Жанжиажэ байгалийн цогцолборт газрын тухай.", src: "Аяллын хөтөч", img: "https://images.pexels.com/photos/10332840/pexels-photo-10332840.jpeg?auto=compress&cs=tinysrgb&w=800",
               content: "<p>Жанжиажэ үндэсний цэцэрлэгт хүрээлэн нь Хятадын Хунань мужид байрладаг бөгөөд 1992 онд ЮНЕСКО-гийн дэлхийн өвд бүртгэгдсэн. Хамгийн алдартай нь \"Аватар\" киноны Халлелуяа уулын зураг авалтыг хийсэн 3,000 гаруй босоо чулуун багананууд юм.</p><p class='mt-4'>Мөн дэлхийн хамгийн өндөр, хамгийн хурдан гадаах цахилгаан шат болох 'Bailong Elevator' (Зуун луугийн цахилгаан шат) энд байдаг. Та энэ цахилгаан шатаар дээш гарч үүлсийн дээрээс гайхалтай үзэмжийг тольдох боломжтой.</p>" },
@@ -816,7 +816,7 @@
             { id: "n4", date: "2026.05.01", tag: "Зөвлөмж", title: "Аяллын журам, зөвлөмж", desc: "Гадаад руу аялахаар төлөвлөж буй хүмүүст хэрэгтэй виз, бичиг баримтын зөвлөмжүүд.", src: "Аяллын мэдээлэл", img: "https://images.pexels.com/photos/2108845/pexels-photo-2108845.jpeg?auto=compress&cs=tinysrgb&w=800",
               content: "<p>Гадаад улс руу аялахад хамгийн түрүүнд гадаад паспортын хүчинтэй хугацааг шалгах хэрэгтэй. Ихэнх улс орнууд хилээр нэвтрэхэд паспортын хүчинтэй хугацаа 6 сараас дээш байхыг шаарддаг.</p><p class='mt-4'>Мөн аяллын даатгалаа заавал хийлгэх, орон нутгийн цаг агаарт тохируулан хувцсаа бэлдэх, хувийн хэрэглээний эм тангаа (өвчин намдаах, ходоодны эм г.м) авч явахыг зөвлөж байна.</p>" }
         ];
-
+ 
         const reviews = [
             { name: "Болормаа Б.", loc: "Тайланд аялал", text: "Тайланд аялал маш гайхалтай байсан. Бүх зүйл маш сайн зохион байгуулагдсан, хоол, зочид буудал бүгд дээд зэргийн байсан. Дахин аялна!" },
             { name: "Энхбат Д.", loc: "Бали аялал", text: "Бали аялал бидний гэр бүлийн хамгийн сайхан дурсамж болсон. Баг маш мэргэжлийн түвшинд ажилласан. Баярлалаа!" },
@@ -833,14 +833,14 @@
             { name: "Сүхбат Ж.", loc: "Япон 4 хот", text: "Шинкансэн хурдны галт тэрэг үнэхээр тухтай. 4 хотыг богино хугацаанд үзсэн маш сайн хөтөлбөр." },
             { name: "Жаргал С.", loc: "Хайнань Саньяа", text: "Атлантис усан паркад бүтэн өдөр тоглох үнэхээр гоё байлаа. Далайн эрэг нь цэвэрхэн тухтай." }
         ];
-
+ 
         let lastPage = 'home';
         let currentHeroId = 'h1';
         let curTourObj = null;
         let paxAdult = 1;
         let paxChild = 0;
         let paxInfant = 0;
-
+ 
         const apiKey = "";
         
         async function fetchGeminiAPI(userQuery, systemInstruction) {
@@ -851,10 +851,10 @@
                 contents: [{ parts: [{ text: userQuery }] }],
                 systemInstruction: { parts: [{ text: systemInstruction }] }
             };
-
+ 
             const maxRetries = 5;
             const delays = [1000, 2000, 4000, 8000, 16000];
-
+ 
             for (let i = 0; i <= maxRetries; i++) {
                 try {
                     const response = await fetch(url, {
@@ -874,7 +874,7 @@
                 }
             }
         }
-
+ 
         function formatAIResponse(text) {
             return text
                 .replace(/\*\*(.*?)\*\*/g, '<strong class="text-brandBlue">$1</strong>')
@@ -903,7 +903,7 @@
             }
             setInterval(() => { curSlide = (curSlide + 1) % heroTours.length; updateHero(); }, 6000);
             updateHero();
-
+ 
             const renderHCard = (t) => `
                 <div class="h-scroll-item bg-white rounded-3xl overflow-hidden card-shadow flex flex-col h-full border border-gray-100 cursor-pointer group" onclick="showDetail('${t.id}')">
                     <div class="relative h-64 overflow-hidden">
@@ -941,13 +941,13 @@
                     </div>
                 </div>
             `;
-
+ 
             const allTours = toursData.filter(t => t.cat === 'intl');
             document.getElementById('h-scroll-tours').innerHTML = allTours.map(renderHCard).join('');
             document.getElementById('highlight-grid').innerHTML = heroTours.map(renderCard).join('');
             document.getElementById('grid-intl').innerHTML = allTours.map(renderCard).join('');
             document.getElementById('grid-dom').innerHTML = toursData.filter(t => t.cat === 'dom').map(renderCard).join('');
-
+ 
             const createReview = (r) => `
                 <div class="bg-white p-8 rounded-3xl shadow-sm border border-gray-100 w-96 flex-shrink-0 text-left flex flex-col h-auto whitespace-normal break-words">
                     <div class="flex text-brandYellow text-sm mb-4"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
@@ -966,7 +966,7 @@
             const m2 = reviews.slice(7, 14).map(createReview).join('');
             document.getElementById('marquee-1').innerHTML = m1 + m1;
             document.getElementById('marquee-2').innerHTML = m2 + m2;
-
+ 
             document.getElementById('grid-news').innerHTML = newsData.map(n => `
                 <div class="bg-white rounded-3xl overflow-hidden card-shadow cursor-pointer group border border-gray-100" onclick="showNews('${n.id}')">
                     <div class="relative h-56 overflow-hidden"><img src="${n.img}" class="w-full h-full object-cover group-hover:scale-105 transition duration-500"></div>
@@ -980,7 +980,7 @@
             `).join('');
             fetchWeather();
         }
-
+ 
         async function fetchWeather() {
             const resultDiv = document.getElementById('weather-result');
             resultDiv.innerHTML = `<div class="text-sm text-brandGray w-full text-center py-6 font-medium"><i class="fas fa-spinner fa-spin mr-2"></i> Цаг агаар уншиж байна...</div>`;
@@ -1009,7 +1009,7 @@
                 resultDiv.innerHTML = html;
             } catch (e) { resultDiv.innerHTML = `<span class="text-sm text-red-500 font-bold p-6">Мэдээлэл олдсонгүй. Дахин оролдоно уу.</span>`; }
         }
-
+ 
         function scrollTours(dir) { const container = document.getElementById('h-scroll-tours'); const scrollAmount = container.offsetWidth * 0.8 * dir; container.scrollBy({ left: scrollAmount, behavior: 'smooth' }); }
         
         function changePage(pageId) {
@@ -1021,7 +1021,7 @@
             window.scrollTo(0,0);
             if(pageId !== 'detail' && pageId !== 'news-detail' && pageId !== 'terms' && pageId !== 'privacy') lastPage = pageId;
         }
-
+ 
         function showDetail(id) {
             const t = toursData.find(x => x.id === id); if(!t) return;
             curTourObj = t; paxAdult = 1; paxChild = 0; paxInfant = 0; updatePaxUI();
@@ -1039,7 +1039,7 @@
             document.getElementById('dt-dates').innerHTML = t.dates.map(date => `<option value="${date}">${date}</option>`).join('');
             
             document.getElementById('hidden-tour-name').value = t.title;
-
+ 
             updateSeats();
             document.getElementById('dt-program').innerHTML = (t.prog || []).map((p, i) => `<div class="relative pl-12 pb-6"><div class="absolute left-[-20px] top-0 w-10 h-10 rounded-full bg-brandBlue text-brandYellow font-black flex items-center justify-center border-4 border-white shadow-md z-10 text-lg font-serif">${i+1}</div><div class="bg-white p-8 rounded-3xl border border-gray-100 shadow-sm hover:shadow-md transition"><h4 class="font-bold text-brandBlue mb-4 text-lg font-serif">${p.d}</h4><p class="body-text text-sm leading-relaxed">${p.t}</p></div></div>`).join('');
             
@@ -1055,7 +1055,7 @@
             `).join('');
             changePage('detail'); updatePricing();
         }
-
+ 
         function updateSeats() { document.getElementById('dt-seats').innerText = Math.floor(Math.random() * 11) + 10; }
         function updatePax(type, delta) { if(type === 'adult') paxAdult = Math.max(1, paxAdult + delta); if(type === 'child') paxChild = Math.max(0, paxChild + delta); if(type === 'infant') paxInfant = Math.max(0, paxInfant + delta); updatePaxUI(); updatePricing(); }
         function updatePaxUI() { document.getElementById('pax-adult').innerText = paxAdult; document.getElementById('pax-child').innerText = paxChild; document.getElementById('pax-infant').innerText = paxInfant; }
@@ -1074,7 +1074,7 @@
             document.getElementById('hidden-total-price').value = total.toLocaleString() + ' ₮';
             document.getElementById('hidden-tour-date').value = document.getElementById('dt-dates').value;
         }
-
+ 
         function goBack() { changePage(lastPage); }
         function toggleShareMenu(event) { if(event) event.stopPropagation(); document.getElementById('share-menu').classList.toggle('hidden'); }
         window.addEventListener('click', function(e) { const menu = document.getElementById('share-menu'); if (menu && !menu.classList.contains('hidden') && !e.target.closest('.share-container')) menu.classList.add('hidden'); });
@@ -1095,7 +1095,7 @@
             
             btn.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i> Илгээж байна...';
             btn.disabled = true;
-
+ 
             const data = new FormData(form);
             
             try {
@@ -1104,7 +1104,7 @@
                     body: data,
                     headers: { 'Accept': 'application/json' }
                 });
-
+ 
                 if (response.ok) {
                     btn.innerHTML = '<i class="fas fa-check mr-2"></i> Захиалга үүслээ!';
                     btn.style.background = '#22c55e';
@@ -1125,7 +1125,7 @@
                 btn.disabled = false;
             }
         }
-
+ 
         // --- AI FEATURES ---
         function toggleAiChat() {
             const chatWin = document.getElementById('ai-chat-window');
@@ -1135,12 +1135,12 @@
                 document.getElementById('ai-chat-input').focus();
             }
         }
-
+ 
         async function sendAiMessage() {
             const inputEl = document.getElementById('ai-chat-input');
             const msg = inputEl.value.trim();
             if(!msg) return;
-
+ 
             const chatContainer = document.getElementById('ai-chat-messages');
             
             chatContainer.innerHTML += `
@@ -1150,7 +1150,7 @@
             `;
             inputEl.value = '';
             chatContainer.scrollTop = chatContainer.scrollHeight;
-
+ 
             const loadingId = 'loading-' + Date.now();
             chatContainer.innerHTML += `
                 <div id="${loadingId}" class="bg-white p-4 rounded-xl rounded-tl-none border border-gray-100 self-start max-w-[85%] shadow-sm">
@@ -1158,12 +1158,12 @@
                 </div>
             `;
             chatContainer.scrollTop = chatContainer.scrollHeight;
-
+ 
             const toursContext = toursData.map(t => `- ${t.title} (${t.dur}): ${t.priceStr}. Онцлог: ${(t.features||[]).join(', ')}`).join('\n');
             const systemPrompt = `You are an AI Travel Advisor for 'Magnet Way Travel', a Mongolian travel agency. Always respond in the Mongolian language. Be friendly, helpful, concise and use emojis ✨🌴✈️. Base your recommendations on the following available tours:\n\n${toursContext}\n\nIf the user asks something unrelated to travel, politely steer the conversation back to the travel agency's services. Keep responses under 4 sentences if possible.`;
-
+ 
             const reply = await fetchGeminiAPI(msg, systemPrompt);
-
+ 
             document.getElementById(loadingId).remove();
             chatContainer.innerHTML += `
                 <div class="bg-white p-3 rounded-xl rounded-tl-none border border-gray-100 self-start max-w-[85%] text-gray-700 shadow-sm leading-relaxed">
@@ -1172,10 +1172,10 @@
             `;
             chatContainer.scrollTop = chatContainer.scrollHeight;
         }
-
+ 
         async function generateTourTips() {
             if(!curTourObj) return;
-
+ 
             const modal = document.getElementById('ai-tips-modal');
             const content = document.getElementById('ai-tips-content');
             
@@ -1186,31 +1186,31 @@
                     <span class="font-bold tracking-widest uppercase text-xs">AI зөвлөгөөг бэлтгэж байна...</span>
                 </div>
             `;
-
+ 
             const userPrompt = `Generate travel tips for this tour: ${curTourObj.title} (${curTourObj.loc})`;
             const sysPrompt = `You are an expert travel advisor for 'Magnet Way Travel'. Always respond in Mongolian. Generate a helpful, concise packing list and travel tips for the following tour:\n\nTitle: ${curTourObj.title}\nLocation: ${curTourObj.loc}\nDuration: ${curTourObj.dur}\n\nUse bullet points and emojis to make it easy to read. Structure it with '🎒 Юу бэлдэх вэ?' (What to pack) and '💡 Аяллын зөвлөгөө' (Travel tips). DO NOT invent prices or flights. Keep it highly relevant to the location's typical weather and activities.`;
-
+ 
             const reply = await fetchGeminiAPI(userPrompt, sysPrompt);
             content.innerHTML = formatAIResponse(reply);
         }
-
+ 
         function closeTourTipsModal() {
             document.getElementById('ai-tips-modal').classList.remove('active');
         }
-
+ 
         // ============ FLIGHT SEARCH FUNCTIONS ============
         let fPaxAdult = 1, fPaxChild = 0, fPaxInfant = 0;
         let fTripType = 'oneway';
         let fPaxAdult2 = 1, fPaxChild2 = 0, fPaxInfant2 = 0;
         let fTripType2 = 'oneway';
-
+ 
         window.addEventListener('DOMContentLoaded', function() {
             const today = new Date().toISOString().split('T')[0];
             const tomorrow = new Date(Date.now() + 86400000).toISOString().split('T')[0];
             if(document.getElementById('flight-depart')) document.getElementById('flight-depart').value = tomorrow;
             if(document.getElementById('flight2-depart')) document.getElementById('flight2-depart').value = tomorrow;
         });
-
+ 
         function setTripType(type) {
             fTripType = type;
             const returnBox = document.getElementById('return-date-box');
@@ -1227,7 +1227,7 @@
                 document.getElementById('tab-roundtrip').className = 'px-5 py-2 rounded-full text-xs font-bold uppercase tracking-wider bg-white/10 text-white hover:bg-white/20 transition';
             }
         }
-
+ 
         function setTripType2(type) {
             fTripType2 = type;
             const returnBox = document.getElementById('return2-box');
@@ -1244,78 +1244,78 @@
                 document.getElementById('tab2-roundtrip').className = 'px-6 py-2.5 rounded-full text-sm font-bold uppercase tracking-wider bg-gray-100 text-brandGray hover:bg-gray-200 transition';
             }
         }
-
+ 
         function swapCities() {
             const from = document.getElementById('flight-from');
             const to = document.getElementById('flight-to');
             [from.value, to.value] = [to.value, from.value];
         }
-
+ 
         function swapCities2() {
             const from = document.getElementById('flight2-from');
             const to = document.getElementById('flight2-to');
             [from.value, to.value] = [to.value, from.value];
         }
-
+ 
         function togglePaxBox() {
             document.getElementById('pax-dropdown').classList.toggle('hidden');
         }
-
+ 
         function togglePaxBox2() {
             document.getElementById('pax2-dropdown').classList.toggle('hidden');
         }
-
+ 
         function changePax(type, delta) {
             if(type === 'adult') { fPaxAdult = Math.max(1, fPaxAdult + delta); document.getElementById('pax-adult-count').innerText = fPaxAdult; }
             if(type === 'child') { fPaxChild = Math.max(0, fPaxChild + delta); document.getElementById('pax-child-count').innerText = fPaxChild; }
             if(type === 'infant') { fPaxInfant = Math.max(0, fPaxInfant + delta); document.getElementById('pax-infant-count').innerText = fPaxInfant; }
             updatePaxSummary('pax-summary', fPaxAdult, fPaxChild, fPaxInfant);
         }
-
+ 
         function changePax2(type, delta) {
             if(type === 'adult') { fPaxAdult2 = Math.max(1, fPaxAdult2 + delta); document.getElementById('pax2-adult').innerText = fPaxAdult2; }
             if(type === 'child') { fPaxChild2 = Math.max(0, fPaxChild2 + delta); document.getElementById('pax2-child').innerText = fPaxChild2; }
             if(type === 'infant') { fPaxInfant2 = Math.max(0, fPaxInfant2 + delta); document.getElementById('pax2-infant').innerText = fPaxInfant2; }
             updatePaxSummary('pax2-summary', fPaxAdult2, fPaxChild2, fPaxInfant2);
         }
-
+ 
         function updatePaxSummary(elId, adult, child, infant) {
             let parts = [adult + ' том хүн'];
             if(child > 0) parts.push(child + ' хүүхэд');
             if(infant > 0) parts.push(infant + ' нярай');
             document.getElementById(elId).innerText = parts.join(', ');
         }
-
+ 
         function searchFlights() {
             const from = document.getElementById('flight-from').value.trim();
             const to = document.getElementById('flight-to').value.trim();
             const depart = document.getElementById('flight-depart').value;
             const ret = document.getElementById('flight-return').value;
-
+ 
             if(!to) { alert('Хаашаа явахаа оруулна уу!'); return; }
             if(!depart) { alert('Явах огноогоо сонгоно уу!'); return; }
-
+ 
             openAviasales(from, to, depart, ret, fPaxAdult, fPaxChild, fPaxInfant, fTripType);
         }
-
+ 
         function searchFlights2() {
             const from = document.getElementById('flight2-from').value.trim();
             const to = document.getElementById('flight2-to').value.trim();
             const depart = document.getElementById('flight2-depart').value;
             const ret = document.getElementById('flight2-return').value;
-
+ 
             if(!to) { alert('Хаашаа явахаа оруулна уу!'); return; }
             if(!depart) { alert('Явах огноогоо сонгоно уу!'); return; }
-
+ 
             openAviasales(from, to, depart, ret, fPaxAdult2, fPaxChild2, fPaxInfant2, fTripType2);
         }
-
+ 
         function openAviasales(from, to, depart, ret, adults, children, infants, tripType) {
             const formatDate = (d) => { if(!d) return ''; const parts = d.split('-'); return parts[2] + parts[1]; };
             
             const dDate = formatDate(depart);
             const rDate = formatDate(ret);
-
+ 
             let url = `https://www.aviasales.com/search/${encodeURIComponent(from.substring(0,3).toUpperCase())}${dDate}${encodeURIComponent(to.substring(0,3).toUpperCase())}`;
             
             if(tripType === 'roundtrip' && rDate) {
@@ -1325,10 +1325,10 @@
             if(children > 0) url += `${children}`;
             if(infants > 0) url += `infant${infants}`;
             url += `?marker=532019`;
-
+ 
             window.open(url, '_blank');
         }
-
+ 
         document.addEventListener('click', function(e) {
             if(!e.target.closest('#pax-box-trigger')) {
                 const d = document.getElementById('pax-dropdown');
@@ -1339,8 +1339,9 @@
                 if(d) d.classList.add('hidden');
             }
         });
-
+ 
         document.addEventListener('DOMContentLoaded', init);
     </script>
 </body>
 </html>
+ 
